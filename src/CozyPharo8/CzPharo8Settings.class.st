@@ -26,11 +26,6 @@ CzPharo8Settings class >> addMooseRepositories [
 ]
 
 { #category : #initialization }
-CzPharo8Settings class >> contributingPharoImageIdentifier [
-  ^ 'ContribPharo'
-]
-
-{ #category : #initialization }
 CzPharo8Settings class >> formatingOptions [
 	<script>
 	EFFormatter
@@ -45,6 +40,7 @@ CzPharo8Settings class >> initialize [
 	self formatingOptions.
 	CzIcePick new configure.
 	self resetMenuBar.
+	CozyRoot lightThemeClass: CzDayAtTheBeachTheme.
 	CzDayAtTheBeachTheme beCurrent
 ]
 

@@ -10,10 +10,23 @@ Class {
 	#name : #CzQuickAccess,
 	#superclass : #CozyRoot,
 	#classVars : [
+		'Active',
+		'RefreshingIsActive',
 		'UniqueInstance'
 	],
 	#category : #CozyCommon
 }
+
+{ #category : #rebuilding }
+CzQuickAccess class >> activate [ 
+	RefreshingIsActive := true
+]
+
+{ #category : #'scripts-some' }
+CzQuickAccess class >> browseIcons [
+	<cozyScript: #'Browse icons'>
+	Smalltalk ui icons inspect
+]
 
 { #category : #'world menu' }
 CzQuickAccess class >> buildMenuAddToIcebergOn: aBuilder [ 
@@ -34,7 +47,7 @@ CzQuickAccess class >> buildMenuRenameSubmenu: protocolName on: aBuilder [
 	
 	(self methodsIn: protocolName asLowercase)
 		do: [ :method | 
-			(aBuilder item: ((method pragmaAt: #name:) argumentAt: 1))
+			(aBuilder item: ((method pragmaAt: #'cozyScript:') argumentAt: 1))
 				parent: protocolName;
 				action: [ self execute: method selector ];
 				iconName: #scriptManager ]
@@ -51,6 +64,11 @@ CzQuickAccess class >> createAddToIcebergSubmenusFrom: aFolder on: aBuilder [
 				self focusIceberg ]
 		prefix: ' '
 		on: aBuilder
+]
+
+{ #category : #rebuilding }
+CzQuickAccess class >> desactivate [ 
+	RefreshingIsActive := false
 ]
 
 { #category : #accessing }
@@ -116,9 +134,18 @@ CzQuickAccess class >> instance [
 ]
 
 { #category : #rebuilding }
+CzQuickAccess class >> isRefreshingActive [
+	
+	RefreshingIsActive ifNil: [ self activate ].
+	^ RefreshingIsActive
+]
+
+{ #category : #rebuilding }
 CzQuickAccess class >> methodAnnouncementReceived: anAnnouncement [
 	"No need to rebuild if it contains the world menu pragma"
-
+	
+	self isRefreshingActive ifFalse: [ ^ self ].
+	
 	({self . self class} 
 		anySatisfy: [ :class | anAnnouncement methodAffected methodClass = class ]) 
 							ifTrue: [ MenubarMorph reset ]
@@ -205,7 +232,8 @@ CzQuickAccess class >> worldMenuOn: aBuilder [
 
 { #category : #codax }
 CzQuickAccess >> addImportFromMSE [
-	<name: #'Compile #importFromMSE'>
+	<cozyScript: #'Compile #importFromMSE'>
+	
 	(self class environment at: #MooseModel)
 		compile:
 			'importFromMSE
@@ -220,31 +248,33 @@ stream close ]'
 
 { #category : #browse }
 CzQuickAccess >> browseCommonSettings [
-	<name: #'Pharo common settings'>
+	<cozyScript: #'Pharo common settings'>
 	CzCommonSettings class browse
 ]
 
 { #category : #browse }
 CzQuickAccess >> browseCommonSettings8 [
-	<name: #'Pharo common settings 8'>
+	<cozyScript: #'Pharo common settings 8'>
+	
 	self class environment at: #CzPharo8Settings ifPresent: [ :class | class class browse ]
 ]
 
 { #category : #'scripts-some' }
 CzQuickAccess >> browseIcons [
-	<name: #'Browse icons'>
+	<cozyScript: #'Browse icons'>
 	Smalltalk ui icons inspect
 ]
 
 { #category : #browse }
 CzQuickAccess >> browseQuickAccess [
-	<name: #QuickAccess>
+	<cozyScript: #QuickAccess>
+	
 	self class browse
 ]
 
 { #category : #templates }
 CzQuickAccess >> coolCommands [
-	<name: #'Git commands'>
+	<cozyScript: #'Git commands'>
 
 	GTPlayground
 		openContents:
@@ -262,7 +292,7 @@ CzQuickAccess >> coolCommands [
 
 { #category : #codax }
 CzQuickAccess >> cppDupDet [
-	<name: #'CPP script duplication detection'>
+	<cozyScript:  #'CPP script duplication detection'>
 	| model |
 	model := (self class environment at: #CPPModel) allInstances last.
 
@@ -282,7 +312,8 @@ CzQuickAccess >> cppDupDet [
 
 { #category : #codax }
 CzQuickAccess >> cppDupDetInPlayground [
-	<name: #'CPP script duplication detection in playground'>
+	<cozyScript: #'CPP script duplication detection in playground'>
+	
 	GTPlayground openContents: 'model := CPPModel allInstances last.
 
 model clearDuplicationSystem.
@@ -296,7 +327,7 @@ MessageTally spyOn: [model dupSys: (DPDetector createDupSysFromParameters:(DPPar
 
 { #category : #'seaside scripts' }
 CzQuickAccess >> debuggerInImage [
-	<name: #'Enable in image debugger'>
+	<cozyScript: #'Enable in image debugger'>
 	self class environment
 		at: #WAApplication
 		ifPresent: [ :class | class allInstancesDo: [ :app | app exceptionHandler: (Smalltalk at: #WADebugErrorHandler) ] ]
@@ -305,7 +336,7 @@ CzQuickAccess >> debuggerInImage [
 
 { #category : #templates }
 CzQuickAccess >> dependencies [
-	<name: #'Find dependencies'>
+	<cozyScript: #'Find dependencies'>
 	GTPlayground
 		openContents:
 			'report := DADependencyChecker new computeImageDependencies.
@@ -314,7 +345,8 @@ report knownDependantsOf: ''Glamour-Examples'''
 
 { #category : #codax }
 CzQuickAccess >> flushAll [
-	<name: #'Flush all'>
+	<cozyScript: #'Flush all'>
+	
 	(self class environment at: #MooseEntity) allSubInstances
 		do: [ :entity | entity privateState flush ]
 		displayingProgress: [ :entity | 'Cleaning cache of ' , entity mooseName ]
@@ -322,7 +354,7 @@ CzQuickAccess >> flushAll [
 
 { #category : #codax }
 CzQuickAccess >> flushGroups [
-	<name: #'Flush groups'>
+	<cozyScript: #'Flush groups'>
 	(self class environment at: #MooseEntity) allSubInstances
 		do: [ :entity | entity privateState flushGroups ]
 		displayingProgress: [ :entity | 'Cleaning cache of ' , entity mooseName ]
@@ -330,7 +362,7 @@ CzQuickAccess >> flushGroups [
 
 { #category : #codax }
 CzQuickAccess >> flushProperties [
-	<name: #'Flush properties'>
+	<cozyScript: #'Flush properties'>
 	(self class environment at: #MooseEntity) allSubInstances
 		do: [ :entity | entity privateState flushProperties ]
 		displayingProgress: [ :entity | 'Cleaning cache of ' , entity mooseName ]
@@ -338,13 +370,13 @@ CzQuickAccess >> flushProperties [
 
 { #category : #'scripts-some' }
 CzQuickAccess >> gc [
-	<name: #'Garbage collect'>
+	<cozyScript: #'Garbage collect'>
 	5 timesRepeat: [ Smalltalk garbageCollect ]
 ]
 
 { #category : #'scripts-some' }
 CzQuickAccess >> generateSimpleBaseline [
-	<name: #'Generate simple baseline'>
+	<cozyScript: #'Generate simple baseline'>
 	(UIManager default request: 'Name of the project')
 		ifNotNil: [ :name | 
 			| baselineName class |
@@ -396,7 +428,7 @@ CzQuickAccess >> generateSimpleBaseline [
 
 { #category : #loading }
 CzQuickAccess >> installSample [
-	<name: #'Install Sample'>
+	<cozyScript: #'Install Sample'>
 	Metacello new
 		baseline: #WebPokedex;
 		githubUser: 'jecisc'
@@ -409,7 +441,8 @@ CzQuickAccess >> installSample [
 
 { #category : #'scripts-some' }
 CzQuickAccess >> logAllUnusedVariables [
-	<name: #'Log all unused variables'>
+	<cozyScript: #'Log all unused variables'>
+	
 	Transcript clear; open.
 	Object
 		allSubclassesDo: [ :class | 
@@ -419,7 +452,8 @@ CzQuickAccess >> logAllUnusedVariables [
 
 { #category : #'scripts-some' }
 CzQuickAccess >> openCommonTools [
-	<name: #'Open common tools'>
+	<cozyScript: #'Open common tools'>
+	
 	| group |
 	group := GroupWindowMorph new
 		addWindow: MCWorkingCopyBrowser new show;
@@ -432,13 +466,14 @@ CzQuickAccess >> openCommonTools [
 
 { #category : #'scripts-some' }
 CzQuickAccess >> openImageNatively [
-	<name: #'Open image natively'>
+	<cozyScript: #'Open image natively'>
+	
 	FileLocator image openInNativeBrowser
 ]
 
 { #category : #templates }
 CzQuickAccess >> profileTests [
-	<name: #'Profile tests'>
+	<cozyScript: #'Profile tests'>
 	GTPlayground
 		openContents:
 			'packageSelectionBlock := [ :e | e name beginsWith: ''Traits'' ].
@@ -451,14 +486,14 @@ testSuite := TestSuite new.
 
 { #category : #'scripts-some' }
 CzQuickAccess >> randomBackground [
-	<name: #'Set random background'>
+	<cozyScript: #'Set random background'>
 
 	CzCommonSettings setRandomBackground
 ]
 
 { #category : #templates }
 CzQuickAccess >> renameMethodsWithDeprecation [
-	<name: #'Batch method rename with deprecations'>
+	<cozyScript: #'Batch method rename with deprecations'>
 	GTPlayground
 		openContents:
 			'class := FM3Class.
@@ -500,19 +535,19 @@ class methods
 
 { #category : #codax }
 CzQuickAccess >> resetMeta [
-	<name: #'Reset meta'>
+	<cozyScript: #'Reset meta'>
 	(self class environment at: #MooseModel) resetMeta
 ]
 
 { #category : #codax }
 CzQuickAccess >> resetSynMeta [
-	<name: #'Reset synectique meta'>
+	<cozyScript: #'Reset synectique meta'>
 	(self class environment at: #SYNModel) resetMeta
 ]
 
 { #category : #templates }
 CzQuickAccess >> rewritePatterns [
-	<name: #'Rewrite patterns'>
+	<cozyScript: #'Rewrite patterns'>
 	GTPlayground
 		openContents:
 			'r := RBParseTreeRewriter new.
@@ -534,25 +569,27 @@ classes do: [ :class |
 
 { #category : #'scripts-some' }
 CzQuickAccess >> screenshot [
-	<name: #Screenshot>
+	<cozyScript: #Screenshot>
+	
 	Form fromUser asMorph openInWindow
 ]
 
 { #category : #'scripts-some' }
 CzQuickAccess >> setMonticelloCredentials [
-	<name: #'Set Monticello credentials'>
+	<cozyScript: #'Set Monticello credentials'>
+	
 	CzCommonSettings setMonticelloCredentials
 ]
 
 { #category : #'seaside scripts' }
 CzQuickAccess >> startOn8080 [
-	<name: #'Start adaptor on 8080'>
+	<cozyScript: #'Start adaptor on 8080'>
 	(self class environment at: #ZnZincServerAdaptor) startOn: 8080
 ]
 
 { #category : #'seaside scripts' }
 CzQuickAccess >> startOn8080AndDebug [
-	<name: #'Start adaptor on 8080 with debug mode'>
+	<cozyScript: #'Start adaptor on 8080 with debug mode'>
 	self
 		startOn8080;
 		debuggerInImage
@@ -560,13 +597,13 @@ CzQuickAccess >> startOn8080AndDebug [
 
 { #category : #'seaside scripts' }
 CzQuickAccess >> stopAdaptors [
-	<name: #'Stop adaptors'>
+	<cozyScript: #'Stop adaptors'>
 	(self class environment at: #WAServerAdaptor) allSubInstances do: #stop
 ]
 
 { #category : #'seaside scripts' }
 CzQuickAccess >> templateAddFileToLibraryFromURL [
-	<name: #'_Template: URL to file library'>
+	<cozyScript: #'_Template: URL to file library'>
 	GTPlayground openContents: 'library := SYNFileLibrary.
 url := ''http://synectique.eu/images/ada.png''.
 fileName := ''ada.png''.
@@ -576,13 +613,14 @@ library addFileNamed: fileName contents: (ZnEasy get: url) contents'
 
 { #category : #'scripts-some' }
 CzQuickAccess >> toggleDeprecation [
-	<name: #'Toggle deprecations'>
+	<cozyScript: #'Toggle deprecations'>
+	
 	Deprecation raiseWarning: Deprecation raiseWarning not
 ]
 
 { #category : #'scripts-some' }
 CzQuickAccess >> toggleTheme [
-	<name: #'Toggle theme'>
+	<cozyScript: #'Toggle theme'>
 
 	| light dark |
 	dark := CozyRoot darkThemeClass.
@@ -595,7 +633,7 @@ CzQuickAccess >> toggleTheme [
 
 { #category : #'scripts-mine' }
 CzQuickAccess >> toggleToMyTheme [
-	<name: #'Try my theme'>
+	<cozyScript: #'Use Day-at-the-Beach'>
 
 	CzDayAtTheBeachTheme beCurrent.
 	CzCommonSettings setThemeSetting
@@ -603,7 +641,7 @@ CzQuickAccess >> toggleToMyTheme [
 
 { #category : #templates }
 CzQuickAccess >> variableUsage [
-	<name: #'Variable usage'>
+	<cozyScript: #'Variable usage'>
 	GTPlayground openContents: 'origin := SpPresenter.
 variables := origin instVarNames.
 
@@ -617,7 +655,7 @@ variables
 
 { #category : #codax }
 CzQuickAccess >> weeklyMail [
-	<name: #'Weekly mail'>
+	<cozyScript: #'Weekly mail'>
 	| files mailMessage from to creds file text |
 	from := 'cyril.ferlicot@synectique.eu'.
 	to := 'team@synectique.eu'.

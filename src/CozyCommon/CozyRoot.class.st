@@ -6,6 +6,10 @@ I would like to thank him to show us the way to adapt our lovely environment to 
 Class {
 	#name : #CozyRoot,
 	#superclass : #Object,
+	#classVars : [
+		'DarkThemeClass',
+		'LightThemeClass'
+	],
 	#category : #CozyCommon
 }
 
@@ -14,11 +18,19 @@ CozyRoot class >> backgroundFolder [
 	^ self resourcesFolder / 'backgrounds'
 ]
 
+{ #category : #initialization }
+CozyRoot class >> contributingPharoImageIdentifier [
+  ^ 'ContribPharo'
+]
+
 { #category : #themes }
 CozyRoot class >> darkThemeClass [
-	^ SystemVersion current major >= 7
-		ifTrue: [ CzDarkBlueTheme ]
-		ifFalse: [ PharoDarkTheme ]
+	^ DarkThemeClass ifNil: [ DarkThemeClass := PharoDarkTheme ]
+]
+
+{ #category : #themes }
+CozyRoot class >> darkThemeClass: aTheme [
+	DarkThemeClass := aTheme
 ]
 
 { #category : #initialization }
@@ -28,12 +40,18 @@ CozyRoot class >> imageNameBeginsWith: aString [
 
 { #category : #initialization }
 CozyRoot class >> imageNameBeginsWithAny: aCollection [
+
 	^ aCollection anySatisfy: [ :each | Smalltalk shortImageName beginsWith: each ]
 ]
 
 { #category : #themes }
 CozyRoot class >> lightThemeClass [
-	^  PharoLightTheme 
+	^ LightThemeClass ifNil: [ LightThemeClass := PharoLightTheme ]
+]
+
+{ #category : #themes }
+CozyRoot class >> lightThemeClass: aTheme [
+	LightThemeClass := aTheme
 ]
 
 { #category : #iceberg }
@@ -73,6 +91,8 @@ CozyRoot class >> rootFolder [
 { #category : #iceberg }
 CozyRoot class >> sharedRepositoryFolder [
 	| file |
+	self flag: #toClean.
+	"we should probably move that to IcePick"
 	file := self resourcesFolder / self sharedRepositoryFolderPathFile.
 	file exists
 		ifFalse: [ | cred |
@@ -85,7 +105,8 @@ CozyRoot class >> sharedRepositoryFolder [
 { #category : #iceberg }
 CozyRoot class >> sharedRepositoryFolderPathFile [
 	"return the name of the file containing the path to the shared repository folder."
-	
+	self flag: #toClean.
+	"we should probably move that to IcePick"
 	^ 'sharedRepositoryFolderPath.ston'.
 	
 ]
