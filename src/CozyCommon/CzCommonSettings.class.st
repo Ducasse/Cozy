@@ -1,23 +1,43 @@
 Class {
 	#name : #CzCommonSettings,
 	#superclass : #CozyRoot,
+	#classInstVars : [
+		'scriptNames'
+	],
 	#category : #CozyCommon
 }
 
-{ #category : #initialization }
+{ #category : #customization }
+CzCommonSettings class >> defaultScriptNames [
+	"Redefine your scripts by adding them to this list or adding them to self scriptNames"
+	^ #(
+		setAuthorName
+		setAppearance
+		setLocalFolders
+		setMonticelloCredentials
+		someToolsOptions
+		enableGTSpotterPreview
+		removeTaskBarPreview
+		setFastDragging
+		disableSomeGTSpotterExtensions
+		ensurePlayground
+		)
+]
+
+{ #category : #gt }
 CzCommonSettings class >> disableSomeGTSpotterExtensions [
 	<script>
 	
 	#('GTSpotter_spotterWorldMenuFor') do: [ :ext | GTSpotterExtensionSettings disabledExtensions add: ext ]
 ]
 
-{ #category : #initialization }
+{ #category : #gt }
 CzCommonSettings class >> enableGTSpotterPreview [
 	<script>
 	GTSpotter showPreview
 ]
 
-{ #category : #initialization }
+{ #category : #gt }
 CzCommonSettings class >> ensurePlayground [
 	<script>
 	"I want the normal playground..."
@@ -26,23 +46,22 @@ CzCommonSettings class >> ensurePlayground [
 ]
 
 { #category : #initialization }
+CzCommonSettings class >> executeSetup [
+	"Execute all the scripts"
+	
+	self scriptNames do: [ :each | self perform: each ]
+]
+
+{ #category : #initialization }
 CzCommonSettings class >> initialize [
-	self
-		setAuthorName;
-		setAppearance;
-		setLocalFolders;
-		setMonticelloCredentials;
-		someToolsOptions;
-		enableGTSpotterPreview;
-		removeTaskBarPreview;
-		setThemeSetting;
-		disableSomeGTSpotterExtensions;
-		ensurePlayground
+	
+	self executeSetup
 ]
 
 { #category : #appearence }
 CzCommonSettings class >> launchThemeProcess [
 	<script>
+	
 	| installThemeBlock currentTheme |
 	installThemeBlock := [ | theme |
 	theme := (Time now between: '7:00am' asTime and: '9:00pm' asTime) 
@@ -50,7 +69,7 @@ CzCommonSettings class >> launchThemeProcess [
 	theme = currentTheme
 		ifFalse: [ currentTheme := theme.
 			PolymorphSystemSettings uiThemeClass: currentTheme.
-			self setThemeSetting ] ].
+			self setFastDragging ] ].
 	[ [ installThemeBlock value.
 	5 minutes asDelay wait ] repeat ] newProcess
 		priority: Processor systemBackgroundPriority;
@@ -60,44 +79,68 @@ CzCommonSettings class >> launchThemeProcess [
 
 { #category : #credentials }
 CzCommonSettings class >> monticelloCredentialFile [
-  ^'credentialsMonticello.ston'
+	^ 'credentialsMonticello.ston'
 ]
 
 { #category : #appearence }
 CzCommonSettings class >> removeLogo [
 	<script>
+	
 	PolymorphSystemSettings showDesktopLogo: false
 ]
 
 { #category : #appearence }
 CzCommonSettings class >> removeTaskBarPreview [
 	<script>
+	
 	TaskbarMorph showWindowPreview: false
 ]
 
 { #category : #credentials }
 CzCommonSettings class >> resetMonticelloCredentials [
 	<script>
+	
 	| file |
 	file := self resourcesFolder / self monticelloCredentialFile.
 	file ensureDelete
 ]
 
+{ #category : #initialization }
+CzCommonSettings class >> resetScriptNames [
+
+	scriptNames := nil
+]
+
+{ #category : #initialization }
+CzCommonSettings class >> scriptNames [
+
+	scriptNames ifNil: [ scriptNames := self defaultScriptNames ].
+	^ scriptNames
+]
+
 { #category : #appearence }
 CzCommonSettings class >> setAppearance [
 	<script>
+	
 	self removeLogo.
 	self launchThemeProcess.
 	self setRandomBackground
 ]
 
-{ #category : #initialization }
+{ #category : #pharo }
 CzCommonSettings class >> setAuthorName [
 	<script>
 	Author fullName: 'StephaneDucasse'
 ]
 
-{ #category : #initialization }
+{ #category : #appearence }
+CzCommonSettings class >> setFastDragging [
+	<script>
+	
+	UITheme currentSettings fastDragging: true
+]
+
+{ #category : #pharo }
 CzCommonSettings class >> setLocalFolders [
 	<script>
 	| packageCache |
@@ -144,30 +187,32 @@ CzCommonSettings class >> setMonticelloCredentials [
 { #category : #appearence }
 CzCommonSettings class >> setRandomBackground [
 	<script>
-	[ | files |
+	
+	| files |
 	files := self backgroundFolder allFiles.
-	PolymorphSystemSettings desktopImageFileName: (files at: UUID new asInteger \\ files size + 1) fullName ] fork
+	PolymorphSystemSettings desktopImageFileName: (files at: UUID new asInteger \\ files size + 1) fullName
 ]
 
 { #category : #appearence }
 CzCommonSettings class >> setThemeSetting [
 	<script>
+	
 	UITheme currentSettings fastDragging: true
 ]
 
-{ #category : #initialization }
+{ #category : #appearence }
 CzCommonSettings class >> setWindowsPreferences [
 	<script>
 	self showBoundsInHalo
 ]
 
-{ #category : #initialization }
+{ #category : #appearence }
 CzCommonSettings class >> showBoundsInHalo [
 	<script>
 	HaloMorph showBoundsInHalo: true
 ]
 
-{ #category : #initialization }
+{ #category : #pharo }
 CzCommonSettings class >> someToolsOptions [
 	<script>
 	Slot showSlotClassDefinition: true.

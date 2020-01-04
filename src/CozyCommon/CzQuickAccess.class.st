@@ -10,7 +10,6 @@ Class {
 	#name : #CzQuickAccess,
 	#superclass : #CozyRoot,
 	#classVars : [
-		'Active',
 		'RefreshingIsActive',
 		'UniqueInstance'
 	],
@@ -179,6 +178,7 @@ CzQuickAccess class >> worldMenuOn: aBuilder [
 	<worldMenu>
 
 	(aBuilder item: #Scripts)
+		label: 'Cozy';
 		order: 6.0;
 		iconName: #changeUpdate.
 
@@ -230,31 +230,17 @@ CzQuickAccess class >> worldMenuOn: aBuilder [
 
 ]
 
-{ #category : #codax }
-CzQuickAccess >> addImportFromMSE [
-	<cozyScript: #'Compile #importFromMSE'>
-	
-	(self class environment at: #MooseModel)
-		compile:
-			'importFromMSE
-| stream |
-stream := UITheme builder fileOpen: ''Import model from MSE file'' extensions: #(''mse'').
-stream
-ifNotNil: [ 
-self name: (stream localName copyUpToLast: Path extensionDelimiter).	"name without extension"
-self importFromMSEStream: stream.
-stream close ]'
-]
-
 { #category : #browse }
 CzQuickAccess >> browseCommonSettings [
 	<cozyScript: #'Pharo common settings'>
+	
 	CzCommonSettings class browse
 ]
 
 { #category : #browse }
 CzQuickAccess >> browseCommonSettings8 [
 	<cozyScript: #'Pharo common settings 8'>
+	"moving it as extension method in P8 does not work because the sorting is based on protocols."
 	
 	self class environment at: #CzPharo8Settings ifPresent: [ :class | class class browse ]
 ]
@@ -290,50 +276,6 @@ CzQuickAccess >> coolCommands [
 	'
 ]
 
-{ #category : #codax }
-CzQuickAccess >> cppDupDet [
-	<cozyScript:  #'CPP script duplication detection'>
-	| model |
-	model := (self class environment at: #CPPModel) allInstances last.
-
-	model clearDuplicationSystem.
-	MessageTally
-		spyOn: [ model
-				dupSys:
-					((self class environment at: #DPDetector)
-						createDupSysFromParameters:
-							((self class environment at: #DPParameters) new
-								selectedPrograms: model entitiesForDupDetection;
-								frequency: 2;
-								minNumberOfLines: 100;
-								minNumberOfCharacters: 80;
-								cleaner: (self class environment at: #DPCPPCleaner) new)) ]
-]
-
-{ #category : #codax }
-CzQuickAccess >> cppDupDetInPlayground [
-	<cozyScript: #'CPP script duplication detection in playground'>
-	
-	GTPlayground openContents: 'model := CPPModel allInstances last.
-
-model clearDuplicationSystem.
-MessageTally spyOn: [model dupSys: (DPDetector createDupSysFromParameters:(DPParameters new
-				selectedPrograms: model entitiesForDupDetection;
-				frequency: 2;
-				minNumberOfLines: 100;
-				minNumberOfCharacters: 80;
-				cleaner: DPCPPCleaner new)).]'
-]
-
-{ #category : #'seaside scripts' }
-CzQuickAccess >> debuggerInImage [
-	<cozyScript: #'Enable in image debugger'>
-	self class environment
-		at: #WAApplication
-		ifPresent: [ :class | class allInstancesDo: [ :app | app exceptionHandler: (Smalltalk at: #WADebugErrorHandler) ] ]
-		ifAbsent: [ self error: 'Seaside dev not loaded' ]
-]
-
 { #category : #templates }
 CzQuickAccess >> dependencies [
 	<cozyScript: #'Find dependencies'>
@@ -341,31 +283,6 @@ CzQuickAccess >> dependencies [
 		openContents:
 			'report := DADependencyChecker new computeImageDependencies.
 report knownDependantsOf: ''Glamour-Examples'''
-]
-
-{ #category : #codax }
-CzQuickAccess >> flushAll [
-	<cozyScript: #'Flush all'>
-	
-	(self class environment at: #MooseEntity) allSubInstances
-		do: [ :entity | entity privateState flush ]
-		displayingProgress: [ :entity | 'Cleaning cache of ' , entity mooseName ]
-]
-
-{ #category : #codax }
-CzQuickAccess >> flushGroups [
-	<cozyScript: #'Flush groups'>
-	(self class environment at: #MooseEntity) allSubInstances
-		do: [ :entity | entity privateState flushGroups ]
-		displayingProgress: [ :entity | 'Cleaning cache of ' , entity mooseName ]
-]
-
-{ #category : #codax }
-CzQuickAccess >> flushProperties [
-	<cozyScript: #'Flush properties'>
-	(self class environment at: #MooseEntity) allSubInstances
-		do: [ :entity | entity privateState flushProperties ]
-		displayingProgress: [ :entity | 'Cleaning cache of ' , entity mooseName ]
 ]
 
 { #category : #'scripts-some' }
@@ -533,18 +450,6 @@ class methods
 			] ].'
 ]
 
-{ #category : #codax }
-CzQuickAccess >> resetMeta [
-	<cozyScript: #'Reset meta'>
-	(self class environment at: #MooseModel) resetMeta
-]
-
-{ #category : #codax }
-CzQuickAccess >> resetSynMeta [
-	<cozyScript: #'Reset synectique meta'>
-	(self class environment at: #SYNModel) resetMeta
-]
-
 { #category : #templates }
 CzQuickAccess >> rewritePatterns [
 	<cozyScript: #'Rewrite patterns'>
@@ -581,36 +486,6 @@ CzQuickAccess >> setMonticelloCredentials [
 	CzCommonSettings setMonticelloCredentials
 ]
 
-{ #category : #'seaside scripts' }
-CzQuickAccess >> startOn8080 [
-	<cozyScript: #'Start adaptor on 8080'>
-	(self class environment at: #ZnZincServerAdaptor) startOn: 8080
-]
-
-{ #category : #'seaside scripts' }
-CzQuickAccess >> startOn8080AndDebug [
-	<cozyScript: #'Start adaptor on 8080 with debug mode'>
-	self
-		startOn8080;
-		debuggerInImage
-]
-
-{ #category : #'seaside scripts' }
-CzQuickAccess >> stopAdaptors [
-	<cozyScript: #'Stop adaptors'>
-	(self class environment at: #WAServerAdaptor) allSubInstances do: #stop
-]
-
-{ #category : #'seaside scripts' }
-CzQuickAccess >> templateAddFileToLibraryFromURL [
-	<cozyScript: #'_Template: URL to file library'>
-	GTPlayground openContents: 'library := SYNFileLibrary.
-url := ''http://synectique.eu/images/ada.png''.
-fileName := ''ada.png''.
-
-library addFileNamed: fileName contents: (ZnEasy get: url) contents'
-]
-
 { #category : #'scripts-some' }
 CzQuickAccess >> toggleDeprecation [
 	<cozyScript: #'Toggle deprecations'>
@@ -628,7 +503,7 @@ CzQuickAccess >> toggleTheme [
 
 	(dark isCurrent ifTrue: [ light ] ifFalse: [ dark ]) beCurrent.
 
-	CzCommonSettings setThemeSetting
+	CzCommonSettings setFastDragging
 ]
 
 { #category : #'scripts-mine' }
@@ -636,7 +511,7 @@ CzQuickAccess >> toggleToMyTheme [
 	<cozyScript: #'Use Day-at-the-Beach'>
 
 	CzDayAtTheBeachTheme beCurrent.
-	CzCommonSettings setThemeSetting
+	CzCommonSettings setFastDragging
 ]
 
 { #category : #templates }
@@ -651,60 +526,4 @@ variables
 		dict
 			at: var put: ((origin slots detect: [ :e | e name = var ]) usingMethods collect: #methodClass as: Set);
 			yourself ]'
-]
-
-{ #category : #codax }
-CzQuickAccess >> weeklyMail [
-	<cozyScript: #'Weekly mail'>
-	| files mailMessage from to creds file text |
-	from := 'cyril.ferlicot@synectique.eu'.
-	to := 'team@synectique.eu'.
-	(file := StartupPreferencesLoader preferencesGeneralFolder / 'SettingRessources' / 'CredsAmen') exists
-		ifFalse: [ | cred |
-			cred := Dictionary new.
-			cred at: #amenPassword put: (UIManager default textEntry: 'Amen Password').
-			file writeStreamDo: [ :s | s nextPutAll: (STON toStringPretty: cred) ] ].
-	creds := STON fromString: file contents.
-
-	files := ('/Users/cyril/Google Drive/Synectique/Rapports' asFileReference allFiles select: [ :f | f basename first isDigit ])
-		sort: [ :a :b | a basenameWithoutExtension asDate > b basenameWithoutExtension asDate ].
-
-	text := String
-		streamContents: [ :stream | 
-			stream
-				<< 'Bonjour,';
-				lf;
-				lf;
-				<< 'Voici mon rapport de la semaine : ';
-				lf;
-				lf;
-				<< files first contents;
-				lf;
-				lf;
-				<<
-					'--
-Cyril Ferlicot
-https://ferlicot.fr
-
-http://www.synectique.eu
-2 rue Jacques Prévert 01,
-59650 Villeneuve d''ascq France
-' ].
-
-	(UIManager default confirm: text label: 'Envoyer ?')
-		ifTrue: [ mailMessage := MailMessage empty
-				setField: 'subject' toString: (Date today printFormat: #(1 2 3 $- 1 1));
-				body: (MIMEDocument contentType: 'text/plain' content: text);
-				setField: 'from' toString: from;
-				setField: 'to' toString: to;
-				setField: 'bcc' toString: from;
-				yourself.
-
-			ZdcSecureSMTPClient new
-				user: from;
-				password: (creds at: #amenPassword);
-				openOnHost: (NetNameResolver addressForName: 'smtp.synectique.eu') port: 465;
-				mailFrom: from to: {to} text: mailMessage text;
-				quit;
-				close ]
 ]

@@ -17,7 +17,7 @@ CzColoredBasedTheme class >> basePassiveBackgroundColor [
 { #category : #query }
 CzColoredBasedTheme class >> beCurrent [
 	super beCurrent.
-	CzCommonSettings setThemeSetting
+	CzCommonSettings setFastDragging
 ]
 
 { #category : #accessing }
