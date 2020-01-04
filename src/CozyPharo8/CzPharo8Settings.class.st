@@ -44,7 +44,8 @@ CzPharo8Settings class >> initialize [
 	
 	self formatingOptions.
 	CzIcePick new configure.
-	self resetMenuBar
+	self resetMenuBar.
+	CzDayAtTheBeachTheme beCurrent
 ]
 
 { #category : #initialization }
