@@ -38,7 +38,7 @@ CzIcePick class >> credentialsIcebergFilename [
 CzIcePick class >> sharedRepositoryFolderPathFile [
 	"return the name of the file containing the path to the shared repository folder."
 	
-	^ 'sharedRepositoryFolderPath.ston'.
+	^ 'sharedRepositoryFolderPath.ston'
 	
 ]
 

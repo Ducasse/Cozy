@@ -343,6 +343,13 @@ CzQuickAccess >> generateSimpleBaseline [
 			class browse ]
 ]
 
+{ #category : #'scripts-mine' }
+CzQuickAccess >> iceberg [
+	<cozyScript: #'Iceberg'>
+
+	self class focusIceberg
+]
+
 { #category : #loading }
 CzQuickAccess >> installSample [
 	<cozyScript: #'Install Sample'>
@@ -386,6 +393,13 @@ CzQuickAccess >> openImageNatively [
 	<cozyScript: #'Open image natively'>
 	
 	FileLocator image openInNativeBrowser
+]
+
+{ #category : #'scripts-mine' }
+CzQuickAccess >> prepareForContribution [
+	<cozyScript: #'Prepare Pharo contribution'>
+
+	CzIcePick new prepareContributionToPharoForUnsynchronizedRepositories.
 ]
 
 { #category : #templates }
