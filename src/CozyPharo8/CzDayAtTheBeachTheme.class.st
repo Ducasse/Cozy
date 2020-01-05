@@ -193,7 +193,7 @@ CzDayAtTheBeachTheme >> thisIsATestMethod: arg for: shoutTable [
 	^ self
 ]
 
-{ #category : #unused }
+{ #category : #'accessing colors' }
 CzDayAtTheBeachTheme >> unfocusedSelectionColor [
-	^ "Color fromHexString: 'ffe082'" Color purple
+	^ self selectionColor
 ]
