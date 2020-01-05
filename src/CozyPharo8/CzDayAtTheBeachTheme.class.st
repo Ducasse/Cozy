@@ -85,7 +85,29 @@ CzDayAtTheBeachTheme >> borderColor [
 	^ self class darkBaseColor adjustBrightness: -0.04
 ]
 
-{ #category : #'border-styles' }
+{ #category : #unused }
+CzDayAtTheBeachTheme >> configureMorphTreeMorph: aMorph [
+	aMorph preferedPaneColor: self textColor.
+	aMorph 
+		rowColorForEven: self backgroundColor
+		odd: self backgroundColor.
+]
+
+{ #category : #unused }
+CzDayAtTheBeachTheme >> configurePluggableTextMorph: textMorph [ 
+	textMorph 	
+		color: self backgroundColor;
+		textColor: self textColor;
+		borderWidth: 1.
+]
+
+{ #category : #unused }
+CzDayAtTheBeachTheme >> configureTextMorph: textMorph [ 
+	textMorph 
+		color: self textColor
+]
+
+{ #category : #unused }
 CzDayAtTheBeachTheme >> configureWindowBorderFor: aWindow [
 
 	| aStyle |
@@ -100,6 +122,13 @@ CzDayAtTheBeachTheme >> initialize [
 
 	super initialize. 
 	settings menuColor: self baseColor
+]
+
+{ #category : #shout }
+CzDayAtTheBeachTheme >> listTextColor [
+	"Answer the list text color to use."
+
+	^ self textColor
 ]
 
 { #category : #shout }
@@ -127,7 +156,7 @@ CzDayAtTheBeachTheme >> secondarySelectionColor [
 
 { #category : #shout }
 CzDayAtTheBeachTheme >> selectionColor [
-	^ Color fromHexString: 'ffe082'
+	^ Color fromHexString: 'ffe082' "Color red"
 ]
 
 { #category : #shout }
@@ -139,6 +168,12 @@ CzDayAtTheBeachTheme >> selectionTextColor [
 CzDayAtTheBeachTheme >> shStyleTableName [
 
 	^ #daybeachStyleTable
+]
+
+{ #category : #unused }
+CzDayAtTheBeachTheme >> textColor [
+
+	^ Color black
 ]
 
 { #category : #'sample methods' }
@@ -156,4 +191,9 @@ CzDayAtTheBeachTheme >> thisIsATestMethod: arg for: shoutTable [
 	names := 33.
 	{ 1. $a. #aSymbol } do: [ :each | self printString ].
 	^ self
+]
+
+{ #category : #unused }
+CzDayAtTheBeachTheme >> unfocusedSelectionColor [
+	^ "Color fromHexString: 'ffe082'" Color purple
 ]
