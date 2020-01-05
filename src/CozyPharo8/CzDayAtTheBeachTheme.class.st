@@ -30,6 +30,17 @@ CzDayAtTheBeachTheme class >> darkBaseColor [
 ]
 
 { #category : #accessing }
+CzDayAtTheBeachTheme class >> lightBaseColor [
+
+	^ Color fromString: 'ffe500'
+]
+
+{ #category : #accessing }
+CzDayAtTheBeachTheme class >> lightSelectionColor [
+	^ Color fromHexString: 'ffd300'
+]
+
+{ #category : #accessing }
 CzDayAtTheBeachTheme class >> newDefaultSettings [
 	"to be done"
 	self setPreferredPreferences.
@@ -57,6 +68,11 @@ CzDayAtTheBeachTheme class >> newDefaultSettings [
 { #category : #accessing }
 CzDayAtTheBeachTheme class >> themeName [
 	^ 'Day at the Beach'
+]
+
+{ #category : #accessing }
+CzDayAtTheBeachTheme class >> veryLightSelectionColor [
+	^ (Color fromHexString: 'ffe700')
 ]
 
 { #category : #'accessing colors' }
@@ -97,6 +113,11 @@ CzDayAtTheBeachTheme >> progressBarProgressFillStyleFor: aProgressBar [
 	"Answer the colour for the given progress bar."
 
 	^ self class darkBaseColor
+]
+
+{ #category : #'accessing colors' }
+CzDayAtTheBeachTheme >> scrollbarColor [ 
+	^ self buttonColor
 ]
 
 { #category : #shout }
