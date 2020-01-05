@@ -13,6 +13,7 @@ Cozy supports
 Next version should
 - clean some duplicated functions
 - support modular definition of script (instead in a single class because relying on protocols does not work with class extensions.
+- make sure that my lovely scripts are nicely packaged. 
 - check pharo-scripts support for multiple pharo versions. 
 - a way to manage (as Pharo-scripts all) the settings folder in github.
 - smoother theme integration. 
