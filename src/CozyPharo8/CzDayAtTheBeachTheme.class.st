@@ -32,12 +32,12 @@ CzDayAtTheBeachTheme class >> darkBaseColor [
 { #category : #accessing }
 CzDayAtTheBeachTheme class >> lightBaseColor [
 
-	^ Color fromString: 'ffe500'
+	^ (Color fromString: 'e0f7fa')
 ]
 
 { #category : #accessing }
 CzDayAtTheBeachTheme class >> lightSelectionColor [
-	^ Color fromHexString: 'ffd300'
+	^ Color fromHexString: 'ffd200'
 ]
 
 { #category : #accessing }
