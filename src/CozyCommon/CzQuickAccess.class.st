@@ -220,13 +220,13 @@ CzQuickAccess class >> worldMenuOn: aBuilder [
 		iconName: #configNew;
 		with: [ self buildMenuRenameSubmenu: #Browse on: aBuilder ].
 
-	self backgroundFolder exists 
+	"self backgroundFolder exists 
 		ifTrue: [ 
 			(aBuilder item: #'Select background')
 				parent: #'scripts-mine';
 				order: 1;
 				iconName: #configNew;
-				with: [ self buildMenuRenameSelectBackgroundOn: aBuilder ] ]
+				with: [ self buildMenuRenameSelectBackgroundOn: aBuilder ] ]"
 
 ]
 
