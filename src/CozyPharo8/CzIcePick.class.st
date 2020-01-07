@@ -173,6 +173,7 @@ CzIcePick >> prepareContributionToPharoForUnsynchronizedRepositories [
 	
 	| pharo branchName |
 	pharo := (IceRepository registry select: [ :each | each name = 'pharo' ]) first.
+	self flag:#fixMe. "remove dependency to stef"
 	pharo location: (self sharedRepositoryFolder / 'Ducasse' / 'pharo') asFileReference.
 	self fetchAllRemotesOf: pharo.
 
