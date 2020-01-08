@@ -135,11 +135,8 @@ CzDayAtTheBeachTheme >> initializeColors [
 	colorDictionary at: #secondarySelectionColor put: (Color fromString: '84ffff').
 	colorDictionary at: #selectionTextColor put: (Color fromString: 'ffd54f').
 	colorDictionary at: #selectionColor put: (Color fromHexString: 'ffe082').
-	
-	
-	
-	colorDictionary at: #listTextColor put: self textColor.
-	colorDictionary at: #listTextColor put: self textColor.
+	colorDictionary at: #textColor put: Color black.
+	colorDictionary at: #unfocusedSelectionColor put: self selectionTextColor.
 	
 	
 ]
