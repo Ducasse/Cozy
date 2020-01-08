@@ -8,7 +8,8 @@ Class {
 	#name : #CzDayAtTheBeachTheme,
 	#superclass : #PharoLightTheme,
 	#instVars : [
-		'backgroundColor'
+		'backgroundColor',
+		'colorDictionary'
 	],
 	#category : #CozyPharo8
 }
@@ -117,7 +118,30 @@ CzDayAtTheBeachTheme >> configureWindowBorderFor: aWindow [
 CzDayAtTheBeachTheme >> initialize [
 
 	super initialize. 
-	settings menuColor: self baseColor
+	colorDictionary := Dictionary new.
+	settings menuColor: self baseColor.
+	self initializeColors
+]
+
+{ #category : #initialization }
+CzDayAtTheBeachTheme >> initializeColors [
+
+	
+	colorDictionary at: #backgroundColor put: ((Color fromString: 'fffde7') alphaMixed: 0.25 with: Color white).
+	colorDictionary at: #borderColor put: (self class darkBaseColor adjustBrightness: -0.04).
+	colorDictionary at: #scrollbarColor put: self buttonColor.
+	colorDictionary at: #listTextColor put: self textColor.
+	colorDictionary at: #menuColor put: self baseColor.
+	colorDictionary at: #secondarySelectionColor put: (Color fromString: '84ffff').
+	colorDictionary at: #selectionTextColor put: (Color fromString: 'ffd54f').
+	colorDictionary at: #selectionColor put: (Color fromHexString: 'ffe082').
+	
+	
+	
+	colorDictionary at: #listTextColor put: self textColor.
+	colorDictionary at: #listTextColor put: self textColor.
+	
+	
 ]
 
 { #category : #shout }
@@ -129,7 +153,7 @@ CzDayAtTheBeachTheme >> listTextColor [
 
 { #category : #shout }
 CzDayAtTheBeachTheme >> menuColor [
-	"apparently this does not work for the world menu."
+	"For Calypso menu but apparently this does not work for the world menu."
 	^ self baseColor
 ]
 

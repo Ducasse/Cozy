@@ -9,14 +9,14 @@ SHRBTextStyler class >> daybeachStyleTable [
 	if pixel height is not specified , then the editor font size will be used.
 	"
 	<styleTable: 'Beach'>
-	"(symbol color [emphasisSymbolOrArray [textStyleName [pixelHeight]]])" 							
+	"(symbol color [emphasisSymbolOrArray [textStyleName [pixelHeight]]]) #bf360c" 							
  		^ #(
 			(default 								black)
-			(invalid 								red #(italic))
+			(invalid 								red #(italic bold))
 			(excessCode 							red)
 			
 			"(comment 								'd81b60' darker) #(italic))"
-			(comment 								('ff6f00') #(italic))
+			(comment 								('795548') #(italic))
 			(unfinishedComment 				(red muchDarker))
 			
 			(#'$' 									('268BD2' lighter))
