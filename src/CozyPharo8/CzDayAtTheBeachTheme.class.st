@@ -77,6 +77,8 @@ CzDayAtTheBeachTheme class >> veryLightSelectionColor [
 
 { #category : #'accessing colors' }
 CzDayAtTheBeachTheme >> backgroundColor [
+	"Color for the text background in main editors."
+	
 	^ (Color fromString: 'fffde7') alphaMixed: 0.25 with: Color white
 ]
 
@@ -99,12 +101,6 @@ CzDayAtTheBeachTheme >> configurePluggableTextMorph: textMorph [
 		color: self backgroundColor;
 		textColor: self textColor;
 		borderWidth: 1.
-]
-
-{ #category : #unused }
-CzDayAtTheBeachTheme >> configureTextMorph: textMorph [ 
-	textMorph 
-		color: self textColor
 ]
 
 { #category : #unused }
@@ -156,7 +152,7 @@ CzDayAtTheBeachTheme >> secondarySelectionColor [
 
 { #category : #shout }
 CzDayAtTheBeachTheme >> selectionColor [
-	^ Color fromHexString: 'ffe082' "Color red"
+	^ Color fromHexString: 'ffe082'
 ]
 
 { #category : #shout }
@@ -170,9 +166,9 @@ CzDayAtTheBeachTheme >> shStyleTableName [
 	^ #daybeachStyleTable
 ]
 
-{ #category : #unused }
+{ #category : #'accessing colors' }
 CzDayAtTheBeachTheme >> textColor [
-
+	"This is only for all the list and the text except that the selection color can hide it on certain list."
 	^ Color black
 ]
 
