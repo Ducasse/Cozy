@@ -49,7 +49,7 @@ CzCommonSettings class >> ensurePlayground [
 CzCommonSettings class >> executeSetup [
 	"Execute all the scripts"
 	
-	self scriptNames do: [ :each | self perform: each ]
+	self scriptNames do: [ :each | [self perform: each] on: Error do: [ :ex | self inform: 'error raised' ] ]
 ]
 
 { #category : #initialization }
