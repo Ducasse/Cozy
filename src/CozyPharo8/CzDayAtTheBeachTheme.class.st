@@ -102,13 +102,24 @@ CzDayAtTheBeachTheme class >> veryLightSelectionColor [
 CzDayAtTheBeachTheme >> backgroundColor [
 	"Color for the text background in main editors."
 	
-	"^ (Color fromString: 'fffde7') alphaMixed: 0.25 with: Color white"
-	
 	^ colorDictionary at: #backgroundColor
+]
+
+{ #category : #'core definition' }
+CzDayAtTheBeachTheme >> backgroundColorDefinition [
+	"Color for the text background in main editors."
+	
+	^ (Color fromString: 'fffde7') alphaMixed: 0.25 with: Color white
 ]
 
 { #category : #'accessing colors' }
 CzDayAtTheBeachTheme >> borderColor [
+	^ colorDictionary at: #borderColor
+]
+
+{ #category : #'core definition' }
+CzDayAtTheBeachTheme >> borderColorDefinition [
+
 	^ self class darkBaseColor adjustBrightness: -0.04
 ]
 
@@ -149,20 +160,33 @@ CzDayAtTheBeachTheme >> initialize [
 
 { #category : #initialization }
 CzDayAtTheBeachTheme >> initializeColors [
-
+	colorDictionary
+		at: #backgroundColor
+		put: self backgroundColorDefinition.
+	colorDictionary
+		at: #borderColor
+		put: self borderColorDefinition.
+	colorDictionary 
+		at: #scrollbarColor 
+		put: self scrollbarColorDefinition.
+	colorDictionary 
+		at: #textColor 
+		put: self textColorDefinition.
 	
-	colorDictionary at: #backgroundColor put: ((Color fromString: 'fffde7') alphaMixed: 0.25 with: Color white).
-	colorDictionary at: #borderColor put: (self class darkBaseColor adjustBrightness: -0.04).
-	colorDictionary at: #scrollbarColor put: self buttonColor.
-	colorDictionary at: #textColor put: Color black.
 	colorDictionary at: #listTextColor put: self textColor.
 	colorDictionary at: #menuColor put: self baseColor.
-	colorDictionary at: #secondarySelectionColor put: (Color fromString: '84ffff').
-	colorDictionary at: #selectionTextColor put: (Color fromString: 'ffd54f').
-	colorDictionary at: #selectionColor put: (Color fromHexString: 'ffe082').
-	colorDictionary at: #unfocusedSelectionColor put: self selectionTextColor.
-	
-	
+	colorDictionary
+		at: #secondarySelectionColor
+		put: (Color fromString: '84ffff').
+	colorDictionary
+		at: #selectionTextColor
+		put: (Color fromString: 'ffd54f').
+	colorDictionary
+		at: #selectionColor
+		put: (Color fromHexString: 'ffe082').
+	colorDictionary
+		at: #unfocusedSelectionColor
+		put: self selectionTextColor
 ]
 
 { #category : #shout }
@@ -173,8 +197,23 @@ CzDayAtTheBeachTheme >> listTextColor [
 	^ colorDictionary at: #listTextColor
 ]
 
+{ #category : #'core definition' }
+CzDayAtTheBeachTheme >> listTextColorDefinition [
+	"Answer the list text color to use."
+
+	^ self textColor
+]
+
 { #category : #shout }
 CzDayAtTheBeachTheme >> menuColor [
+	"For Calypso menu but apparently this does not work for the world menu."
+	"^ self baseColor"
+	
+	^ colorDictionary at: #menuColor
+]
+
+{ #category : #'core definition' }
+CzDayAtTheBeachTheme >> menuColorDefinition [
 	"For Calypso menu but apparently this does not work for the world menu."
 	"^ self baseColor"
 	
@@ -194,8 +233,20 @@ CzDayAtTheBeachTheme >> scrollbarColor [
 	^ colorDictionary at: #backgroundColor
 ]
 
+{ #category : #'core definition' }
+CzDayAtTheBeachTheme >> scrollbarColorDefinition [
+	^ self buttonColor
+]
+
 { #category : #shout }
 CzDayAtTheBeachTheme >> secondarySelectionColor [
+	"^ Color fromString: '84ffff'"
+	
+	^ colorDictionary at: #secondarySelectionColor
+]
+
+{ #category : #'core definition' }
+CzDayAtTheBeachTheme >> secondarySelectionColorDefinition [
 	"^ Color fromString: '84ffff'"
 	
 	^ colorDictionary at: #secondarySelectionColor
@@ -215,7 +266,14 @@ CzDayAtTheBeachTheme >> selectionTextColor [
 	^ colorDictionary at: #selectionTextColor
 ]
 
-{ #category : #shout }
+{ #category : #'core definition' }
+CzDayAtTheBeachTheme >> selectionTextColorDefinition [
+	"^ Color fromString: 'ffd54f'"
+	
+	^ colorDictionary at: #selectionTextColor
+]
+
+{ #category : #initialization }
 CzDayAtTheBeachTheme >> shStyleTableName [
 
 	^ #daybeachStyleTable
@@ -224,9 +282,16 @@ CzDayAtTheBeachTheme >> shStyleTableName [
 { #category : #'accessing colors' }
 CzDayAtTheBeachTheme >> textColor [
 	"This is only for all the list and the text except that the selection color can hide it on certain list."
-	"^ Color black"
 	
 	^ colorDictionary at: #textColor
+]
+
+{ #category : #'core definition' }
+CzDayAtTheBeachTheme >> textColorDefinition [
+	"This is only for all the list and the text except that the selection color can hide it on certain list."
+	^ Color black
+	
+
 ]
 
 { #category : #'sample methods' }
