@@ -11,6 +11,9 @@ Class {
 		'backgroundColor',
 		'colorDictionary'
 	],
+	#classInstVars : [
+		'colorDictionary'
+	],
 	#category : #CozyPharo8
 }
 
@@ -28,6 +31,25 @@ CzDayAtTheBeachTheme class >> basePassiveBackgroundColor [
 { #category : #accessing }
 CzDayAtTheBeachTheme class >> darkBaseColor [
 	^ Color fromHexString: '80deea'
+]
+
+{ #category : #'initialize-release' }
+CzDayAtTheBeachTheme class >> initialize [
+	"self initialize"
+	super initialize. "Yes there is an initialize class method in UITheme"
+	colorDictionary := Dictionary new. 
+]
+
+{ #category : #'initialize-release' }
+CzDayAtTheBeachTheme class >> initializeColors [
+
+	colorDictionary at: #baseColor put: (Color fromHexString: 'b2ebf2').
+	colorDictionary at: #basePassiveBackgroundColor put: self baseColor lighter.
+	colorDictionary at: #darkBaseColor put: (Color fromHexString: '80deea').
+	colorDictionary at: #lightBaseColor put: (Color fromString: 'e0f7fa').
+	colorDictionary at: #lightSelectionColor put: (Color fromHexString: 'ffd200').
+	colorDictionary at: #veryLightSelectionColor put: (Color fromHexString: 'ffe700')
+
 ]
 
 { #category : #accessing }
@@ -80,7 +102,9 @@ CzDayAtTheBeachTheme class >> veryLightSelectionColor [
 CzDayAtTheBeachTheme >> backgroundColor [
 	"Color for the text background in main editors."
 	
-	^ (Color fromString: 'fffde7') alphaMixed: 0.25 with: Color white
+	"^ (Color fromString: 'fffde7') alphaMixed: 0.25 with: Color white"
+	
+	^ colorDictionary at: #backgroundColor
 ]
 
 { #category : #'accessing colors' }
@@ -130,12 +154,12 @@ CzDayAtTheBeachTheme >> initializeColors [
 	colorDictionary at: #backgroundColor put: ((Color fromString: 'fffde7') alphaMixed: 0.25 with: Color white).
 	colorDictionary at: #borderColor put: (self class darkBaseColor adjustBrightness: -0.04).
 	colorDictionary at: #scrollbarColor put: self buttonColor.
+	colorDictionary at: #textColor put: Color black.
 	colorDictionary at: #listTextColor put: self textColor.
 	colorDictionary at: #menuColor put: self baseColor.
 	colorDictionary at: #secondarySelectionColor put: (Color fromString: '84ffff').
 	colorDictionary at: #selectionTextColor put: (Color fromString: 'ffd54f').
 	colorDictionary at: #selectionColor put: (Color fromHexString: 'ffe082').
-	colorDictionary at: #textColor put: Color black.
 	colorDictionary at: #unfocusedSelectionColor put: self selectionTextColor.
 	
 	
@@ -145,13 +169,16 @@ CzDayAtTheBeachTheme >> initializeColors [
 CzDayAtTheBeachTheme >> listTextColor [
 	"Answer the list text color to use."
 
-	^ self textColor
+	"^ self textColor"
+	^ colorDictionary at: #listTextColor
 ]
 
 { #category : #shout }
 CzDayAtTheBeachTheme >> menuColor [
 	"For Calypso menu but apparently this does not work for the world menu."
-	^ self baseColor
+	"^ self baseColor"
+	
+	^ colorDictionary at: #menuColor
 ]
 
 { #category : #shout }
@@ -163,22 +190,29 @@ CzDayAtTheBeachTheme >> progressBarProgressFillStyleFor: aProgressBar [
 
 { #category : #'accessing colors' }
 CzDayAtTheBeachTheme >> scrollbarColor [ 
-	^ self buttonColor
+	"^ self buttonColor"
+	^ colorDictionary at: #backgroundColor
 ]
 
 { #category : #shout }
 CzDayAtTheBeachTheme >> secondarySelectionColor [
-	^ Color fromString: '84ffff'
+	"^ Color fromString: '84ffff'"
+	
+	^ colorDictionary at: #secondarySelectionColor
 ]
 
 { #category : #shout }
 CzDayAtTheBeachTheme >> selectionColor [
-	^ Color fromHexString: 'ffe082'
+	"^ Color fromHexString: 'ffe082'"
+	
+	^ colorDictionary at: #selectionColor
 ]
 
 { #category : #shout }
 CzDayAtTheBeachTheme >> selectionTextColor [
-	^ Color fromString: 'ffd54f'
+	"^ Color fromString: 'ffd54f'"
+	
+	^ colorDictionary at: #selectionTextColor
 ]
 
 { #category : #shout }
@@ -190,7 +224,9 @@ CzDayAtTheBeachTheme >> shStyleTableName [
 { #category : #'accessing colors' }
 CzDayAtTheBeachTheme >> textColor [
 	"This is only for all the list and the text except that the selection color can hide it on certain list."
-	^ Color black
+	"^ Color black"
+	
+	^ colorDictionary at: #textColor
 ]
 
 { #category : #'sample methods' }
@@ -212,5 +248,7 @@ CzDayAtTheBeachTheme >> thisIsATestMethod: arg for: shoutTable [
 
 { #category : #'accessing colors' }
 CzDayAtTheBeachTheme >> unfocusedSelectionColor [
-	^ self selectionColor
+	"^ self selectionColor"
+	
+	^ colorDictionary at: #unfocusedSelectionColor
 ]
