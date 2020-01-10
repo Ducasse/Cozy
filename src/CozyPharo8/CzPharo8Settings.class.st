@@ -1,7 +1,7 @@
 Class {
 	#name : #CzPharo8Settings,
 	#superclass : #CozyRoot,
-	#category : #CozyPharo8
+	#category : #'CozyPharo8-Code'
 }
 
 { #category : #initialization }

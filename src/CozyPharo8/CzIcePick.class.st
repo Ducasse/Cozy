@@ -26,7 +26,7 @@ Once you configuration files are created, you can simply invoke
 Class {
 	#name : #CzIcePick,
 	#superclass : #Object,
-	#category : #CozyPharo8
+	#category : #'CozyPharo8-Code'
 }
 
 { #category : #iceberg }

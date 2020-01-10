@@ -8,13 +8,12 @@ Class {
 	#name : #CzDayAtTheBeachTheme,
 	#superclass : #PharoLightTheme,
 	#instVars : [
-		'backgroundColor',
 		'colorDictionary'
 	],
 	#classInstVars : [
 		'colorDictionary'
 	],
-	#category : #CozyPharo8
+	#category : #'CozyPharo8-Code'
 }
 
 { #category : #accessing }
@@ -121,14 +120,6 @@ CzDayAtTheBeachTheme >> borderColor [
 CzDayAtTheBeachTheme >> borderColorDefinition [
 
 	^ self class darkBaseColor adjustBrightness: -0.04
-]
-
-{ #category : #unused }
-CzDayAtTheBeachTheme >> configureMorphTreeMorph: aMorph [
-	aMorph preferedPaneColor: self textColor.
-	aMorph 
-		rowColorForEven: self backgroundColor
-		odd: self backgroundColor.
 ]
 
 { #category : #unused }
