@@ -1,7 +1,5 @@
 "
-Blue with a sandy selection
-
-Nice links:
+nice links:
 
 	https://www.color-hex.com
 	https://www.materialpalette.com/colors

@@ -122,9 +122,7 @@ CzCommonSettings class >> scriptNames [
 CzCommonSettings class >> setAppearance [
 	<script>
 	
-	self removeLogo.
-	self launchThemeProcess.
-
+	self removeLogo
 ]
 
 { #category : #pharo }
