@@ -1,4 +1,6 @@
 "
+A blue theme within sandy selection
+
 nice links:
 
 	https://www.color-hex.com
@@ -19,46 +21,75 @@ Class {
 { #category : #accessing }
 CzDayAtTheBeachTheme class >> baseColor [
 
+	^ colorDictionary at: #baseColor
+]
+
+{ #category : #definitions }
+CzDayAtTheBeachTheme class >> baseColorDefinition [
+
 	^ Color fromHexString: 'b2ebf2'
 ]
 
 { #category : #accessing }
 CzDayAtTheBeachTheme class >> basePassiveBackgroundColor [
+	^ colorDictionary at: #basePassiveBackgroundColor
+]
+
+{ #category : #definitions }
+CzDayAtTheBeachTheme class >> basePassiveBackgroundColorDefinition [
 	^ self baseColor lighter
 ]
 
 { #category : #accessing }
 CzDayAtTheBeachTheme class >> darkBaseColor [
+	^ colorDictionary at: #darkBaseColor
+]
+
+{ #category : #definitions }
+CzDayAtTheBeachTheme class >> darkBaseColorDefinition [
 	^ Color fromHexString: '80deea'
 ]
 
-{ #category : #'initialize-release' }
+{ #category : #initialization }
 CzDayAtTheBeachTheme class >> initialize [
 	"self initialize"
 	super initialize. "Yes there is an initialize class method in UITheme"
 	colorDictionary := Dictionary new. 
+	self initializeColors
 ]
 
-{ #category : #'initialize-release' }
+{ #category : #initialization }
 CzDayAtTheBeachTheme class >> initializeColors [
 
-	colorDictionary at: #baseColor put: (Color fromHexString: 'b2ebf2').
-	colorDictionary at: #basePassiveBackgroundColor put: self baseColor lighter.
-	colorDictionary at: #darkBaseColor put: (Color fromHexString: '80deea').
-	colorDictionary at: #lightBaseColor put: (Color fromString: 'e0f7fa').
-	colorDictionary at: #lightSelectionColor put: (Color fromHexString: 'ffd200').
-	colorDictionary at: #veryLightSelectionColor put: (Color fromHexString: 'ffe700')
+	colorDictionary at: #baseColor put: self baseColorDefinition.
+	colorDictionary at: #basePassiveBackgroundColor put: self basePassiveBackgroundColorDefinition.
+	colorDictionary at: #darkBaseColor put: self darkBaseColorDefinition.
+	colorDictionary at: #lightBaseColor put: self lightBaseColorDefinition.
+	colorDictionary at: #lightSelectionColor put: self lightSelectionColorDefinition.
+	colorDictionary at: #veryLightSelectionColor put: self veryLightSelectionColorDefinition 
 
 ]
 
 { #category : #accessing }
 CzDayAtTheBeachTheme class >> lightBaseColor [
 
+	^ colorDictionary at: #lightBaseColor
+]
+
+{ #category : #definitions }
+CzDayAtTheBeachTheme class >> lightBaseColorDefinition [
+
 	^ (Color fromString: 'e0f7fa')
 ]
 
 { #category : #accessing }
 CzDayAtTheBeachTheme class >> lightSelectionColor [
+
+	^ colorDictionary at: #lightSelectionColor
+]
+
+{ #category : #definitions }
+CzDayAtTheBeachTheme class >> lightSelectionColorDefinition [
 	^ Color fromHexString: 'ffd200'
 ]
 
@@ -94,6 +125,11 @@ CzDayAtTheBeachTheme class >> themeName [
 
 { #category : #accessing }
 CzDayAtTheBeachTheme class >> veryLightSelectionColor [
+	^ colorDictionary at: #veryLightSelectionColor
+]
+
+{ #category : #definitions }
+CzDayAtTheBeachTheme class >> veryLightSelectionColorDefinition [
 	^ (Color fromHexString: 'ffe700')
 ]
 
