@@ -124,7 +124,7 @@ CzCommonSettings class >> setAppearance [
 	
 	self removeLogo.
 	self launchThemeProcess.
-	self setRandomBackground
+
 ]
 
 { #category : #pharo }
