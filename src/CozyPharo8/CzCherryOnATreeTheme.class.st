@@ -27,14 +27,16 @@ CzCherryOnATreeTheme class >> darkBaseColorDefinition [
 CzCherryOnATreeTheme class >> lightBaseColorDefinition [
 	"f8bbd0 pinkish light fce4ec"
 	"Color fromString: 'f8bbd0'"
-	^ (Color fromString: 'C25689') alphaMixed: 0.3 with: Color white
+	^ (Color fromHexString: 'FFA3CE') alphaMixed: 0.3 with: Color white
+	
 ]
 
 { #category : #definitions }
 CzCherryOnATreeTheme class >> lightSelectionColorDefinition [
 	"ligher pinkish f8bbd0"
 	"Color fromHexString: 'fce4ec'"
-	^ (Color fromHexString: 'FFA3CE') alphaMixed: 0.3 with: Color white
+	"^ (Color fromString: 'C25689') alphaMixed: 0.3 with: Color white"
+		^ (Color fromHexString: 'FFA3CE') alphaMixed: 0.3 with: Color white
 ]
 
 { #category : #accessing }
