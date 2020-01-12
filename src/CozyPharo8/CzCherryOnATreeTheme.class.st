@@ -11,28 +11,30 @@ Class {
 
 { #category : #definitions }
 CzCherryOnATreeTheme class >> baseColorDefinition [
-	"pale green"
-	^ Color fromHexString: 'b9f6ca'
+	"pale green b9f6ca, 9CEF23, 92F51E"
+	^ (Color fromHexString: '94FF19') alphaMixed: 0.5 with: Color white
 ]
 
 { #category : #definitions }
 CzCherryOnATreeTheme class >> darkBaseColorDefinition [
 	"69f0ae: darker intense green. Probably to change"
-	^ Color fromHexString: '69f0ae'
+	 "(Color fromHexString: '74C21D') alphaMixed: 0.4 with: Color white."
+	((Color fromHexString: '94FF19') alphaMixed: 0.5 with: Color white) darker .
+	^ (Color fromHexString: 'BAEB81')
 ]
 
 { #category : #definitions }
 CzCherryOnATreeTheme class >> lightBaseColorDefinition [
-	"f8bbd0 pinkish light"
+	"f8bbd0 pinkish light fce4ec"
 	"Color fromString: 'f8bbd0'"
-	^ Color fromString: 'fce4ec'
+	^ (Color fromString: 'C25689') alphaMixed: 0.3 with: Color white
 ]
 
 { #category : #definitions }
 CzCherryOnATreeTheme class >> lightSelectionColorDefinition [
-	"ligher pinkish"
+	"ligher pinkish f8bbd0"
 	"Color fromHexString: 'fce4ec'"
-	^ Color fromHexString: 'f8bbd0'
+	^ (Color fromHexString: 'FFA3CE') alphaMixed: 0.3 with: Color white
 ]
 
 { #category : #accessing }
