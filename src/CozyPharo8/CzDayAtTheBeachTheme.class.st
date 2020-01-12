@@ -63,9 +63,11 @@ CzDayAtTheBeachTheme class >> darkBaseColorDefinition [
 { #category : #initialization }
 CzDayAtTheBeachTheme class >> initialize [
 	"self initialize"
+	
 	super initialize. "Yes there is an initialize class method in UITheme"
 	colorDictionary := Dictionary new. 
-	self initializeColors
+	self initializeColors.
+	self resetDefaultSettings.
 ]
 
 { #category : #initialization }
@@ -111,7 +113,8 @@ CzDayAtTheBeachTheme class >> newDefaultSettings [
 		flatMenu: true;
 		menuColor: self baseColor;
 		menuTitleColor: self darkBaseColor;
-		windowColor: self baseColor
+		windowColor: self baseColor;
+		menuSelectionColor: self darkBaseColor
 	"
 	
 	^ super newDefaultSettings
@@ -362,7 +365,7 @@ CzDayAtTheBeachTheme >> windowBorderColorDefinition [
 
 { #category : #'accessing colors' }
 CzDayAtTheBeachTheme >> windowColor [
-	Transcript show: 'window color';cr.
+	
 	^ colorDictionary at: #windowColor
 ]
 
