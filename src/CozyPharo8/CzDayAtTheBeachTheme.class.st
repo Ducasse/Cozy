@@ -116,11 +116,7 @@ CzDayAtTheBeachTheme class >> newDefaultSettings [
 		windowColor: self baseColor;
 		menuSelectionColor: self darkBaseColor
 	"
-	
 	^ super newDefaultSettings
-		menuColor: self baseColor;
-		menuTitleColor: self baseColor;
-		windowColor: self baseColor;
 		selectionColor: self lightSelectionColor;
 		menuSelectionColor: self baseSelectionColor;
 		menuSelectionTextColor: self baseTextColor darker;
