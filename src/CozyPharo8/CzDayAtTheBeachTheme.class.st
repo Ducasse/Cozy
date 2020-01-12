@@ -5,6 +5,16 @@ nice links:
 
 	https://www.color-hex.com
 	https://www.materialpalette.com/colors
+	
+
+Should 
+	- fix the window border. I lost it. 
+	- the blue in the bar of the QA assistant
+
+Next step: 
+	- generate automatically the cache.
+	- inherit directly from UITheme 
+	- propose a couple of dark theme.
 "
 Class {
 	#name : #CzDayAtTheBeachTheme,
@@ -100,7 +110,8 @@ CzDayAtTheBeachTheme class >> newDefaultSettings [
 	^ super newDefaultSettings
 		flatMenu: true;
 		menuColor: self baseColor;
-		menuTitleColor: self darkBaseColor
+		menuTitleColor: self darkBaseColor;
+		windowColor: self baseColor
 	"
 	
 	^ super newDefaultSettings
@@ -167,6 +178,16 @@ CzDayAtTheBeachTheme >> borderColorDefinition [
 ]
 
 { #category : #initialization }
+CzDayAtTheBeachTheme >> configureWindowBorderFor: aWindow [
+	"this is to handle correctly the window border."
+	| aStyle |
+	aStyle := SimpleBorder new 
+					color: self windowBorderColorDefinition;
+					width: 1.
+	aWindow borderStyle: aStyle
+]
+
+{ #category : #initialization }
 CzDayAtTheBeachTheme >> initialize [
 	super initialize.
 	colorDictionary := Dictionary new.
@@ -176,6 +197,10 @@ CzDayAtTheBeachTheme >> initialize [
 
 { #category : #initialization }
 CzDayAtTheBeachTheme >> initializeColors [
+	colorDictionary
+		at: #windowColor
+		put: self windowColorDefinition.
+
 	colorDictionary
 		at: #backgroundColor
 		put: self backgroundColorDefinition.
@@ -328,4 +353,22 @@ CzDayAtTheBeachTheme >> unfocusedSelectionColor [
 	"^ self selectionColor"
 	
 	^ colorDictionary at: #unfocusedSelectionColor
+]
+
+{ #category : #'core definition' }
+CzDayAtTheBeachTheme >> windowBorderColorDefinition [
+	^ self class darkBaseColor
+]
+
+{ #category : #'accessing colors' }
+CzDayAtTheBeachTheme >> windowColor [
+	Transcript show: 'window color';cr.
+	^ colorDictionary at: #windowColor
+]
+
+{ #category : #'core definition' }
+CzDayAtTheBeachTheme >> windowColorDefinition [
+	"For the bar of calypso and probably the menu"
+	
+	^ self baseColorDefinition 
 ]

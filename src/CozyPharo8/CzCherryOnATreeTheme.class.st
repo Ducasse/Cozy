@@ -24,13 +24,15 @@ CzCherryOnATreeTheme class >> darkBaseColorDefinition [
 { #category : #definitions }
 CzCherryOnATreeTheme class >> lightBaseColorDefinition [
 	"f8bbd0 pinkish light"
-	^ Color fromString: 'f8bbd0'
+	"Color fromString: 'f8bbd0'"
+	^ Color fromString: 'fce4ec'
 ]
 
 { #category : #definitions }
 CzCherryOnATreeTheme class >> lightSelectionColorDefinition [
 	"ligher pinkish"
-	^ Color fromHexString: 'fce4ec'
+	"Color fromHexString: 'fce4ec'"
+	^ Color fromHexString: 'f8bbd0'
 ]
 
 { #category : #accessing }
