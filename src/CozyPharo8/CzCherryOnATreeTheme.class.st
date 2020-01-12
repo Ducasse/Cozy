@@ -12,23 +12,24 @@ Class {
 { #category : #definitions }
 CzCherryOnATreeTheme class >> baseColorDefinition [
 
-	^ Color fromHexString: 'a5d6a7'
+	^ Color fromHexString: 'b9f6ca'
 ]
 
 { #category : #definitions }
 CzCherryOnATreeTheme class >> darkBaseColorDefinition [
-	^ Color fromHexString: '00796b'
+	^ Color fromHexString: '69f0ae'
+
 ]
 
 { #category : #definitions }
 CzCherryOnATreeTheme class >> lightBaseColorDefinition [
 
-	^ (Color fromString: 'e0f7fa')
+	^ Color fromString: 'f8bbd0'
 ]
 
 { #category : #definitions }
 CzCherryOnATreeTheme class >> lightSelectionColorDefinition [
-	^ Color fromHexString: 'ffcdd2'
+	^ Color fromHexString: 'fce4ec'
 ]
 
 { #category : #'core definition' }
@@ -36,4 +37,10 @@ CzCherryOnATreeTheme >> backgroundColorDefinition [
 	"Color for the text background in main editors."
 	
 	^ (Color fromString: 'fffde7') alphaMixed: 0.25 with: Color white
+]
+
+{ #category : #'core definition' }
+CzCherryOnATreeTheme >> selectionColorDefinition [
+
+	^ Color fromString: 'fce4ec'
 ]

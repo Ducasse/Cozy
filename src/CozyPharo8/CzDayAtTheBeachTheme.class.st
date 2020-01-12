@@ -190,33 +190,29 @@ CzDayAtTheBeachTheme >> initializeColors [
 	colorDictionary
 		at: #backgroundColor
 		put: self backgroundColorDefinition.
+	colorDictionary at: #borderColor put: self borderColorDefinition.
 	colorDictionary
-		at: #borderColor
-		put: self borderColorDefinition.
-	colorDictionary 
-		at: #scrollbarColor 
+		at: #scrollbarColor
 		put: self scrollbarColorDefinition.
-	colorDictionary 
-		at: #textColor 
-		put: self textColorDefinition.
-	
-	colorDictionary at: #listTextColor put: self textColor.
-	colorDictionary at: #menuColor put: self baseColor.
+	colorDictionary at: #textColor put: self textColorDefinition.
+	colorDictionary at: #listTextColor put: self listTextColorDefinition.
+	colorDictionary at: #menuColor put: self menuColorDefinition.
 	colorDictionary
 		at: #secondarySelectionColor
-		put: (Color fromString: '84ffff').
+		put: self secondarySelectionColorDefinition.
 	colorDictionary
 		at: #selectionTextColor
-		put: (Color fromString: 'ffd54f').
+		put: self selectionTextColorDefinition.
 	colorDictionary
 		at: #selectionColor
-		put: (Color fromHexString: 'ffe082').
+		put: self selectionColorDefinition.
 	colorDictionary
 		at: #unfocusedSelectionColor
-		put: self selectionTextColor
+		put: self selectionTextColorDefinition.
+
 ]
 
-{ #category : #shout }
+{ #category : #'accessing colors' }
 CzDayAtTheBeachTheme >> listTextColor [
 	"Answer the list text color to use."
 
@@ -231,7 +227,7 @@ CzDayAtTheBeachTheme >> listTextColorDefinition [
 	^ self textColor
 ]
 
-{ #category : #shout }
+{ #category : #'accessing colors' }
 CzDayAtTheBeachTheme >> menuColor [
 	"For Calypso menu but apparently this does not work for the world menu."
 	"^ self baseColor"
@@ -242,12 +238,11 @@ CzDayAtTheBeachTheme >> menuColor [
 { #category : #'core definition' }
 CzDayAtTheBeachTheme >> menuColorDefinition [
 	"For Calypso menu but apparently this does not work for the world menu."
-	"^ self baseColor"
-	
-	^ colorDictionary at: #menuColor
+
+	^ self baseColor
 ]
 
-{ #category : #shout }
+{ #category : #'accessing colors' }
 CzDayAtTheBeachTheme >> progressBarProgressFillStyleFor: aProgressBar [
 	"Answer the colour for the given progress bar."
 
@@ -255,9 +250,10 @@ CzDayAtTheBeachTheme >> progressBarProgressFillStyleFor: aProgressBar [
 ]
 
 { #category : #'accessing colors' }
-CzDayAtTheBeachTheme >> scrollbarColor [ 
+CzDayAtTheBeachTheme >> scrollbarColor [
 	"^ self buttonColor"
-	^ colorDictionary at: #backgroundColor
+
+	^ colorDictionary at: #scrollbarColor
 ]
 
 { #category : #'core definition' }
@@ -265,7 +261,7 @@ CzDayAtTheBeachTheme >> scrollbarColorDefinition [
 	^ self buttonColor
 ]
 
-{ #category : #shout }
+{ #category : #'accessing colors' }
 CzDayAtTheBeachTheme >> secondarySelectionColor [
 	"^ Color fromString: '84ffff'"
 	
@@ -274,19 +270,26 @@ CzDayAtTheBeachTheme >> secondarySelectionColor [
 
 { #category : #'core definition' }
 CzDayAtTheBeachTheme >> secondarySelectionColorDefinition [
-	"^ Color fromString: '84ffff'"
+	^ Color fromString: '84ffff'
 	
-	^ colorDictionary at: #secondarySelectionColor
+
 ]
 
-{ #category : #shout }
+{ #category : #'accessing colors' }
 CzDayAtTheBeachTheme >> selectionColor [
 	"^ Color fromHexString: 'ffe082'"
 	
 	^ colorDictionary at: #selectionColor
 ]
 
-{ #category : #shout }
+{ #category : #'accessing colors' }
+CzDayAtTheBeachTheme >> selectionColorDefinition [
+	^ Color fromHexString: 'ffe082'
+	
+	
+]
+
+{ #category : #'accessing colors' }
 CzDayAtTheBeachTheme >> selectionTextColor [
 	"^ Color fromString: 'ffd54f'"
 	
@@ -295,9 +298,7 @@ CzDayAtTheBeachTheme >> selectionTextColor [
 
 { #category : #'core definition' }
 CzDayAtTheBeachTheme >> selectionTextColorDefinition [
-	"^ Color fromString: 'ffd54f'"
-	
-	^ colorDictionary at: #selectionTextColor
+	^ Color fromString: 'ffd54f'
 ]
 
 { #category : #initialization }
