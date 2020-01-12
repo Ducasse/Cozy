@@ -37,7 +37,7 @@ CzDayAtTheBeachTheme class >> basePassiveBackgroundColor [
 
 { #category : #definitions }
 CzDayAtTheBeachTheme class >> basePassiveBackgroundColorDefinition [
-	^ self baseColor lighter
+	^ self baseColorDefinition lighter
 ]
 
 { #category : #accessing }
@@ -166,30 +166,11 @@ CzDayAtTheBeachTheme >> borderColorDefinition [
 	^ self class darkBaseColor adjustBrightness: -0.04
 ]
 
-{ #category : #unused }
-CzDayAtTheBeachTheme >> configurePluggableTextMorph: textMorph [ 
-	textMorph 	
-		color: self backgroundColor;
-		textColor: self textColor;
-		borderWidth: 1.
-]
-
-{ #category : #unused }
-CzDayAtTheBeachTheme >> configureWindowBorderFor: aWindow [
-
-	| aStyle |
-	aStyle := SimpleBorder new 
-					color: self darkBaseColor;
-					width: 1.
-	aWindow borderStyle: aStyle
-]
-
 { #category : #initialization }
 CzDayAtTheBeachTheme >> initialize [
-
-	super initialize. 
+	super initialize.
 	colorDictionary := Dictionary new.
-	settings menuColor: self baseColor.
+	settings menuColor: self baseColorDefinition.
 	self initializeColors
 ]
 
@@ -224,7 +205,6 @@ CzDayAtTheBeachTheme >> initializeColors [
 CzDayAtTheBeachTheme >> listTextColor [
 	"Answer the list text color to use."
 
-	"^ self textColor"
 	^ colorDictionary at: #listTextColor
 ]
 
@@ -238,8 +218,7 @@ CzDayAtTheBeachTheme >> listTextColorDefinition [
 { #category : #'accessing colors' }
 CzDayAtTheBeachTheme >> menuColor [
 	"For Calypso menu but apparently this does not work for the world menu."
-	"^ self baseColor"
-	
+
 	^ colorDictionary at: #menuColor
 ]
 
@@ -259,7 +238,6 @@ CzDayAtTheBeachTheme >> progressBarProgressFillStyleFor: aProgressBar [
 
 { #category : #'accessing colors' }
 CzDayAtTheBeachTheme >> scrollbarColor [
-	"^ self buttonColor"
 
 	^ colorDictionary at: #scrollbarColor
 ]
@@ -271,8 +249,6 @@ CzDayAtTheBeachTheme >> scrollbarColorDefinition [
 
 { #category : #'accessing colors' }
 CzDayAtTheBeachTheme >> secondarySelectionColor [
-	"^ Color fromString: '84ffff'"
-	
 	^ colorDictionary at: #secondarySelectionColor
 ]
 

@@ -24,6 +24,11 @@ CzWhiteGhostTheme class >> lightSelectionColorDefinition [
 	^ Color fromHexString: 'ffe082'
 ]
 
+{ #category : #accessing }
+CzWhiteGhostTheme class >> themeName [
+	^ 'White Ghost'
+]
+
 { #category : #'core definition' }
 CzWhiteGhostTheme >> backgroundColorDefinition [
 	"Color for the text background in main editors.

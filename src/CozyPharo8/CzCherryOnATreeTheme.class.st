@@ -33,6 +33,11 @@ CzCherryOnATreeTheme class >> lightSelectionColorDefinition [
 	^ Color fromHexString: 'fce4ec'
 ]
 
+{ #category : #accessing }
+CzCherryOnATreeTheme class >> themeName [
+	^ 'Cherry on a Tree'
+]
+
 { #category : #definitions }
 CzCherryOnATreeTheme class >> veryLightSelectionColorDefinition [
 	"is it ever used"
