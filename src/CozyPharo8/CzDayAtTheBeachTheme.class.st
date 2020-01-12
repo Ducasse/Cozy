@@ -142,9 +142,17 @@ CzDayAtTheBeachTheme >> backgroundColor [
 
 { #category : #'core definition' }
 CzDayAtTheBeachTheme >> backgroundColorDefinition [
-	"Color for the text background in main editors."
-	
+	"Color for the text background in main editors.
+	fffde7 is white with a little of yellow but really little"
+
 	^ (Color fromString: 'fffde7') alphaMixed: 0.25 with: Color white
+]
+
+{ #category : #'core definition' }
+CzDayAtTheBeachTheme >> baseColorDefinition [
+	"Color for the text background in main editors."
+
+	^ self class baseColor
 ]
 
 { #category : #'accessing colors' }
@@ -224,7 +232,7 @@ CzDayAtTheBeachTheme >> listTextColor [
 CzDayAtTheBeachTheme >> listTextColorDefinition [
 	"Answer the list text color to use."
 
-	^ self textColor
+	^ self textColorDefinition
 ]
 
 { #category : #'accessing colors' }
@@ -239,7 +247,7 @@ CzDayAtTheBeachTheme >> menuColor [
 CzDayAtTheBeachTheme >> menuColorDefinition [
 	"For Calypso menu but apparently this does not work for the world menu."
 
-	^ self baseColor
+	^ self baseColorDefinition
 ]
 
 { #category : #'accessing colors' }
