@@ -1,3 +1,6 @@
+"
+Clearly not enough :(
+"
 Class {
 	#name : #CozyRootTest,
 	#superclass : #TestCase,
