@@ -64,22 +64,28 @@ CzDayAtTheBeachTheme class >> darkBaseColorDefinition [
 { #category : #initialization }
 CzDayAtTheBeachTheme class >> initialize [
 	"self initialize"
-	
 	super initialize. "Yes there is an initialize class method in UITheme"
-	colorDictionary := Dictionary new. 
-	self initializeColors.
-	self resetDefaultSettings.
+
+	self withAllSubclassesDo: [ :cls | cls initializeColors; initializeDefault ]
+
+	
 ]
 
 { #category : #initialization }
 CzDayAtTheBeachTheme class >> initializeColors [
-
+	colorDictionary := Dictionary new. 
 	colorDictionary at: #baseColor put: self baseColorDefinition.
 	colorDictionary at: #basePassiveBackgroundColor put: self basePassiveBackgroundColorDefinition.
 	colorDictionary at: #darkBaseColor put: self darkBaseColorDefinition.
 	colorDictionary at: #lightBaseColor put: self lightBaseColorDefinition.
 	colorDictionary at: #lightSelectionColor put: self lightSelectionColorDefinition.
 	colorDictionary at: #veryLightSelectionColor put: self veryLightSelectionColorDefinition 
+
+]
+
+{ #category : #initialization }
+CzDayAtTheBeachTheme class >> initializeDefault [
+	self resetDefaultSettings
 
 ]
 
@@ -191,8 +197,9 @@ CzDayAtTheBeachTheme >> configureWindowBorderFor: aWindow [
 CzDayAtTheBeachTheme >> initialize [
 	super initialize.
 	colorDictionary := Dictionary new.
+	self initializeColors.
 	settings menuColor: self baseColorDefinition.
-	self initializeColors
+	
 ]
 
 { #category : #initialization }
