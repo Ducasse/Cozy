@@ -118,7 +118,6 @@ CzDayAtTheBeachTheme class >> newDefaultSettings [
 	self setPreferredPreferences.
 	^ super newDefaultSettings
 		flatMenu: true;
-		textColor: self textColor;
 		menuColor: self baseColor;
 		menuTitleColor: self darkBaseColor;
 		windowColor: self baseColor;
