@@ -1,6 +1,6 @@
 Extension { #name : #LazyListMorph }
 
-{ #category : #'*CozyPharo9' }
+{ #category : #'*CozyTheme' }
 LazyListMorph >> colorForRow: row [ 
 	"Answer the color for the row text."
 	^ (self isRowSelected: row )
