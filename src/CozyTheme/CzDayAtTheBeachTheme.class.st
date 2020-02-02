@@ -118,6 +118,7 @@ CzDayAtTheBeachTheme class >> newDefaultSettings [
 	self setPreferredPreferences.
 	^ super newDefaultSettings
 		flatMenu: true;
+		textColor: self textColor;
 		menuColor: self baseColor;
 		menuTitleColor: self darkBaseColor;
 		windowColor: self baseColor;
@@ -181,6 +182,20 @@ CzDayAtTheBeachTheme >> borderColor [
 CzDayAtTheBeachTheme >> borderColorDefinition [
 
 	^ self class darkBaseColor adjustBrightness: -0.04
+]
+
+{ #category : #'trying to fix testRunner selection' }
+CzDayAtTheBeachTheme >> configureMorphTreeMorph: aMorph [
+ 	aMorph preferedPaneColor: self textColor.
+ 	aMorph 
+ 		rowColorForEven:  Color pink
+ 		odd: Color pink.
+]
+
+{ #category : #'trying to fix testRunner selection' }
+CzDayAtTheBeachTheme >> configureScrollPane: aMorph [
+	self halt.
+	aMorph color: Color white.
 ]
 
 { #category : #initialization }
