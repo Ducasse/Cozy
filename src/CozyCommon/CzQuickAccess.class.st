@@ -351,6 +351,24 @@ CzQuickAccess >> iceberg [
 ]
 
 { #category : #loading }
+CzQuickAccess >> installNewDebugger [
+	<cozyScript: #'Install New Debugger'>
+	
+	Metacello new
+    baseline: 'NewTools';
+    repository: 'github://pharo-spec/NewTools';
+    load.
+
+	Metacello new
+        githubUser: 'pharo-spec' project: 'Spec' commitish: 'master' path: 'src';
+        baseline: 'Spec2';
+        onConflict: [ :e | e useIncoming ];
+        onUpgrade: [ :e | e useIncoming ];
+        ignoreImage;
+        load.
+]
+
+{ #category : #loading }
 CzQuickAccess >> installSample [
 	<cozyScript: #'Install Sample'>
 	Metacello new
