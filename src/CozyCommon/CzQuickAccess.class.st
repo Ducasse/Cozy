@@ -539,14 +539,6 @@ CzQuickAccess >> toggleTheme [
 ]
 
 { #category : #'scripts-mine' }
-CzQuickAccess >> toggleToCherry [
-	<cozyScript: #'Use Cherry-On-A-Tree'>
-
-	CzCherryOnATreeTheme beCurrent.
-	CzCommonSettings setFastDragging
-]
-
-{ #category : #'scripts-mine' }
 CzQuickAccess >> toggleToMyTheme [
 	<cozyScript: #'Use Day-at-the-Beach'>
 
