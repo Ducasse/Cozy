@@ -357,6 +357,9 @@ CzQuickAccess >> installNewDebugger [
 	Metacello new
     baseline: 'NewTools';
     repository: 'github://pharo-spec/NewTools';
+ 	 onConflict: [ :e | e useIncoming ];
+    onUpgrade: [ :e | e useIncoming ];
+    ignoreImage;
     load.
 
 	Metacello new
