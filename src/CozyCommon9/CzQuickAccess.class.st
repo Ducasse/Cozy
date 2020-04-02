@@ -550,10 +550,26 @@ CzQuickAccess >> toggleToCherry [
 ]
 
 { #category : #'scripts-mine' }
-CzQuickAccess >> toggleToMyTheme [
+CzQuickAccess >> toggleToDayAtTheBeach [
 	<cozyScript: #'Use Day-at-the-Beach'>
 
 	CzDayAtTheBeachTheme beCurrent.
+	CzCommonSettings setFastDragging
+]
+
+{ #category : #'scripts-mine' }
+CzQuickAccess >> toggleToSandy [
+	<cozyScript: #'Use Sandy'>
+
+	CzSandyTheme beCurrent.
+	CzCommonSettings setFastDragging
+]
+
+{ #category : #'scripts-mine' }
+CzQuickAccess >> toggleToWhiteGhost [
+	<cozyScript: #'Use White Ghost'>
+
+	CzWhiteGhostTheme beCurrent.
 	CzCommonSettings setFastDragging
 ]
 
