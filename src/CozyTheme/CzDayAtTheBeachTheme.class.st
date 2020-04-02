@@ -147,7 +147,7 @@ CzDayAtTheBeachTheme class >> veryLightSelectionColor [
 
 { #category : #definitions }
 CzDayAtTheBeachTheme class >> veryLightSelectionColorDefinition [
-	^ (Color fromHexString: 'ffe700')
+	^ Color fromHexString: 'ffe700'
 ]
 
 { #category : #'accessing colors' }
@@ -189,12 +189,6 @@ CzDayAtTheBeachTheme >> configureMorphTreeMorph: aMorph [
  	aMorph 
  		rowColorForEven:  Color pink
  		odd: Color pink.
-]
-
-{ #category : #'trying to fix testRunner selection' }
-CzDayAtTheBeachTheme >> configureScrollPane: aMorph [
-	self halt.
-	aMorph color: Color white.
 ]
 
 { #category : #initialization }

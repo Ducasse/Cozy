@@ -1,3 +1,6 @@
+"
+CzWhiteGhostTheme beCurrent
+"
 Class {
 	#name : #CzWhiteGhostTheme,
 	#superclass : #CzDayAtTheBeachTheme,
@@ -38,7 +41,19 @@ CzWhiteGhostTheme >> backgroundColorDefinition [
 ]
 
 { #category : #'core definition' }
+CzWhiteGhostTheme >> secondarySelectionColorDefinition [
+	^ self baseColor lighter
+	
+
+]
+
+{ #category : #'core definition' }
 CzWhiteGhostTheme >> selectionColorDefinition [
 	^ Color fromString: 'fff59d'.
 
+]
+
+{ #category : #'core definition' }
+CzWhiteGhostTheme >> selectionTextColorDefinition [
+	^ Color purple
 ]
