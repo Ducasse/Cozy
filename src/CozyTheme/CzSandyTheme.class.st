@@ -34,6 +34,25 @@ CzSandyTheme class >> lightBaseColorDefinition [
 	^ (Color fromString: 'FFFF8D')
 ]
 
+{ #category : #definitions }
+CzSandyTheme class >> lightSelectionColorDefinition [
+	"to hightligth tabs"
+	
+	^ Color fromHexString: 'e1f5fe'
+]
+
+{ #category : #definitions }
+CzSandyTheme class >> newDefaultSettings [
+	"to be done"
+	self setPreferredPreferences.
+	^ super newDefaultSettings
+		flatMenu: true;
+		menuColor: self baseColor;
+		menuTitleColor: self darkBaseColor;
+		windowColor: self baseColor;
+		menuSelectionColor: (Color fromHexString: 'b3e5fc')
+]
+
 { #category : #'core definition' }
 CzSandyTheme >> backgroundColorDefinition [
 	"Color for the text background in main editors.
@@ -45,11 +64,12 @@ CzSandyTheme >> backgroundColorDefinition [
 { #category : #'core definition' }
 CzSandyTheme >> borderColorDefinition [
 
-	^ self class darkBaseColor adjustBrightness: -0.04
+	^ self class darkBaseColor adjustBrightness: -0.5
 ]
 
 { #category : #'core definition' }
 CzSandyTheme >> secondarySelectionColorDefinition [
+	"this color is used by calypso for the strange protocol color."
 	^ Color fromHexString: 'FDD835'
 	
 
