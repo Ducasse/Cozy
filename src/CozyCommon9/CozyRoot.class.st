@@ -93,7 +93,13 @@ CozyRoot class >> sharedRepositoryFolder [
 	| file |
 	self flag: #toClean.
 	"we should probably move that to IcePick"
-	file := self resourcesFolder / self sharedRepositoryFolderPathFile.
+	self resourcesFolder exists
+	 	ifFalse: [ self resourcesFolder ensureCreateDirectory  ].
+	
+	file :=  self resourcesFolder / self sharedRepositoryFolderPathFile.
+	self flag: #fixme.
+	"What happens if the file/path do not exist!"
+	
 	file exists
 		ifFalse: [ | cred |
 			cred := Dictionary new.
