@@ -46,7 +46,7 @@ CzQuickAccess class >> buildMenuRenameSubmenu: protocolName on: aBuilder [
 	
 	(self methodsIn: protocolName asLowercase)
 		do: [ :method | 
-			(aBuilder item: ((method pragmaAt: #'cozyScript:') argumentAt: 1))
+			(aBuilder item: ((method pragmaAt: #'cozyScript:') ifNotNil: [:each | each argumentAt: 1]))
 				parent: protocolName;
 				action: [ self execute: method selector ];
 				iconName: #scriptManager ]
@@ -345,7 +345,7 @@ CzQuickAccess >> generateSimpleBaseline [
 
 { #category : #'scripts-mine' }
 CzQuickAccess >> iceberg [
-	<cozyScript: #'Iceberg'>
+	<cozyScript: #'Iceberg focus'>
 
 	self class focusIceberg
 ]
@@ -355,20 +355,21 @@ CzQuickAccess >> installNewDebugger [
 	<cozyScript: #'Install New Debugger'>
 	
 	Metacello new
-    baseline: 'NewTools';
-    repository: 'github://pharo-spec/NewTools';
- 	 onConflict: [ :e | e useIncoming ];
-    onUpgrade: [ :e | e useIncoming ];
-    ignoreImage;
-    load.
+		baseline: 'NewTools';
+		repository: 'github://pharo-spec/NewTools';
+		onConflict: [ :e | e useIncoming ];
+		onUpgrade: [ :e | e useIncoming ];
+		ignoreImage;
+		load.
 
-	Metacello new
+"	Metacello new
         githubUser: 'pharo-spec' project: 'Spec' commitish: 'master' path: 'src';
         baseline: 'Spec2';
         onConflict: [ :e | e useIncoming ];
         onUpgrade: [ :e | e useIncoming ];
         ignoreImage;
-        load.
+        load
+"
 ]
 
 { #category : #'scripts-mine' }
@@ -381,9 +382,9 @@ CzQuickAccess >> installNewTools [
 	self class environment at: #StPlayground ifPresent: [ :cl | cl register]
 ]
 
-{ #category : #loading }
+{ #category : #templates }
 CzQuickAccess >> installSample [
-	<cozyScript: #'Install Sample'>
+	"<cozyScript: #'Install Sample'>
 	Metacello new
 		baseline: #WebPokedex;
 		githubUser: 'jecisc'
@@ -391,7 +392,7 @@ CzQuickAccess >> installSample [
 			commitish: 'development'
 			path: 'src';
 		onWarningLog;
-		load.
+		load."
 ]
 
 { #category : #'scripts-some' }
