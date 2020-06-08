@@ -371,6 +371,16 @@ CzQuickAccess >> installNewDebugger [
         load.
 ]
 
+{ #category : #'scripts-mine' }
+CzQuickAccess >> installNewTools [
+	<cozyScript: #'Install New Tools'>
+	Metacello new
+		baseline: 'NewTools';
+		repository: 'github://pharo-spec/NewTools';
+		load.
+	self class environment at: #StPlayground ifPresent: [ :cl | cl register]
+]
+
 { #category : #loading }
 CzQuickAccess >> installSample [
 	<cozyScript: #'Install Sample'>
