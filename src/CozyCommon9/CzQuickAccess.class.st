@@ -42,8 +42,19 @@ CzQuickAccess class >> buildMenuRenameSelectBackgroundOn: aBuilder [
 ]
 
 { #category : #'world menu' }
-CzQuickAccess class >> buildSubMenuBasedOnProtocol: protocolName withBuilder: aBuilder [
+CzQuickAccess class >> buildMenuRenameSubmenu: protocolName on: aBuilder [
 	
+	(self methodsIn: protocolName asLowercase)
+		do: [ :method | 
+			(aBuilder item: ((method pragmaAt: #'cozyScript:') ifNotNil: [:each | each argumentAt: 1]))
+				parent: protocolName;
+				action: [ self execute: method selector ];
+				iconName: #scriptManager ]
+]
+
+{ #category : #'world menu' }
+CzQuickAccess class >> buildSubMenuBasedOnProtocol: protocolName withBuilder: aBuilder [
+	 
 	(self methodsIn: protocolName asLowercase)
 		do: [ :method | 
 			(aBuilder item: ((method pragmaAt: #'cozyScript:') ifNotNil: [:each | each argumentAt: 1]))
@@ -284,8 +295,9 @@ CzQuickAccess >> browseQuickAccess [
 
 { #category : #calypso }
 CzQuickAccess >> calypsoCheckingChanges [
+	"Take care the methods are named like that since the selectors are used to sort the menuitem"
 	<cozyScript: #'Calypso reacting to changes'>
-
+	
 	ClyNavigationEnvironment reset.
 	ClyNavigationEnvironment currentImage queryCache do: #forceRebuild.
 	ClyNavigationEnvironment currentImage attachToSystem.
@@ -293,14 +305,9 @@ CzQuickAccess >> calypsoCheckingChanges [
 ]
 
 { #category : #calypso }
-CzQuickAccess >> calypsoNoCritic [
-	<cozyScript: #'Disable Calypso critics'>
-
-	ClyCriticBrowserPlugin disable
-]
-
-{ #category : #calypso }
-CzQuickAccess >> calypsoNotCheckingChanges [
+CzQuickAccess >> calypsoCheckingNoChanges [
+	"Take care the methods are named like that since the selectors are used to sort the menuitem"
+	
 	<cozyScript: #'Calypso not reacting to changes'>
 
 	ClyNavigationEnvironment reset.
@@ -309,7 +316,18 @@ CzQuickAccess >> calypsoNotCheckingChanges [
 ]
 
 { #category : #calypso }
-CzQuickAccess >> calypsoYesCritic [
+CzQuickAccess >> calypsoCriticDisable [
+	"Take care the methods are named like that since the selectors are used to sort the menuitem"
+	
+	<cozyScript: #'Disable Calypso critics'>
+
+	ClyCriticBrowserPlugin disable
+]
+
+{ #category : #calypso }
+CzQuickAccess >> calypsoCriticEnable [
+	"Take care the methods are named like that since the selectors are used to sort the menuitem"
+	
 	<cozyScript: #'Enable Calypso critics'>
 
 	ClyCriticBrowserPlugin enable
@@ -319,8 +337,7 @@ CzQuickAccess >> calypsoYesCritic [
 CzQuickAccess >> coolCommands [
 	<cozyScript: #'Git commands'>
 
-	GTPlayground
-		openContents:
+	self in: 
 			'''Remove merged branches except master and dev:''.
 
 	''git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d''.
@@ -336,8 +353,7 @@ CzQuickAccess >> coolCommands [
 { #category : #'code snippets' }
 CzQuickAccess >> dependencies [
 	<cozyScript: #'Find dependencies'>
-	GTPlayground
-		openContents:
+	self in:
 			'report := DADependencyChecker new computeImageDependencies.
 report knownDependantsOf: ''Glamour-Examples'''
 ]
@@ -408,6 +424,13 @@ CzQuickAccess >> iceberg [
 	self class focusIceberg
 ]
 
+{ #category : #'code snippets' }
+CzQuickAccess >> in: aString [ 
+
+	GTPlayground
+		openContents: aString
+]
+
 { #category : #loading }
 CzQuickAccess >> installNewDebugger [
 	<cozyScript: #'Install New Debugger'>
@@ -444,14 +467,14 @@ CzQuickAccess >> installNewTools [
 CzQuickAccess >> installSample [
 	<cozyScript: #'Install Sample'>
 	
-	Metacello new
+	self in: 'Metacello new
 		baseline: #WebPokedex;
-		githubUser: 'jecisc'
-			project: 'WebPokedex'
-			commitish: 'development'
-			path: 'src';
+		githubUser: ''jecisc''
+			project: ''WebPokedex''
+			commitish: ''development''
+			path: ''src'';
 		onWarningLog;
-		load.
+		load.'
 ]
 
 { #category : #'scripts-some' }
@@ -489,8 +512,7 @@ CzQuickAccess >> prepareForContribution [
 { #category : #'code snippets' }
 CzQuickAccess >> profileTests [
 	<cozyScript: #'Profile tests'>
-	GTPlayground
-		openContents:
+	self in: 
 			'packageSelectionBlock := [ :e | e name beginsWith: ''Traits'' ].
 testSuite := TestSuite new.
 	
@@ -509,8 +531,8 @@ CzQuickAccess >> randomBackground [
 { #category : #'code snippets' }
 CzQuickAccess >> renameMethodsWithDeprecation [
 	<cozyScript: #'Batch method rename with deprecations'>
-	GTPlayground
-		openContents:
+	
+	self in: 
 			'class := FM3Class.
 from := ''attribute''.
 to := ''propertie''.
@@ -551,8 +573,7 @@ class methods
 { #category : #'code snippets' }
 CzQuickAccess >> rewritePatterns [
 	<cozyScript: #'Rewrite patterns'>
-	GTPlayground
-		openContents:
+	self in:
 			'r := RBParseTreeRewriter new.
 r replace: ''`@receiver assert: `@arg = `@arg2'' with: ''`@receiver assert: `@arg equals: `@arg2''.
 r replace: ''`@receiver deny: `@arg = `@arg2'' with: ''`@receiver deny: `@arg equals: `@arg2''.
@@ -639,7 +660,7 @@ CzQuickAccess >> toggleToWhiteGhost [
 { #category : #'code snippets' }
 CzQuickAccess >> variableUsage [
 	<cozyScript: #'Variable usage'>
-	GTPlayground openContents: 'origin := SpPresenter.
+	self in: 'origin := SpPresenter.
 variables := origin instVarNames.
 
 variables
