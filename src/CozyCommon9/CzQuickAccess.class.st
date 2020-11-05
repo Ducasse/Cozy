@@ -53,6 +53,17 @@ CzQuickAccess class >> buildSubMenuBasedOnProtocol: protocolName withBuilder: aB
 ]
 
 { #category : #'world menu' }
+CzQuickAccess class >> buildSubMenuBasedOnProtocol: protocolName withBuilder: aBuilder forParent: parent [
+	 
+	(self methodsIn: protocolName asLowercase)
+		do: [ :method | 
+			(aBuilder item: ((method pragmaAt: #'cozyScript:') ifNotNil: [:each | each argumentAt: 1]))
+				parent: parent;
+				action: [ self execute: method selector ];
+				iconName: #scriptManager ]
+]
+
+{ #category : #'world menu' }
 CzQuickAccess class >> createAddToIcebergSubmenusFrom: aFolder on: aBuilder [
 	self
 		recursivelyCreateCommandForRepositoriesFrom: aFolder
@@ -139,13 +150,11 @@ CzQuickAccess class >> isRefreshingActive [
 
 { #category : #rebuilding }
 CzQuickAccess class >> methodAnnouncementReceived: anAnnouncement [
-	"No need to rebuild if it contains the world menu pragma"
 	
 	self isRefreshingActive ifFalse: [ ^ self ].
-	
+
 	({self . self class} 
-		anySatisfy: [ :class | anAnnouncement methodAffected methodClass = class ]) 
-							ifTrue: [ MenubarMorph reset ]
+		anySatisfy: [ :class | anAnnouncement methodAffected methodClass = class ]) ifTrue: [ MenubarMorph reset ]
 ]
 
 { #category : #accessing }
@@ -185,20 +194,21 @@ CzQuickAccess class >> worldMenuOn: aBuilder [
 		order: 1;
 		iconName: #configNew;
 		with: [ self buildMenuAddToIcebergOn: aBuilder ].
-
-	(aBuilder item: #'CozyTheme')
+		
+	(aBuilder item: #'CozyTheme') 
+		"pay attention the item name should be the one of the category."
 		parent: #Scripts;
 		label: 'Cozy Theme';
-		order: 5;
+		order: 5; 
 		iconName: #scriptManager;
-		with: [ Transcript show: '.'. self buildSubMenuBasedOnProtocol: #'cozy' withBuilder: aBuilder ].
+		with: [ self buildSubMenuBasedOnProtocol: #cozy withBuilder: aBuilder forParent: #'CozyTheme'].	
 	
-	(aBuilder item: #'scripts-mine')
+	(aBuilder item: #scriptsMine)
 		parent: #Scripts;
 		label: 'My lovely scripts';
 		order: 5;
 		iconName: #scriptManager;
-		with: [ self buildSubMenuBasedOnProtocol: #'scripts-mine' withBuilder: aBuilder ].
+		with: [ self buildSubMenuBasedOnProtocol: #'scripts-mine' withBuilder: aBuilder forParent: #scriptsMine ].
 		
 		
 	(aBuilder item: #'calypso')
@@ -206,32 +216,33 @@ CzQuickAccess class >> worldMenuOn: aBuilder [
 		label: 'Calypso';
 		order: 5;
 		iconName: #scriptManager;
-		with: [ self buildSubMenuBasedOnProtocol: #'calypso' withBuilder: aBuilder ].
+		with: [ self buildSubMenuBasedOnProtocol: #calypso withBuilder: aBuilder forParent: #'calypso'].
 		
 	(aBuilder item: #'scripts-some')
 		label: 'Some lovely scripts';
 		parent: #Scripts;
 		order: 5;
 		iconName: #configNew;
-		with: [ self buildSubMenuBasedOnProtocol: #'scripts-some' withBuilder: aBuilder ].
+		with: [ self buildSubMenuBasedOnProtocol: #'scripts-some' withBuilder: aBuilder forParent: #'scripts-some'].
 		
 	(aBuilder item: #CodeSnippets)
 		parent: #Scripts;
 		order: 10;
 		iconName: #configNew;
-		with: [ self buildSubMenuBasedOnProtocol: #'code snippets' withBuilder: aBuilder ].
+		with: [ self buildSubMenuBasedOnProtocol: #'code snippets' withBuilder: aBuilder forParent: #CodeSnippets].
 
 	(aBuilder item: #Loading)
 		parent: #Scripts;
 		order: 5; 
 		iconName: #configNew;
-		with: [ self buildSubMenuBasedOnProtocol: #Loading withBuilder: aBuilder ].
+		with: [ self buildSubMenuBasedOnProtocol: #loading withBuilder: aBuilder forParent: #Loading ].
 
 	(aBuilder item: #Browse)
 		parent: #Scripts;
 		order: 20;
 		iconName: #configNew;
-		with: [ self buildSubMenuBasedOnProtocol: #Browse withBuilder: aBuilder ].
+		with: [ self buildSubMenuBasedOnProtocol: #browse withBuilder: aBuilder forParent: #Browse].
+	
 
 	"self backgroundFolder exists 
 		ifTrue: [ 
