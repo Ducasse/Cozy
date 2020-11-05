@@ -21,41 +21,6 @@ stream close ]'
 ]
 
 { #category : #codax }
-CzMoosishQuickAccess >> cppDupDet [
-	<cozyScript:  #'CPP script duplication detection'>
-	| model |
-	model := (self class environment at: #CPPModel) allInstances last.
-
-	model clearDuplicationSystem.
-	MessageTally
-		spyOn: [ model
-				dupSys:
-					((self class environment at: #DPDetector)
-						createDupSysFromParameters:
-							((self class environment at: #DPParameters) new
-								selectedPrograms: model entitiesForDupDetection;
-								frequency: 2;
-								minNumberOfLines: 100;
-								minNumberOfCharacters: 80;
-								cleaner: (self class environment at: #DPCPPCleaner) new)) ]
-]
-
-{ #category : #codax }
-CzMoosishQuickAccess >> cppDupDetInPlayground [
-	<cozyScript: #'CPP script duplication detection in playground'>
-	
-	GTPlayground openContents: 'model := CPPModel allInstances last.
-
-model clearDuplicationSystem.
-MessageTally spyOn: [model dupSys: (DPDetector createDupSysFromParameters:(DPParameters new
-				selectedPrograms: model entitiesForDupDetection;
-				frequency: 2;
-				minNumberOfLines: 100;
-				minNumberOfCharacters: 80;
-				cleaner: DPCPPCleaner new)).]'
-]
-
-{ #category : #codax }
 CzMoosishQuickAccess >> flushAll [
 	<cozyScript: #'Flush all'>
 	
@@ -84,12 +49,6 @@ CzMoosishQuickAccess >> flushProperties [
 CzMoosishQuickAccess >> resetMeta [
 	<cozyScript: #'Reset meta'>
 	(self class environment at: #MooseModel) resetMeta
-]
-
-{ #category : #codax }
-CzMoosishQuickAccess >> resetSynMeta [
-	<cozyScript: #'Reset synectique meta'>
-	(self class environment at: #SYNModel) resetMeta
 ]
 
 { #category : #codax }

@@ -1,5 +1,9 @@
+"
+I'm class executing settings. 
+By default the settings to be executed are defined in method `defaultScriptNames`.
+"
 Class {
-	#name : #CzCommonSettings,
+	#name : #CzSettingExecutor,
 	#superclass : #CozyRoot,
 	#classInstVars : [
 		'scriptNames'
@@ -8,7 +12,7 @@ Class {
 }
 
 { #category : #customization }
-CzCommonSettings class >> defaultScriptNames [
+CzSettingExecutor class >> defaultScriptNames [
 	"Redefine your scripts by adding them to this list or adding them to self scriptNames"
 	^ #(
 		setAuthorName
@@ -25,20 +29,20 @@ CzCommonSettings class >> defaultScriptNames [
 ]
 
 { #category : #gt }
-CzCommonSettings class >> disableSomeGTSpotterExtensions [
+CzSettingExecutor class >> disableSomeGTSpotterExtensions [
 	<script>
 	
 	#('GTSpotter_spotterWorldMenuFor') do: [ :ext | GTSpotterExtensionSettings disabledExtensions add: ext ]
 ]
 
 { #category : #gt }
-CzCommonSettings class >> enableGTSpotterPreview [
+CzSettingExecutor class >> enableGTSpotterPreview [
 	<script>
 	GTSpotter showPreview
 ]
 
 { #category : #gt }
-CzCommonSettings class >> ensurePlayground [
+CzSettingExecutor class >> ensurePlayground [
 	<script>
 	"I want the normal playground..."
 	Smalltalk tools workspaceTool name = #MoosePlayground 
@@ -46,20 +50,26 @@ CzCommonSettings class >> ensurePlayground [
 ]
 
 { #category : #initialization }
-CzCommonSettings class >> executeSetup [
+CzSettingExecutor class >> executeSetup [
 	"Execute all the scripts"
 	
-	self scriptNames do: [ :each | [self perform: each] on: Error do: [ :ex | self inform: 'error raised' ] ]
+	self scriptNames 
+		do: [ :each | 
+			[
+			Transcript show: each, 'will be executed. '.
+			self perform: each.
+			Transcript show: each, 'has been executed.'; cr.
+			] on: Error do: [ :ex | self inform: 'error raised' ] ]
 ]
 
 { #category : #initialization }
-CzCommonSettings class >> initialize [
+CzSettingExecutor class >> initialize [
 	
 	self executeSetup
 ]
 
 { #category : #appearence }
-CzCommonSettings class >> launchThemeProcess [
+CzSettingExecutor class >> launchThemeProcess [
 	<script>
 	
 	| installThemeBlock currentTheme |
@@ -78,26 +88,26 @@ CzCommonSettings class >> launchThemeProcess [
 ]
 
 { #category : #credentials }
-CzCommonSettings class >> monticelloCredentialFile [
+CzSettingExecutor class >> monticelloCredentialFile [
 	^ 'credentialsMonticello.ston'
 ]
 
 { #category : #appearence }
-CzCommonSettings class >> removeLogo [
+CzSettingExecutor class >> removeLogo [
 	<script>
 	
 	PolymorphSystemSettings showDesktopLogo: false
 ]
 
 { #category : #appearence }
-CzCommonSettings class >> removeTaskBarPreview [
+CzSettingExecutor class >> removeTaskBarPreview [
 	<script>
 	
 	TaskbarMorph showWindowPreview: false
 ]
 
 { #category : #credentials }
-CzCommonSettings class >> resetMonticelloCredentials [
+CzSettingExecutor class >> resetMonticelloCredentials [
 	<script>
 	
 	| file |
@@ -106,40 +116,40 @@ CzCommonSettings class >> resetMonticelloCredentials [
 ]
 
 { #category : #initialization }
-CzCommonSettings class >> resetScriptNames [
+CzSettingExecutor class >> resetScriptNames [
 
 	scriptNames := nil
 ]
 
 { #category : #initialization }
-CzCommonSettings class >> scriptNames [
+CzSettingExecutor class >> scriptNames [
 
 	scriptNames ifNil: [ scriptNames := self defaultScriptNames ].
 	^ scriptNames
 ]
 
 { #category : #appearence }
-CzCommonSettings class >> setAppearance [
+CzSettingExecutor class >> setAppearance [
 	<script>
 	
 	self removeLogo
 ]
 
 { #category : #pharo }
-CzCommonSettings class >> setAuthorName [
+CzSettingExecutor class >> setAuthorName [
 	<script>
 	Author fullName: 'StephaneDucasse'
 ]
 
 { #category : #appearence }
-CzCommonSettings class >> setFastDragging [
+CzSettingExecutor class >> setFastDragging [
 	<script>
 	
 	UITheme currentSettings fastDragging: true
 ]
 
 { #category : #pharo }
-CzCommonSettings class >> setLocalFolders [
+CzSettingExecutor class >> setLocalFolders [
 	<script>
 	| packageCache |
 	GTPlayBook cacheDirectory: StartupPreferencesLoader preferencesGeneralFolder / 'play-cache'.
@@ -159,7 +169,7 @@ CzCommonSettings class >> setLocalFolders [
 ]
 
 { #category : #credentials }
-CzCommonSettings class >> setMonticelloCredentials [
+CzSettingExecutor class >> setMonticelloCredentials [
 	<script>
 	
 	| creds file |
@@ -183,7 +193,7 @@ CzCommonSettings class >> setMonticelloCredentials [
 ]
 
 { #category : #appearence }
-CzCommonSettings class >> setRandomBackground [
+CzSettingExecutor class >> setRandomBackground [
 	<script>
 	
 	| files |
@@ -192,26 +202,26 @@ CzCommonSettings class >> setRandomBackground [
 ]
 
 { #category : #appearence }
-CzCommonSettings class >> setThemeSetting [
+CzSettingExecutor class >> setThemeSetting [
 	<script>
 	
 	UITheme currentSettings fastDragging: true
 ]
 
 { #category : #appearence }
-CzCommonSettings class >> setWindowsPreferences [
+CzSettingExecutor class >> setWindowsPreferences [
 	<script>
 	self showBoundsInHalo
 ]
 
 { #category : #appearence }
-CzCommonSettings class >> showBoundsInHalo [
+CzSettingExecutor class >> showBoundsInHalo [
 	<script>
 	HaloMorph showBoundsInHalo: true
 ]
 
 { #category : #pharo }
-CzCommonSettings class >> someToolsOptions [
+CzSettingExecutor class >> someToolsOptions [
 	<script>
 	Slot showSlotClassDefinition: true.
 	MCWorkingCopyBrowser order: 4.
@@ -221,5 +231,5 @@ CzCommonSettings class >> someToolsOptions [
 ]
 
 { #category : #'see class side' }
-CzCommonSettings >> seeClassSide [
+CzSettingExecutor >> seeClassSide [
 ]

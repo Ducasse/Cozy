@@ -77,9 +77,7 @@ CzQuickAccess class >> execute: aSelector [
 	self inform: 'Executed with success: ' , aSelector ]
 		on: Error
 		do: [ :ex | 
-			self
-				inform:
-					'Error during execution.
+			self inform: 'Error during execution.
 ' , ex asString ]
 ]
 
@@ -98,7 +96,7 @@ CzQuickAccess class >> executeBlock: aBlock [
 { #category : #'world menu' }
 CzQuickAccess class >> focusIceberg [
 	"This method will look for an open tip repository browser open (This is the entry point of Iceberg). If one is open, bring it to front. Else, open one."
-
+	
 	(self currentWorld windowsSatisfying: [ :window | window label = 'Repositories' ])
 		ifEmpty: [ [ IceTipRepositoriesBrowser new openWithSpec ]
 				on: Error
@@ -180,21 +178,36 @@ CzQuickAccess class >> worldMenuOn: aBuilder [
 	(aBuilder item: #Scripts)
 		label: 'Cozy';
 		order: 6.0;
-		iconName: #changeUpdate.
+		iconName: #changeUpdate. 
 
-	(aBuilder item: #'Iceberg Projects')
+	(aBuilder item: #'Local Iceberg Projects')
 		parent: #Scripts;
 		order: 1;
 		iconName: #configNew;
 		with: [ self buildMenuAddToIcebergOn: aBuilder ].
 
+	(aBuilder item: #'CozyTheme')
+		parent: #Scripts;
+		label: 'Cozy Theme';
+		order: 5;
+		iconName: #scriptManager;
+		with: [ Transcript show: '.'. self buildSubMenuBasedOnProtocol: #'cozy' withBuilder: aBuilder ].
+	
 	(aBuilder item: #'scripts-mine')
 		parent: #Scripts;
 		label: 'My lovely scripts';
 		order: 5;
 		iconName: #scriptManager;
 		with: [ self buildSubMenuBasedOnProtocol: #'scripts-mine' withBuilder: aBuilder ].
-	
+		
+		
+	(aBuilder item: #'calypso')
+		parent: #Scripts;
+		label: 'Calypso';
+		order: 5;
+		iconName: #scriptManager;
+		with: [ self buildSubMenuBasedOnProtocol: #'calypso' withBuilder: aBuilder ].
+		
 	(aBuilder item: #'scripts-some')
 		label: 'Some lovely scripts';
 		parent: #Scripts;
@@ -202,11 +215,11 @@ CzQuickAccess class >> worldMenuOn: aBuilder [
 		iconName: #configNew;
 		with: [ self buildSubMenuBasedOnProtocol: #'scripts-some' withBuilder: aBuilder ].
 		
-	(aBuilder item: #Templates)
+	(aBuilder item: #CodeSnippets)
 		parent: #Scripts;
 		order: 10;
 		iconName: #configNew;
-		with: [ self buildSubMenuBasedOnProtocol: #Templates withBuilder: aBuilder ].
+		with: [ self buildSubMenuBasedOnProtocol: #'code snippets' withBuilder: aBuilder ].
 
 	(aBuilder item: #Loading)
 		parent: #Scripts;
@@ -234,7 +247,7 @@ CzQuickAccess class >> worldMenuOn: aBuilder [
 CzQuickAccess >> browseCommonSettings [
 	<cozyScript: #'Pharo common settings'>
 	
-	CzCommonSettings class browse
+	CzSettingExecutor class browse
 ]
 
 { #category : #browse }
@@ -258,7 +271,7 @@ CzQuickAccess >> browseQuickAccess [
 	self class browse
 ]
 
-{ #category : #'scripts-mine' }
+{ #category : #calypso }
 CzQuickAccess >> calypsoCheckingChanges [
 	<cozyScript: #'Calypso reacting to changes'>
 
@@ -268,14 +281,14 @@ CzQuickAccess >> calypsoCheckingChanges [
 
 ]
 
-{ #category : #'scripts-mine' }
+{ #category : #calypso }
 CzQuickAccess >> calypsoNoCritic [
 	<cozyScript: #'Disable Calypso critics'>
 
 	ClyCriticBrowserPlugin disable
 ]
 
-{ #category : #'scripts-mine' }
+{ #category : #calypso }
 CzQuickAccess >> calypsoNotCheckingChanges [
 	<cozyScript: #'Calypso not reacting to changes'>
 
@@ -284,14 +297,14 @@ CzQuickAccess >> calypsoNotCheckingChanges [
 
 ]
 
-{ #category : #'scripts-mine' }
+{ #category : #calypso }
 CzQuickAccess >> calypsoYesCritic [
 	<cozyScript: #'Enable Calypso critics'>
 
 	ClyCriticBrowserPlugin enable
 ]
 
-{ #category : #templates }
+{ #category : #'code snippets' }
 CzQuickAccess >> coolCommands [
 	<cozyScript: #'Git commands'>
 
@@ -309,7 +322,7 @@ CzQuickAccess >> coolCommands [
 	'
 ]
 
-{ #category : #templates }
+{ #category : #'code snippets' }
 CzQuickAccess >> dependencies [
 	<cozyScript: #'Find dependencies'>
 	GTPlayground
@@ -321,6 +334,7 @@ report knownDependantsOf: ''Glamour-Examples'''
 { #category : #'scripts-some' }
 CzQuickAccess >> gc [
 	<cozyScript: #'Garbage collect'>
+	
 	5 timesRepeat: [ Smalltalk garbageCollect ]
 ]
 
@@ -405,7 +419,7 @@ CzQuickAccess >> installNewDebugger [
 "
 ]
 
-{ #category : #'scripts-mine' }
+{ #category : #loading }
 CzQuickAccess >> installNewTools [
 	<cozyScript: #'Install New Tools'>
 	Metacello new
@@ -415,9 +429,10 @@ CzQuickAccess >> installNewTools [
 	self class environment at: #StPlayground ifPresent: [ :cl | cl register]
 ]
 
-{ #category : #templates }
+{ #category : #'code snippets' }
 CzQuickAccess >> installSample [
-	"<cozyScript: #'Install Sample'>
+	<cozyScript: #'Install Sample'>
+	
 	Metacello new
 		baseline: #WebPokedex;
 		githubUser: 'jecisc'
@@ -425,7 +440,7 @@ CzQuickAccess >> installSample [
 			commitish: 'development'
 			path: 'src';
 		onWarningLog;
-		load."
+		load.
 ]
 
 { #category : #'scripts-some' }
@@ -453,13 +468,6 @@ CzQuickAccess >> openCommonTools [
 	(group openInWindowLabeled: 'Common Tools') expandBoxHit
 ]
 
-{ #category : #'scripts-some' }
-CzQuickAccess >> openImageNatively [
-	<cozyScript: #'Open image natively'>
-	
-	FileLocator image openInNativeBrowser
-]
-
 { #category : #'scripts-mine' }
 CzQuickAccess >> prepareForContribution [
 	<cozyScript: #'Prepare Pharo contribution'>
@@ -467,7 +475,7 @@ CzQuickAccess >> prepareForContribution [
 	CzIcePick new prepareContributionToPharoForUnsynchronizedRepositories.
 ]
 
-{ #category : #templates }
+{ #category : #'code snippets' }
 CzQuickAccess >> profileTests [
 	<cozyScript: #'Profile tests'>
 	GTPlayground
@@ -484,10 +492,10 @@ testSuite := TestSuite new.
 CzQuickAccess >> randomBackground [
 	<cozyScript: #'Set random background'>
 
-	CzCommonSettings setRandomBackground
+	CzSettingExecutor setRandomBackground
 ]
 
-{ #category : #templates }
+{ #category : #'code snippets' }
 CzQuickAccess >> renameMethodsWithDeprecation [
 	<cozyScript: #'Batch method rename with deprecations'>
 	GTPlayground
@@ -529,7 +537,7 @@ class methods
 			] ].'
 ]
 
-{ #category : #templates }
+{ #category : #'code snippets' }
 CzQuickAccess >> rewritePatterns [
 	<cozyScript: #'Rewrite patterns'>
 	GTPlayground
@@ -562,7 +570,7 @@ CzQuickAccess >> screenshot [
 CzQuickAccess >> setMonticelloCredentials [
 	<cozyScript: #'Set Monticello credentials'>
 	
-	CzCommonSettings setMonticelloCredentials
+	CzSettingExecutor setMonticelloCredentials
 ]
 
 { #category : #'scripts-some' }
@@ -582,42 +590,42 @@ CzQuickAccess >> toggleTheme [
 
 	(dark isCurrent ifTrue: [ light ] ifFalse: [ dark ]) beCurrent.
 
-	CzCommonSettings setFastDragging
+	CzSettingExecutor setFastDragging
 ]
 
-{ #category : #'scripts-mine' }
+{ #category : #cozy }
 CzQuickAccess >> toggleToCherry [
 	<cozyScript: #'Use Cherry-On-A-Tree'>
 
 	CzCherryOnATreeTheme beCurrent.
-	CzCommonSettings setFastDragging
+	CzSettingExecutor setFastDragging
 ]
 
-{ #category : #'scripts-mine' }
+{ #category : #cozy }
 CzQuickAccess >> toggleToDayAtTheBeach [
 	<cozyScript: #'Use Day-at-the-Beach'>
 
 	CzDayAtTheBeachTheme beCurrent.
-	CzCommonSettings setFastDragging
+	CzSettingExecutor setFastDragging
 ]
 
-{ #category : #'scripts-mine' }
+{ #category : #cozy }
 CzQuickAccess >> toggleToSandy [
 	<cozyScript: #'Use Sandy'>
 
 	CzSandyTheme beCurrent.
-	CzCommonSettings setFastDragging
+	CzSettingExecutor setFastDragging
 ]
 
-{ #category : #'scripts-mine' }
+{ #category : #cozy }
 CzQuickAccess >> toggleToWhiteGhost [
 	<cozyScript: #'Use White Ghost'>
 
 	CzWhiteGhostTheme beCurrent.
-	CzCommonSettings setFastDragging
+	CzSettingExecutor setFastDragging
 ]
 
-{ #category : #templates }
+{ #category : #'code snippets' }
 CzQuickAccess >> variableUsage [
 	<cozyScript: #'Variable usage'>
 	GTPlayground openContents: 'origin := SpPresenter.
