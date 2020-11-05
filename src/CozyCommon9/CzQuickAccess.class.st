@@ -42,7 +42,7 @@ CzQuickAccess class >> buildMenuRenameSelectBackgroundOn: aBuilder [
 ]
 
 { #category : #'world menu' }
-CzQuickAccess class >> buildMenuRenameSubmenu: protocolName on: aBuilder [
+CzQuickAccess class >> buildSubMenuBasedOnProtocol: protocolName withBuilder: aBuilder [
 	
 	(self methodsIn: protocolName asLowercase)
 		do: [ :method | 
@@ -182,43 +182,43 @@ CzQuickAccess class >> worldMenuOn: aBuilder [
 		order: 6.0;
 		iconName: #changeUpdate.
 
-	(aBuilder item: #'Add projects to Iceberg')
+	(aBuilder item: #'Iceberg Projects')
 		parent: #Scripts;
 		order: 1;
 		iconName: #configNew;
 		with: [ self buildMenuAddToIcebergOn: aBuilder ].
 
 	(aBuilder item: #'scripts-mine')
-		label: 'My lovely scripts';
 		parent: #Scripts;
+		label: 'My lovely scripts';
 		order: 5;
-		iconName: #configNew;
-		with: [ self buildMenuRenameSubmenu: #'scripts-mine' on: aBuilder ].
+		iconName: #scriptManager;
+		with: [ self buildSubMenuBasedOnProtocol: #'scripts-mine' withBuilder: aBuilder ].
 	
-		(aBuilder item: #'scripts-some')
+	(aBuilder item: #'scripts-some')
 		label: 'Some lovely scripts';
 		parent: #Scripts;
 		order: 5;
 		iconName: #configNew;
-		with: [ self buildMenuRenameSubmenu: #'scripts-some' on: aBuilder ].
+		with: [ self buildSubMenuBasedOnProtocol: #'scripts-some' withBuilder: aBuilder ].
 		
 	(aBuilder item: #Templates)
 		parent: #Scripts;
 		order: 10;
 		iconName: #configNew;
-		with: [ self buildMenuRenameSubmenu: #Templates on: aBuilder ].
+		with: [ self buildSubMenuBasedOnProtocol: #Templates withBuilder: aBuilder ].
 
 	(aBuilder item: #Loading)
 		parent: #Scripts;
 		order: 5; 
 		iconName: #configNew;
-		with: [ self buildMenuRenameSubmenu: #Loading on: aBuilder ].
+		with: [ self buildSubMenuBasedOnProtocol: #Loading withBuilder: aBuilder ].
 
 	(aBuilder item: #Browse)
 		parent: #Scripts;
 		order: 20;
 		iconName: #configNew;
-		with: [ self buildMenuRenameSubmenu: #Browse on: aBuilder ].
+		with: [ self buildSubMenuBasedOnProtocol: #Browse withBuilder: aBuilder ].
 
 	"self backgroundFolder exists 
 		ifTrue: [ 
@@ -256,6 +256,20 @@ CzQuickAccess >> browseQuickAccess [
 	<cozyScript: #QuickAccess>
 	
 	self class browse
+]
+
+{ #category : #'scripts-mine' }
+CzQuickAccess >> calypsoNoCritic [
+	<cozyScript: #'Disable Calypso critics'>
+
+	ClyCriticBrowserPlugin disable
+]
+
+{ #category : #'scripts-mine' }
+CzQuickAccess >> calypsoYesCritic [
+	<cozyScript: #'Enable Calypso critics'>
+
+	ClyCriticBrowserPlugin enable
 ]
 
 { #category : #templates }
