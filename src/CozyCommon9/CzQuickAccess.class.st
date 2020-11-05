@@ -259,10 +259,29 @@ CzQuickAccess >> browseQuickAccess [
 ]
 
 { #category : #'scripts-mine' }
+CzQuickAccess >> calypsoCheckingChanges [
+	<cozyScript: #'Calypso reacting to changes'>
+
+	ClyNavigationEnvironment reset.
+	ClyNavigationEnvironment currentImage queryCache do: #forceRebuild.
+	ClyNavigationEnvironment currentImage attachToSystem.
+
+]
+
+{ #category : #'scripts-mine' }
 CzQuickAccess >> calypsoNoCritic [
 	<cozyScript: #'Disable Calypso critics'>
 
 	ClyCriticBrowserPlugin disable
+]
+
+{ #category : #'scripts-mine' }
+CzQuickAccess >> calypsoNotCheckingChanges [
+	<cozyScript: #'Calypso not reacting to changes'>
+
+	ClyNavigationEnvironment reset.
+	ClyNavigationEnvironment currentImage detachFromSystem.
+
 ]
 
 { #category : #'scripts-mine' }
