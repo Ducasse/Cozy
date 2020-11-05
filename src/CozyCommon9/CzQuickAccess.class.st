@@ -424,10 +424,10 @@ CzQuickAccess >> iceberg [
 	self class focusIceberg
 ]
 
-{ #category : #'code snippets' }
+{ #category : #utils }
 CzQuickAccess >> in: aString [ 
 
-	GTPlayground
+	Workspace
 		openContents: aString
 ]
 
@@ -660,7 +660,10 @@ CzQuickAccess >> toggleToWhiteGhost [
 { #category : #'code snippets' }
 CzQuickAccess >> variableUsage [
 	<cozyScript: #'Variable usage'>
-	self in: 'origin := SpPresenter.
+	self in: '
+| origin variables |
+	
+origin := SpPresenter.
 variables := origin instVarNames.
 
 variables
