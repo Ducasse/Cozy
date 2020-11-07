@@ -223,7 +223,7 @@ CzSettingExecutor class >> showBoundsInHalo [
 { #category : #pharo }
 CzSettingExecutor class >> someToolsOptions [
 	<script>
-	Slot showSlotClassDefinition: true.
+	ClassDefinitionPrinter showFluidClassDefinition: true.
 	MCWorkingCopyBrowser order: 4.
 	MCRepositoryGroup default repositories
 		select: [ :r | (r isKindOf: MCSmalltalkhubRepository) and: [ r location includesSubstring: 'Pharo/Pharo' ] ]
