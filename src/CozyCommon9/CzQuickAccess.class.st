@@ -352,10 +352,13 @@ CzQuickAccess >> coolCommands [
 
 { #category : #'code snippets' }
 CzQuickAccess >> dependencies [
-	<cozyScript: #'Find dependencies'>
+	<cozyScript: #'Find who depend on me'>
 	self in:
-			'report := DADependencyChecker new computeImageDependencies.
-report knownDependantsOf: ''Glamour-Examples'''
+'
+| report | 
+report := DADependencyChecker new computeImageDependencies.
+report knownDependantsOf: ''Glamour-Examples''
+'
 ]
 
 { #category : #'scripts-some' }
@@ -486,6 +489,17 @@ CzQuickAccess >> logAllUnusedVariables [
 		allSubclassesDo: [ :class | 
 			class instVarNames
 				do: [ :each | (class whichSelectorsAccess: each) size = 0 ifTrue: [ Transcript crTrace: 'Class: ' , class printString , ' var: ' , each ] ] ]
+]
+
+{ #category : #'code snippets' }
+CzQuickAccess >> myDependencies [
+	<cozyScript: #'Find my dependencies'>
+	self in:
+'
+|report |
+report := DADependencyChecker new computeImageDependencies.
+report dependenciesOf: ''Glamour-Examples''
+'
 ]
 
 { #category : #'scripts-some' }
