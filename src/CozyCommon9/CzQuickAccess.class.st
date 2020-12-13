@@ -642,6 +642,25 @@ CzQuickAccess >> setMonticelloCredentials [
 	CzSettingExecutor setMonticelloCredentials
 ]
 
+{ #category : #'code snippets' }
+CzQuickAccess >> stonFile [
+	<cozyScript: #'Variable usage'>
+	self in: 'SmalltalkCISpec {
+  #loading : [
+    SCIMetacelloLoadSpec {
+      #baseline : ''ContainersArray2D'',
+      #directory : ''src'',
+      #platforms : [ #pharo ]
+    }
+  ],
+  #testing : {
+    #coverage : {
+      #packages : [ ''Containers-Array2D'' ]
+    }
+  }
+}'
+]
+
 { #category : #'scripts-some' }
 CzQuickAccess >> toggleDeprecation [
 	<cozyScript: #'Toggle deprecations'>
