@@ -265,6 +265,29 @@ CzQuickAccess class >> worldMenuOn: aBuilder [
 
 ]
 
+{ #category : #'code snippets' }
+CzQuickAccess >> baselineTemplate [
+	<cozyScript: #'BaselineTemplate'>
+
+	self in: 
+			'baseline: spec
+	<baseline>
+	spec
+		baseline: ''ContainersPropertyEnvironment''
+		with: [ spec repository: ''github://Ducasse/Containers-PropertyEnvironment:v1.0.0'' ].
+	spec
+		for: #pharo
+		do: [ 
+			spec
+				package: ''Chrysal-Runtime'' with: [ spec requires: #(''ContainersPropertyEnvironment'') ].
+			spec
+				package: ''Chrysal-Tests''
+				with: [ spec requires: #(''Chrysal-Runtime'' ''Chrysal'') ].
+			spec
+				package: ''Chrysal''
+				with: [ spec requires: #(''Chrysal-Runtime'') ] ]'
+]
+
 { #category : #browse }
 CzQuickAccess >> browseCommonSettings [
 	<cozyScript: #'Pharo common settings'>
