@@ -248,11 +248,11 @@ CzQuickAccess class >> worldMenuOn: aBuilder [
 		iconName: #configNew;
 		with: [ self buildSubMenuBasedOnProtocol: #loading withBuilder: aBuilder forParent: #Loading ].
 
-	(aBuilder item: #Browse)
+	(aBuilder item: #BrowseCozy)
 		parent: #Scripts;
 		order: 20;
 		iconName: #configNew;
-		with: [ self buildSubMenuBasedOnProtocol: #browse withBuilder: aBuilder forParent: #Browse].
+		with: [ self buildSubMenuBasedOnProtocol: #browse withBuilder: aBuilder forParent: #BrowseCozy].
 	
 
 

@@ -1,15 +1,26 @@
 "
-I'm class executing settings. 
+I'm class executing settings. Settings are little methods defined on the class side. 
+
 By default the settings to be executed are defined in method `defaultScriptNames`.
+But you can set the ones you want by simply calling sending the message `scriptNames:` with a collection of symbol or `addScript:` to add a single script invocation.
 "
 Class {
 	#name : #CzSettingExecutor,
 	#superclass : #CozyRoot,
+	#classVars : [
+		'DefaultScripts'
+	],
 	#classInstVars : [
 		'scriptNames'
 	],
 	#category : #CozyCommon9
 }
+
+{ #category : #initialization }
+CzSettingExecutor class >> addScript: aSymbol [
+
+	scriptNames add: aSymbol
+]
 
 { #category : #customization }
 CzSettingExecutor class >> defaultScriptNames [
@@ -56,9 +67,9 @@ CzSettingExecutor class >> executeSetup [
 	self scriptNames 
 		do: [ :each | 
 			[
-			Transcript show: each, 'will be executed. '.
+			self traceCr: each, 'will be executed. '.
 			self perform: each.
-			Transcript show: each, 'has been executed.'; cr.
+			self traceCr: each, 'has been executed.'.
 			] on: Error do: [ :ex | self inform: 'error raised' ] ]
 ]
 
@@ -72,13 +83,13 @@ CzSettingExecutor class >> initialize [
 CzSettingExecutor class >> launchThemeProcess [
 	<script>
 	
-	| installThemeBlock currentTheme |
+	| installThemeBlock |
 	installThemeBlock := [ | theme |
 	theme := (Time now between: '7:00am' asTime and: '9:00pm' asTime) 
 					ifTrue: [ self darkThemeClass ] ifFalse: [ self lightThemeClass ].
-	theme = currentTheme
-		ifFalse: [ currentTheme := theme.
-			PolymorphSystemSettings uiThemeClass: currentTheme.
+	theme = UITheme current class
+		ifFalse: [
+			PolymorphSystemSettings uiThemeClass: UITheme current class.
 			self setFastDragging ] ].
 	[ [ installThemeBlock value.
 	5 minutes asDelay wait ] repeat ] newProcess
@@ -126,6 +137,13 @@ CzSettingExecutor class >> scriptNames [
 
 	scriptNames ifNil: [ scriptNames := self defaultScriptNames ].
 	^ scriptNames
+]
+
+{ #category : #initialization }
+CzSettingExecutor class >> scriptNames: aCollection [
+	
+	 scriptNames := aCollection.
+	
 ]
 
 { #category : #appearence }
