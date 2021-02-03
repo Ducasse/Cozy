@@ -197,7 +197,7 @@ CzQuickAccess class >> worldMenuOn: aBuilder [
 
 	(aBuilder item: #Scripts)
 		label: 'Cozy';
-		order: 6.0;
+		order: 100.0;
 		iconName: #changeUpdate. 
 
 	(aBuilder item: #'Local Iceberg Projects')
@@ -255,13 +255,6 @@ CzQuickAccess class >> worldMenuOn: aBuilder [
 		with: [ self buildSubMenuBasedOnProtocol: #browse withBuilder: aBuilder forParent: #Browse].
 	
 
-	"self backgroundFolder exists 
-		ifTrue: [ 
-			(aBuilder item: #'Select background')
-				parent: #'scripts-mine';
-				order: 1;
-				iconName: #configNew;
-				with: [ self buildMenuRenameSelectBackgroundOn: aBuilder ] ]"
 
 ]
 
