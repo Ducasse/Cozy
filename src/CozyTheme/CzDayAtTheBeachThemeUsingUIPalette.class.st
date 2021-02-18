@@ -1,8 +1,12 @@
+"
+I'm in the process of using a UIPalette
+"
 Class {
 	#name : #CzDayAtTheBeachThemeUsingUIPalette,
 	#superclass : #PharoLightTheme,
 	#instVars : [
-		'colorDictionary'
+		'colorDictionary',
+		'uiPalette'
 	],
 	#classInstVars : [
 		'colorDictionary'
@@ -118,7 +122,7 @@ CzDayAtTheBeachThemeUsingUIPalette class >> newDefaultSettings [
 
 { #category : #accessing }
 CzDayAtTheBeachThemeUsingUIPalette class >> themeName [
-	^ 'Day at the Beach'
+	^ 'Day at the Beach 2'
 ]
 
 { #category : #accessing }
@@ -135,49 +139,20 @@ CzDayAtTheBeachThemeUsingUIPalette class >> veryLightSelectionColorDefinition [
 CzDayAtTheBeachThemeUsingUIPalette >> backgroundColor [
 	"Color for the text background in main editors."
 	
-	^ colorDictionary at: #backgroundColor
-]
-
-{ #category : #'core definition' }
-CzDayAtTheBeachThemeUsingUIPalette >> backgroundColorDefinition [
-	"Color for the text background in main editors.
-	fffde7 is white with a little of yellow but really little"
-
-	^ (Color fromString: 'fffde7') alphaMixed: 0.25 with: Color white
-]
-
-{ #category : #'core definition' }
-CzDayAtTheBeachThemeUsingUIPalette >> baseColorDefinition [
-	"Color for the text background in main editors."
-
-	^ self class baseColor
+	^ uiPalette backgroundColor
 ]
 
 { #category : #'accessing colors' }
 CzDayAtTheBeachThemeUsingUIPalette >> borderColor [
-	^ colorDictionary at: #borderColor
+	^ uiPalette borderColor
 ]
 
-{ #category : #'core definition' }
-CzDayAtTheBeachThemeUsingUIPalette >> borderColorDefinition [
-
-	^ self class darkBaseColor adjustBrightness: -0.04
-]
-
-{ #category : #'trying to fix testRunner selection' }
-CzDayAtTheBeachThemeUsingUIPalette >> configureMorphTreeMorph: aMorph [
- 	aMorph preferedPaneColor: self textColor.
- 	aMorph 
- 		rowColorForEven:  Color pink
- 		odd: Color pink.
-]
-
-{ #category : #initialization }
+{ #category : #custom }
 CzDayAtTheBeachThemeUsingUIPalette >> configureWindowBorderFor: aWindow [
 	"this is to handle correctly the window border."
 	| aStyle |
 	aStyle := SimpleBorder new 
-					color: self windowBorderColorDefinition;
+					color: self windowBorderColor;
 					width: 1.
 	aWindow borderStyle: aStyle
 ]
@@ -185,125 +160,56 @@ CzDayAtTheBeachThemeUsingUIPalette >> configureWindowBorderFor: aWindow [
 { #category : #initialization }
 CzDayAtTheBeachThemeUsingUIPalette >> initialize [
 	super initialize.
-	colorDictionary := Dictionary new.
-	self initializeColors.
-	settings menuColor: self baseColorDefinition.
+	uiPalette := UIThemePalette new.
+	"the default one for now is the one of day at the beach. 
+	In the future we will see how we can get colors loaded in a palette"
+
+	settings menuColor: self baseColor.
 	
-]
-
-{ #category : #initialization }
-CzDayAtTheBeachThemeUsingUIPalette >> initializeColors [
-	colorDictionary
-		at: #windowColor
-		put: self windowColorDefinition.
-
-	colorDictionary
-		at: #backgroundColor
-		put: self backgroundColorDefinition.
-	colorDictionary at: #borderColor put: self borderColorDefinition.
-	colorDictionary
-		at: #scrollbarColor
-		put: self scrollbarColorDefinition.
-	colorDictionary at: #textColor put: self textColorDefinition.
-	colorDictionary at: #listTextColor put: self listTextColorDefinition.
-	colorDictionary at: #menuColor put: self menuColorDefinition.
-	colorDictionary
-		at: #secondarySelectionColor
-		put: self secondarySelectionColorDefinition.
-	colorDictionary
-		at: #selectionTextColor
-		put: self selectionTextColorDefinition.
-	colorDictionary
-		at: #selectionColor
-		put: self selectionColorDefinition.
-	colorDictionary
-		at: #unfocusedSelectionColor
-		put: self selectionTextColorDefinition.
-
 ]
 
 { #category : #'accessing colors' }
 CzDayAtTheBeachThemeUsingUIPalette >> listTextColor [
 	"Answer the list text color to use."
 
-	^ colorDictionary at: #listTextColor
-]
-
-{ #category : #'core definition' }
-CzDayAtTheBeachThemeUsingUIPalette >> listTextColorDefinition [
-	"Answer the list text color to use."
-
-	^ self textColorDefinition
+	^ uiPalette listTextColor
 ]
 
 { #category : #'accessing colors' }
 CzDayAtTheBeachThemeUsingUIPalette >> menuColor [
 	"For Calypso menu but apparently this does not work for the world menu."
 
-	^ colorDictionary at: #menuColor
+	^ uiPalette menuColor
 ]
 
-{ #category : #'core definition' }
-CzDayAtTheBeachThemeUsingUIPalette >> menuColorDefinition [
-	"For Calypso menu but apparently this does not work for the world menu."
-
-	^ self baseColorDefinition
-]
-
-{ #category : #'accessing colors' }
+{ #category : #custom }
 CzDayAtTheBeachThemeUsingUIPalette >> progressBarProgressFillStyleFor: aProgressBar [
 	"Answer the colour for the given progress bar."
 
-	^ self class darkBaseColor
+	^ uiPalette darkBaseColor
 ]
 
 { #category : #'accessing colors' }
 CzDayAtTheBeachThemeUsingUIPalette >> scrollbarColor [
 
-	^ colorDictionary at: #scrollbarColor
-]
-
-{ #category : #'core definition' }
-CzDayAtTheBeachThemeUsingUIPalette >> scrollbarColorDefinition [
-	^ self buttonColor
+	^ uiPalette scrollbarColor
 ]
 
 { #category : #'accessing colors' }
 CzDayAtTheBeachThemeUsingUIPalette >> secondarySelectionColor [
-	^ colorDictionary at: #secondarySelectionColor
-]
-
-{ #category : #'core definition' }
-CzDayAtTheBeachThemeUsingUIPalette >> secondarySelectionColorDefinition [
-	^ Color fromString: '84ffff'
-	
-
+	^ uiPalette secondarySelectionColor
 ]
 
 { #category : #'accessing colors' }
 CzDayAtTheBeachThemeUsingUIPalette >> selectionColor [
-	"^ Color fromHexString: 'ffe082'"
 	
-	^ colorDictionary at: #selectionColor
-]
-
-{ #category : #'accessing colors' }
-CzDayAtTheBeachThemeUsingUIPalette >> selectionColorDefinition [
-	^ Color fromHexString: 'ffe082'
-	
-	
+	^ uiPalette selectionColor
 ]
 
 { #category : #'accessing colors' }
 CzDayAtTheBeachThemeUsingUIPalette >> selectionTextColor [
-	"^ Color fromString: 'ffd54f'"
 	
-	^ colorDictionary at: #selectionTextColor
-]
-
-{ #category : #'core definition' }
-CzDayAtTheBeachThemeUsingUIPalette >> selectionTextColorDefinition [
-	^ Color fromString: 'ffd54f'
+	^ uiPalette selectionTextColor
 ]
 
 { #category : #initialization }
@@ -316,15 +222,7 @@ CzDayAtTheBeachThemeUsingUIPalette >> shStyleTableName [
 CzDayAtTheBeachThemeUsingUIPalette >> textColor [
 	"This is only for all the list and the text except that the selection color can hide it on certain list."
 	
-	^ colorDictionary at: #textColor
-]
-
-{ #category : #'core definition' }
-CzDayAtTheBeachThemeUsingUIPalette >> textColorDefinition [
-	"This is only for all the list and the text except that the selection color can hide it on certain list."
-	^ Color black
-	
-
+	^ uiPalette textColor
 ]
 
 { #category : #'sample methods' }
@@ -346,25 +244,18 @@ CzDayAtTheBeachThemeUsingUIPalette >> thisIsATestMethod: arg for: shoutTable [
 
 { #category : #'accessing colors' }
 CzDayAtTheBeachThemeUsingUIPalette >> unfocusedSelectionColor [
-	"^ self selectionColor"
 	
-	^ colorDictionary at: #unfocusedSelectionColor
+	^ uiPalette unfocusedSelectionColor
 ]
 
-{ #category : #'core definition' }
-CzDayAtTheBeachThemeUsingUIPalette >> windowBorderColorDefinition [
-	^ self class darkBaseColor
+{ #category : #'accessing colors' }
+CzDayAtTheBeachThemeUsingUIPalette >> windowBorderColor [
+	
+	^ uiPalette windowBorderColor
 ]
 
 { #category : #'accessing colors' }
 CzDayAtTheBeachThemeUsingUIPalette >> windowColor [
 	
-	^ colorDictionary at: #windowColor
-]
-
-{ #category : #'core definition' }
-CzDayAtTheBeachThemeUsingUIPalette >> windowColorDefinition [
-	"For the bar of calypso and probably the menu"
-	
-	^ self baseColorDefinition 
+	^ uiPalette windowColor
 ]

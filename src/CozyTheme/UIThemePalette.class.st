@@ -238,6 +238,12 @@ UIThemePalette >> unfocusedSelectionColor [
 ]
 
 { #category : #'accessing colors' }
+UIThemePalette >> unfocusedSelectionColorDefinition [
+	
+	^ Color gray
+]
+
+{ #category : #'accessing colors' }
 UIThemePalette >> veryLightSelectionColor [
 	^ colorDictionary at: #veryLightSelectionColor
 ]
@@ -245,6 +251,12 @@ UIThemePalette >> veryLightSelectionColor [
 { #category : #'core definition' }
 UIThemePalette >> veryLightSelectionColorDefinition [
 	^ Color fromHexString: 'ffe700'
+]
+
+{ #category : #'core definition' }
+UIThemePalette >> windowBorderColor [
+
+	^ colorDictionary at: self darkBaseColorDefinition
 ]
 
 { #category : #'core definition' }
