@@ -5,11 +5,7 @@ Class {
 	#name : #CzDayAtTheBeachThemeUsingUIPalette,
 	#superclass : #PharoLightTheme,
 	#instVars : [
-		'colorDictionary',
 		'uiPalette'
-	],
-	#classInstVars : [
-		'colorDictionary'
 	],
 	#category : #CozyTheme
 }
