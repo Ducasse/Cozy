@@ -7,13 +7,19 @@ Class {
 	#instVars : [
 		'uiPalette'
 	],
+	#classVars : [
+		'Palette'
+	],
+	#classInstVars : [
+		'colorDictionary2'
+	],
 	#category : #CozyTheme
 }
 
 { #category : #accessing }
 CzDayAtTheBeachThemeUsingUIPalette class >> baseColor [
 
-	^ colorDictionary at: #baseColor
+	^ colorDictionary2 at: #baseColor
 ]
 
 { #category : #definitions }
@@ -24,7 +30,7 @@ CzDayAtTheBeachThemeUsingUIPalette class >> baseColorDefinition [
 
 { #category : #accessing }
 CzDayAtTheBeachThemeUsingUIPalette class >> basePassiveBackgroundColor [
-	^ colorDictionary at: #basePassiveBackgroundColor
+	^ colorDictionary2 at: #basePassiveBackgroundColor
 ]
 
 { #category : #definitions }
@@ -34,7 +40,7 @@ CzDayAtTheBeachThemeUsingUIPalette class >> basePassiveBackgroundColorDefinition
 
 { #category : #accessing }
 CzDayAtTheBeachThemeUsingUIPalette class >> darkBaseColor [
-	^ colorDictionary at: #darkBaseColor
+	^ colorDictionary2 at: #darkBaseColor
 ]
 
 { #category : #definitions }
@@ -43,24 +49,25 @@ CzDayAtTheBeachThemeUsingUIPalette class >> darkBaseColorDefinition [
 ]
 
 { #category : #initialization }
-CzDayAtTheBeachThemeUsingUIPalette class >> initialize [
+CzDayAtTheBeachThemeUsingUIPalette class >> initialize [ 
 	"self initialize"
-	super initialize. "Yes there is an initialize class method in UITheme"
-
-	self withAllSubclassesDo: [ :cls | cls initializeColors; initializeDefault ]
-
 	
+	super initialize. 
+	Palette := UIThemePalette new.
+	"UI manager is plain bad. Why forcing to duplicate everything on class and instance side.
+	what a shitty idea.
+	"
 ]
 
 { #category : #initialization }
 CzDayAtTheBeachThemeUsingUIPalette class >> initializeColors [
-	colorDictionary := Dictionary new. 
-	colorDictionary at: #baseColor put: self baseColorDefinition.
-	colorDictionary at: #basePassiveBackgroundColor put: self basePassiveBackgroundColorDefinition.
-	colorDictionary at: #darkBaseColor put: self darkBaseColorDefinition.
-	colorDictionary at: #lightBaseColor put: self lightBaseColorDefinition.
-	colorDictionary at: #lightSelectionColor put: self lightSelectionColorDefinition.
-	colorDictionary at: #veryLightSelectionColor put: self veryLightSelectionColorDefinition 
+	colorDictionary2 := Dictionary new. 
+	colorDictionary2 at: #baseColor put: self baseColorDefinition.
+	colorDictionary2 at: #basePassiveBackgroundColor put: self basePassiveBackgroundColorDefinition.
+	colorDictionary2 at: #darkBaseColor put: self darkBaseColorDefinition.
+	colorDictionary2 at: #lightBaseColor put: self lightBaseColorDefinition.
+	colorDictionary2 at: #lightSelectionColor put: self lightSelectionColorDefinition.
+	colorDictionary2 at: #veryLightSelectionColor put: self veryLightSelectionColorDefinition 
 
 ]
 
@@ -73,7 +80,7 @@ CzDayAtTheBeachThemeUsingUIPalette class >> initializeDefault [
 { #category : #accessing }
 CzDayAtTheBeachThemeUsingUIPalette class >> lightBaseColor [
 
-	^ colorDictionary at: #lightBaseColor
+	^ colorDictionary2 at: #lightBaseColor
 ]
 
 { #category : #definitions }
@@ -85,7 +92,7 @@ CzDayAtTheBeachThemeUsingUIPalette class >> lightBaseColorDefinition [
 { #category : #accessing }
 CzDayAtTheBeachThemeUsingUIPalette class >> lightSelectionColor [
 
-	^ colorDictionary at: #lightSelectionColor
+	^ colorDictionary2 at: #lightSelectionColor
 ]
 
 { #category : #definitions }
@@ -123,7 +130,7 @@ CzDayAtTheBeachThemeUsingUIPalette class >> themeName [
 
 { #category : #accessing }
 CzDayAtTheBeachThemeUsingUIPalette class >> veryLightSelectionColor [
-	^ colorDictionary at: #veryLightSelectionColor
+	^ colorDictionary2 at: #veryLightSelectionColor
 ]
 
 { #category : #definitions }
@@ -156,7 +163,7 @@ CzDayAtTheBeachThemeUsingUIPalette >> configureWindowBorderFor: aWindow [
 { #category : #initialization }
 CzDayAtTheBeachThemeUsingUIPalette >> initialize [
 	super initialize.
-	uiPalette := UIThemePalette new.
+	uiPalette := Palette.
 	"the default one for now is the one of day at the beach. 
 	In the future we will see how we can get colors loaded in a palette"
 

@@ -88,7 +88,7 @@ UIThemePalette >> initializeColors [
 	
 	| colorDefs  |
 	colorDefs := self class selectors select: [ :each | each endsWith: 'Definition'].
-	colorDefs do: [:d | colorDictionary at: (d allButLast: 'Definition') put: (self perform: d) ].
+	colorDefs do: [:d | colorDictionary at: (d allButLast: 'Definition' size) put: (self perform: d) ].
 	
 ]
 
