@@ -19,33 +19,17 @@ Class {
 { #category : #accessing }
 CzDayAtTheBeachThemeUsingUIPalette class >> baseColor [
 
-	^ colorDictionary2 at: #baseColor
-]
-
-{ #category : #definitions }
-CzDayAtTheBeachThemeUsingUIPalette class >> baseColorDefinition [
-
-	^ Color fromHexString: 'b2ebf2'
+	^ Palette baseColor
 ]
 
 { #category : #accessing }
 CzDayAtTheBeachThemeUsingUIPalette class >> basePassiveBackgroundColor [
-	^ colorDictionary2 at: #basePassiveBackgroundColor
-]
-
-{ #category : #definitions }
-CzDayAtTheBeachThemeUsingUIPalette class >> basePassiveBackgroundColorDefinition [
-	^ self baseColorDefinition lighter
+	^ Palette basePassiveBackgroundColor
 ]
 
 { #category : #accessing }
 CzDayAtTheBeachThemeUsingUIPalette class >> darkBaseColor [
-	^ colorDictionary2 at: #darkBaseColor
-]
-
-{ #category : #definitions }
-CzDayAtTheBeachThemeUsingUIPalette class >> darkBaseColorDefinition [
-	^ Color fromHexString: '80deea'
+	^ Palette darkBaseColor
 ]
 
 { #category : #initialization }
@@ -60,18 +44,6 @@ CzDayAtTheBeachThemeUsingUIPalette class >> initialize [
 ]
 
 { #category : #initialization }
-CzDayAtTheBeachThemeUsingUIPalette class >> initializeColors [
-	colorDictionary2 := Dictionary new. 
-	colorDictionary2 at: #baseColor put: self baseColorDefinition.
-	colorDictionary2 at: #basePassiveBackgroundColor put: self basePassiveBackgroundColorDefinition.
-	colorDictionary2 at: #darkBaseColor put: self darkBaseColorDefinition.
-	colorDictionary2 at: #lightBaseColor put: self lightBaseColorDefinition.
-	colorDictionary2 at: #lightSelectionColor put: self lightSelectionColorDefinition.
-	colorDictionary2 at: #veryLightSelectionColor put: self veryLightSelectionColorDefinition 
-
-]
-
-{ #category : #initialization }
 CzDayAtTheBeachThemeUsingUIPalette class >> initializeDefault [
 	self resetDefaultSettings
 
@@ -80,24 +52,13 @@ CzDayAtTheBeachThemeUsingUIPalette class >> initializeDefault [
 { #category : #accessing }
 CzDayAtTheBeachThemeUsingUIPalette class >> lightBaseColor [
 
-	^ colorDictionary2 at: #lightBaseColor
-]
-
-{ #category : #definitions }
-CzDayAtTheBeachThemeUsingUIPalette class >> lightBaseColorDefinition [
-
-	^ (Color fromString: 'e0f7fa')
+	^ Palette lightBaseColor
 ]
 
 { #category : #accessing }
 CzDayAtTheBeachThemeUsingUIPalette class >> lightSelectionColor [
 
-	^ colorDictionary2 at: #lightSelectionColor
-]
-
-{ #category : #definitions }
-CzDayAtTheBeachThemeUsingUIPalette class >> lightSelectionColorDefinition [
-	^ Color fromHexString: 'ffd200'
+	^ Palette lightSelectionColor
 ]
 
 { #category : #accessing }
@@ -130,12 +91,7 @@ CzDayAtTheBeachThemeUsingUIPalette class >> themeName [
 
 { #category : #accessing }
 CzDayAtTheBeachThemeUsingUIPalette class >> veryLightSelectionColor [
-	^ colorDictionary2 at: #veryLightSelectionColor
-]
-
-{ #category : #definitions }
-CzDayAtTheBeachThemeUsingUIPalette class >> veryLightSelectionColorDefinition [
-	^ Color fromHexString: 'ffe700'
+	^ Palette veryLightSelectionColor
 ]
 
 { #category : #'accessing colors' }
