@@ -40,11 +40,11 @@ UIThemePalette >> baseColorDefinition [
 	^ Color fromHexString: 'b2ebf2'
 ]
 
-{ #category : #'core definition' }
+{ #category : #'accessing colors' }
 UIThemePalette >> basePassiveBackgroundColor [ 
 
 	
-	^ colorDictionary at: #basePassiveBackground
+	^ colorDictionary at: #basePassiveBackgroundColor
 ]
 
 { #category : #'core definition' }
@@ -94,7 +94,7 @@ UIThemePalette >> doesNotUnderstand: aMessage [
 { #category : #initialization }
 UIThemePalette >> initialize [
 	super initialize.
-	colorDictionary := Dictionary new.
+	colorDictionary := TracingDictionary new.
 	self initializeColors.
 	
 	
@@ -190,7 +190,7 @@ UIThemePalette >> selectionColor [
 	^ colorDictionary at: #selectionColor
 ]
 
-{ #category : #'accessing colors' }
+{ #category : #'core definition' }
 UIThemePalette >> selectionColorDefinition [
 	^ Color fromHexString: 'ffe082'
 	
@@ -254,7 +254,7 @@ UIThemePalette >> unfocusedSelectionColor [
 	^ colorDictionary at: #unfocusedSelectionColor
 ]
 
-{ #category : #'accessing colors' }
+{ #category : #'core definition' }
 UIThemePalette >> unfocusedSelectionColorDefinition [
 	
 	^ Color gray
