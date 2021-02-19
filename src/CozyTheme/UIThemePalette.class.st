@@ -41,6 +41,13 @@ UIThemePalette >> baseColorDefinition [
 ]
 
 { #category : #'core definition' }
+UIThemePalette >> basePassiveBackgroundColor [ 
+
+	
+	^ colorDictionary at: #basePassiveBackground
+]
+
+{ #category : #'core definition' }
 UIThemePalette >> basePassiveBackgroundColorDefinition [
 	^ self baseColorDefinition lighter
 ]
@@ -75,6 +82,13 @@ UIThemePalette >> darkBaseColor [
 { #category : #'core definition' }
 UIThemePalette >> darkBaseColorDefinition [
 	^ Color fromHexString: '80deea'
+]
+
+{ #category : #'sample methods' }
+UIThemePalette >> doesNotUnderstand: aMessage [
+	"since having "
+
+	^ Color pink
 ]
 
 { #category : #initialization }
