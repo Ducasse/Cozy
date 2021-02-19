@@ -1,3 +1,6 @@
+"
+I'm a sketch of a palette to see if we can abstract the color schema of themes.
+"
 Class {
 	#name : #UIThemePalette,
 	#superclass : #Object,

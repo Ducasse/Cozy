@@ -691,6 +691,14 @@ CzQuickAccess >> toggleToDayAtTheBeach [
 ]
 
 { #category : #cozy }
+CzQuickAccess >> toggleToDayAtTheBeach2 [
+	<cozyScript: #'Use Day-at-the-Beach2'>
+
+	CzDayAtTheBeachThemeUsingUIPalette beCurrent.
+	CzSettingExecutor setFastDragging
+]
+
+{ #category : #cozy }
 CzQuickAccess >> toggleToSandy [
 	<cozyScript: #'Use Sandy'>
 

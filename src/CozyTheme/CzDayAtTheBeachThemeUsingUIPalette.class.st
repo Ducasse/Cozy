@@ -3,15 +3,12 @@ I'm in the process of using a UIPalette
 "
 Class {
 	#name : #CzDayAtTheBeachThemeUsingUIPalette,
-	#superclass : #PharoLightTheme,
+	#superclass : #CzDayAtTheBeachTheme,
 	#instVars : [
 		'uiPalette'
 	],
 	#classVars : [
 		'Palette'
-	],
-	#classInstVars : [
-		'colorDictionary2'
 	],
 	#category : #CozyTheme
 }
