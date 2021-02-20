@@ -43,7 +43,6 @@ UIThemePalette >> baseColorDefinition [
 { #category : #'accessing colors' }
 UIThemePalette >> basePassiveBackgroundColor [ 
 
-	
 	^ colorDictionary at: #basePassiveBackgroundColor
 ]
 
