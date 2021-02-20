@@ -20,7 +20,7 @@ TracingDictionary class >> new [
 TracingDictionary >> at: aKey [
 
 	Transcript show: aKey printString; cr.
-	file writeStreamDo: [ :s | s nextPutAll: aKey printString; cr
+	file writeStreamDo: [ :s | Time now printOn: s. s cr.  aKey printOn: s. s cr
 		
 		].
 	^ super at: aKey 
