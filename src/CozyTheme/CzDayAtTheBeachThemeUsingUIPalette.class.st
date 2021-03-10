@@ -3,7 +3,7 @@ I'm in the process of using a UIPalette
 "
 Class {
 	#name : #CzDayAtTheBeachThemeUsingUIPalette,
-	#superclass : #CzDayAtTheBeachTheme,
+	#superclass : #PharoLightTheme,
 	#instVars : [
 		'uiPalette'
 	],
