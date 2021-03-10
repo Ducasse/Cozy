@@ -17,7 +17,7 @@ Class {
 UIThemePalette >> backgroundColor [
 	"Color for the text background in main editors."
 	
-	^ colorDictionary at: #backgroundColor
+	^ colorDictionary at: #backgroundColor ifAbsent: [ self errorColor ]
 ]
 
 { #category : #'core definition' }
@@ -31,7 +31,7 @@ UIThemePalette >> backgroundColorDefinition [
 { #category : #'accessing colors' }
 UIThemePalette >> baseColor [
 
-	^ colorDictionary at: #baseColor
+	^ colorDictionary at: #baseColor ifAbsent: [ self errorColor ]
 ]
 
 { #category : #'core definition' }
@@ -43,7 +43,7 @@ UIThemePalette >> baseColorDefinition [
 { #category : #'accessing colors' }
 UIThemePalette >> basePassiveBackgroundColor [ 
 
-	^ colorDictionary at: #basePassiveBackgroundColor
+	^ colorDictionary at: #basePassiveBackgroundColor ifAbsent: [ self errorColor ]
 ]
 
 { #category : #'core definition' }
@@ -53,7 +53,7 @@ UIThemePalette >> basePassiveBackgroundColorDefinition [
 
 { #category : #'accessing colors' }
 UIThemePalette >> borderColor [
-	^ colorDictionary at: #borderColor
+	^ colorDictionary at: #borderColor ifAbsent: [ self errorColor ]
 ]
 
 { #category : #'core definition' }
@@ -75,7 +75,7 @@ UIThemePalette >> buttonColorDefinition [
 
 { #category : #'accessing colors' }
 UIThemePalette >> darkBaseColor [
-	^ colorDictionary at: #darkBaseColor
+	^ colorDictionary at: #darkBaseColor ifAbsent: [ self errorColor ]
 ]
 
 { #category : #'core definition' }
@@ -87,6 +87,11 @@ UIThemePalette >> darkBaseColorDefinition [
 UIThemePalette >> doesNotUnderstand: aMessage [
 	"since having "
 
+	^ self errorColor 
+]
+
+{ #category : #'accessing colors' }
+UIThemePalette >> errorColor [ 
 	^ Color pink
 ]
 
@@ -104,14 +109,18 @@ UIThemePalette >> initializeColors [
 	
 	| colorDefs  |
 	colorDefs := self class selectors select: [ :each | each endsWith: 'Definition'].
-	colorDefs do: [:d | colorDictionary at: (d allButLast: 'Definition' size) put: (self perform: d) ].
+	colorDefs do: [:d | 
+			| c |
+			c := (self perform: d).
+			(c isKindOf: Color) not ifTrue: [ self halt ].
+			colorDictionary at: (d allButLast: 'Definition' size) put: c ].
 	
 ]
 
 { #category : #'accessing colors' }
 UIThemePalette >> lightBaseColor [
 
-	^ colorDictionary at: #lightBaseColor
+	^ colorDictionary at: #lightBaseColor ifAbsent: [ self errorColor ]
 ]
 
 { #category : #'core definition' }
@@ -123,7 +132,7 @@ UIThemePalette >> lightBaseColorDefinition [
 { #category : #'accessing colors' }
 UIThemePalette >> lightSelectionColor [
 
-	^ colorDictionary at: #lightSelectionColor
+	^ colorDictionary at: #lightSelectionColor ifAbsent: [ self errorColor ]
 ]
 
 { #category : #'core definition' }
@@ -135,7 +144,7 @@ UIThemePalette >> lightSelectionColorDefinition [
 UIThemePalette >> listTextColor [
 	"Answer the list text color to use."
 
-	^ colorDictionary at: #listTextColor
+	^ colorDictionary at: #listTextColor ifAbsent: [ self errorColor ]
 ]
 
 { #category : #'core definition' }
@@ -149,7 +158,7 @@ UIThemePalette >> listTextColorDefinition [
 UIThemePalette >> menuColor [
 	"For Calypso menu but apparently this does not work for the world menu."
 
-	^ colorDictionary at: #menuColor
+	^ colorDictionary at: #menuColor ifAbsent: [ self errorColor ]
 ]
 
 { #category : #'core definition' }
@@ -162,7 +171,7 @@ UIThemePalette >> menuColorDefinition [
 { #category : #'accessing colors' }
 UIThemePalette >> scrollbarColor [
 
-	^ colorDictionary at: #scrollbarColor
+	^ colorDictionary at: #scrollbarColor ifAbsent: [ self errorColor ]
 ]
 
 { #category : #'core definition' }
@@ -172,7 +181,7 @@ UIThemePalette >> scrollbarColorDefinition [
 
 { #category : #'accessing colors' }
 UIThemePalette >> secondarySelectionColor [
-	^ colorDictionary at: #secondarySelectionColor
+	^ colorDictionary at: #secondarySelectionColor ifAbsent: [ self errorColor ]
 ]
 
 { #category : #'core definition' }
@@ -186,7 +195,7 @@ UIThemePalette >> secondarySelectionColorDefinition [
 UIThemePalette >> selectionColor [
 	"^ Color fromHexString: 'ffe082'"
 	
-	^ colorDictionary at: #selectionColor
+	^ colorDictionary at: #selectionColor ifAbsent: [ self errorColor ]
 ]
 
 { #category : #'core definition' }
@@ -200,7 +209,7 @@ UIThemePalette >> selectionColorDefinition [
 UIThemePalette >> selectionTextColor [
 	"^ Color fromString: 'ffd54f'"
 	
-	^ colorDictionary at: #selectionTextColor
+	^ colorDictionary at: #selectionTextColor ifAbsent: [ self errorColor ]
 ]
 
 { #category : #'core definition' }
@@ -218,7 +227,7 @@ UIThemePalette >> shStyleTableName [
 UIThemePalette >> textColor [
 	"This is only for all the list and the text except that the selection color can hide it on certain list."
 	
-	^ colorDictionary at: #textColor
+	^ colorDictionary at: #textColor ifAbsent: [ self errorColor ]
 ]
 
 { #category : #'core definition' }
@@ -250,7 +259,7 @@ UIThemePalette >> thisIsATestMethod: arg for: shoutTable [
 UIThemePalette >> unfocusedSelectionColor [
 	"^ self selectionColor"
 	
-	^ colorDictionary at: #unfocusedSelectionColor
+	^ colorDictionary at: #unfocusedSelectionColor ifAbsent: [ self errorColor ]
 ]
 
 { #category : #'core definition' }
@@ -261,7 +270,7 @@ UIThemePalette >> unfocusedSelectionColorDefinition [
 
 { #category : #'accessing colors' }
 UIThemePalette >> veryLightSelectionColor [
-	^ colorDictionary at: #veryLightSelectionColor
+	^ colorDictionary at: #veryLightSelectionColor ifAbsent: [ self errorColor ]
 ]
 
 { #category : #'core definition' }
@@ -272,7 +281,7 @@ UIThemePalette >> veryLightSelectionColorDefinition [
 { #category : #'core definition' }
 UIThemePalette >> windowBorderColor [
 
-	^ colorDictionary at: self darkBaseColorDefinition
+	^ colorDictionary at: self darkBaseColorDefinition ifAbsent: [ self errorColor ]
 ]
 
 { #category : #'core definition' }
@@ -283,7 +292,7 @@ UIThemePalette >> windowBorderColorDefinition [
 { #category : #'accessing colors' }
 UIThemePalette >> windowColor [
 	
-	^ colorDictionary at: #windowColor
+	^ colorDictionary at: #windowColor ifAbsent: [ self errorColor ]
 ]
 
 { #category : #'core definition' }
