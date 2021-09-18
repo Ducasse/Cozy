@@ -20,7 +20,13 @@ BaselineOfCozy >> baseline: spec [
 			spec package: 'CozyCommon9'.
 			spec package: 'CozyIceberg'.
 			spec package: 'CozyTheme'.
-			spec package: 'CozyPharo9' with: [ spec requires: #('CozyCommon9') ]
+			 ].
+		
+	spec for: #'pharo10.x' 
+		do: [ 
+			spec package: 'CozyCommon10'.
+			spec package: 'CozyIceberg'.
+			spec package: 'CozyTheme'.
 			 ].
 ]
 
