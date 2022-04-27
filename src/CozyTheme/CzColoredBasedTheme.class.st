@@ -45,11 +45,6 @@ CzColoredBasedTheme >> borderColor [
 	^ self class darkBaseColor adjustBrightness: -0.04
 ]
 
-{ #category : #'glamour shit' }
-CzColoredBasedTheme >> brickThemer [
-	^ GLMBrickThemer new
-]
-
 { #category : #'border-styles' }
 CzColoredBasedTheme >> buttonBorderStyleFor: aButton [
 	aButton borderStyle: (BorderStyle width: 1 color: self borderColor)

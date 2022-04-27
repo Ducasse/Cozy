@@ -43,10 +43,10 @@ CzSettingExecutor class >> executeSetup [
 	self scriptNames 
 		do: [ :each | 
 			[
-			self traceCr: each, 'will be executed. '.
+			self traceCr: each, ' will be executed. '.
 			self perform: each.
-			self traceCr: each, 'has been executed.'.
-			] on: Error do: [ :ex | self inform: 'error raised' ] ]
+			self traceCr: each, ' has been executed.'.
+			] "on: Error do: [ :ex | self inform: 'error raised' ]" ]
 ]
 
 { #category : #initialization }
