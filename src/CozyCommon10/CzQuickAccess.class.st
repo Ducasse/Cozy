@@ -242,12 +242,6 @@ CzQuickAccess class >> worldMenuOn: aBuilder [
 		iconName: #configNew;
 		with: [ self buildSubMenuBasedOnProtocol: #'code snippets' withBuilder: aBuilder forParent: #CodeSnippets].
 
-	(aBuilder item: #Loading)
-		parent: #Scripts;
-		order: 5; 
-		iconName: #configNew;
-		with: [ self buildSubMenuBasedOnProtocol: #loading withBuilder: aBuilder forParent: #Loading ].
-
 	(aBuilder item: #BrowseCozy)
 		parent: #Scripts;
 		order: 20;
@@ -450,36 +444,19 @@ CzQuickAccess >> in: aString [
 		openContents: aString
 ]
 
-{ #category : #loading }
-CzQuickAccess >> installNewDebugger [
-	<cozyScript: #'Install New Debugger'>
+{ #category : #'scripts-mine' }
+CzQuickAccess >> installMicrodownDev [
+	<cozyScript: #'Install Microdown DEV'>
 	
 	Metacello new
-		baseline: 'NewTools';
-		repository: 'github://pharo-spec/NewTools';
+		baseline: 'Microdown';
+		repository: 'github://pillar-markup/Microdown:dev/src';
 		onConflict: [ :e | e useIncoming ];
 		onUpgrade: [ :e | e useIncoming ];
 		ignoreImage;
 		load.
 
-"	Metacello new
-        githubUser: 'pharo-spec' project: 'Spec' commitish: 'master' path: 'src';
-        baseline: 'Spec2';
-        onConflict: [ :e | e useIncoming ];
-        onUpgrade: [ :e | e useIncoming ];
-        ignoreImage;
-        load
-"
-]
-
-{ #category : #loading }
-CzQuickAccess >> installNewTools [
-	<cozyScript: #'Install New Tools'>
-	Metacello new
-		baseline: 'NewTools';
-		repository: 'github://pharo-spec/NewTools';
-		load.
-	self class environment at: #StPlayground ifPresent: [ :cl | cl register]
+	
 ]
 
 { #category : #'code snippets' }
@@ -524,17 +501,15 @@ CzQuickAccess >> openCommonTools [
 	
 	| group |
 	group := GroupWindowMorph new
-		addWindow: MCWorkingCopyBrowser new show;
-		addWindow: GTPlayground open;
 		addWindow: Transcript open;
 		addWindow: TestRunner open.
-	group tabGroup selectedPageIndex: 1.
+	"group tabGroup selectedPageIndex: 1."
 	(group openInWindowLabeled: 'Common Tools') expandBoxHit
 ]
 
-{ #category : #'scripts-mine' }
+{ #category : #old }
 CzQuickAccess >> prepareForContribution [
-	<cozyScript: #'Prepare Pharo contribution'>
+	"<cozyScript: #'Prepare Pharo contribution'>"
 
 	CzIcePick new prepareContributionToPharoForUnsynchronizedRepositories.
 ]
@@ -556,6 +531,21 @@ CzQuickAccess >> randomBackground [
 	<cozyScript: #'Set random background'>
 
 	CzSettingExecutor setRandomBackground
+]
+
+{ #category : #'scripts-mine' }
+CzQuickAccess >> removeCleanlyMDAndBC [
+	<cozyScript: #'Flush MD and BC'>
+
+	IceRepository registry 
+	detect: [ :each | #('Microdown' 'NewTools-DocumentationReader') includes: each name ]
+	ifFound: [ :aRepository | aRepository forget ].
+"This, however, needs to stay :)"
+#( 'BeautifulComments' 'BaselineOfMicrodownDev' 'BaselineOfMicrodown' 'Microdown' 'Microdown-Tests' 'Microdown-MicrodownRichTextComposer' 'Microdown-ResolvePath' 
+'Microdown-ResolvePath-Tests' 'NewTools-DocumentationReader-Tests' 'BaselineOfNewToolsDocumentationReader' 'Microdown-RichTextComposer' 'Spec2-Microdown'
+'NewTools-DocumentationReader') do: [ :each | 
+	(RPackageOrganizer default packageNamed: each ifAbsent: [ nil ]) 
+		ifNotNil: [ :aPackage | aPackage removeFromSystem ] ]
 ]
 
 { #category : #'code snippets' }
