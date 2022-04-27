@@ -6,7 +6,7 @@ CzSandyTheme beCurrent
 Class {
 	#name : #CzSandyTheme,
 	#superclass : #CzDayAtTheBeachTheme,
-	#category : #CozyTheme
+	#category : #'CozyTheme-Colored'
 }
 
 { #category : #definitions }

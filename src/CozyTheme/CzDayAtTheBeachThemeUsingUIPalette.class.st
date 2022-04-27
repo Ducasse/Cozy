@@ -10,7 +10,7 @@ Class {
 	#classVars : [
 		'Palette'
 	],
-	#category : #CozyTheme
+	#category : #'CozyTheme-fullyExperimentalBroken'
 }
 
 { #category : #accessing }

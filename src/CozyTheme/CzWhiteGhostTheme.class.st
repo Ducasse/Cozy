@@ -4,7 +4,7 @@ CzWhiteGhostTheme beCurrent
 Class {
 	#name : #CzWhiteGhostTheme,
 	#superclass : #CzDayAtTheBeachTheme,
-	#category : #CozyTheme
+	#category : #'CozyTheme-Colored'
 }
 
 { #category : #definitions }

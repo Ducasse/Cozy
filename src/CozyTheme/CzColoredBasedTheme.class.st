@@ -1,7 +1,7 @@
 Class {
 	#name : #CzColoredBasedTheme,
 	#superclass : #PharoDarkTheme,
-	#category : #CozyTheme
+	#category : #'CozyTheme-Colored'
 }
 
 { #category : #accessing }

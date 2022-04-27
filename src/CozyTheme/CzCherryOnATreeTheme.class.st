@@ -6,7 +6,7 @@ CzCherryOnATreeTheme initialize; beCurrent
 Class {
 	#name : #CzCherryOnATreeTheme,
 	#superclass : #CzDayAtTheBeachTheme,
-	#category : #CozyTheme
+	#category : #'CozyTheme-Colored'
 }
 
 { #category : #definitions }

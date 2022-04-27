@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'file'
 	],
-	#category : #CozyTheme
+	#category : #'CozyTheme-fullyExperimentalBroken'
 }
 
 { #category : #'instance creation' }

@@ -26,7 +26,7 @@ Class {
 	#classInstVars : [
 		'colorDictionary'
 	],
-	#category : #CozyTheme
+	#category : #'CozyTheme-Colored'
 }
 
 { #category : #accessing }

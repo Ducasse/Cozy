@@ -10,7 +10,7 @@ Class {
 	#classInstVars : [
 		'colorDictionary'
 	],
-	#category : #CozyTheme
+	#category : #'CozyTheme-fullyExperimentalBroken'
 }
 
 { #category : #'accessing colors' }
