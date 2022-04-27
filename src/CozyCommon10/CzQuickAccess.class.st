@@ -1,7 +1,7 @@
 "
-I'm adding a menu to the menubar and world menu called Scripts (check my method worldMenuOn:).
+I'm adding a menu to the menubar and world menu called Cozy (check my class method worldMenuOn:).
 
-The method protocols defines the submenu for example 	
+The method protocols such as 'scripts-some' define the submenu for example 	
 	 self buildSubmenu: #Convenience on: aBuilder 
 will create a submenu with all the methods tagged with name: as menu entries. 
 
