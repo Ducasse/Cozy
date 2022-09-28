@@ -464,8 +464,8 @@ CzQuickAccess >> installPillar [
 	<cozyScript: #'Install Pillar'>
 	
 	Metacello new
-		baseline: 'Microdown';
-		repository: 'github://pillar-markup/PillarApp:dev-8/src';
+		baseline: 'PillarApp';
+		repository: 'github://pillar-markup/pillar:dev-8/src';
 		onConflict: [ :e | e useIncoming ];
 		onUpgrade: [ :e | e useIncoming ];
 		ignoreImage;
