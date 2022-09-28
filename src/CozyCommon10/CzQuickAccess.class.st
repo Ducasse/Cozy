@@ -459,6 +459,21 @@ CzQuickAccess >> installMicrodownDev [
 	
 ]
 
+{ #category : #'scripts-mine' }
+CzQuickAccess >> installPillar [
+	<cozyScript: #'Install Pillar'>
+	
+	Metacello new
+		baseline: 'Microdown';
+		repository: 'github://pillar-markup/Pillar:dev-8/src';
+		onConflict: [ :e | e useIncoming ];
+		onUpgrade: [ :e | e useIncoming ];
+		ignoreImage;
+		load.
+
+	
+]
+
 { #category : #'code snippets' }
 CzQuickAccess >> installSample [
 	<cozyScript: #'Install Sample'>
