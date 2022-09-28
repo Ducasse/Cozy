@@ -465,7 +465,7 @@ CzQuickAccess >> installPillar [
 	
 	Metacello new
 		baseline: 'Microdown';
-		repository: 'github://pillar-markup/Pillar:dev-8/src';
+		repository: 'github://pillar-markup/PillarApp:dev-8/src';
 		onConflict: [ :e | e useIncoming ];
 		onUpgrade: [ :e | e useIncoming ];
 		ignoreImage;
