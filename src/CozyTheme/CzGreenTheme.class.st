@@ -27,5 +27,6 @@ CzGreenTheme >> progressBarProgressFillStyleFor: aProgressBar [
 
 { #category : #'accessing colors' }
 CzGreenTheme >> selectionColor [
-	^ Color fromHexString: '1F774D'
+
+	^ self class baseColor darker
 ]
