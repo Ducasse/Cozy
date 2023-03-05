@@ -33,7 +33,7 @@ BaselineOfCozy >> baseline: spec [
 		do: [ 
 			spec package: 'CozyCommon10'.
 			spec package: 'CozyIceberg'.
-			spec package: 'CozyTheme'.
+			spec package: 'CozyPalettedThemes'.
 			 ].
 ]
 
