@@ -1,35 +1,35 @@
 Class {
-	#name : #CZCherryOnTreeConfigurator,
+	#name : #CzCherryOnTreeConfigurator,
 	#superclass : #LightThemeColorConfigurator,
 	#category : #CozyPalettedThemes
 }
 
 { #category : #accessing }
-CZCherryOnTreeConfigurator >> backgroundColor [
+CzCherryOnTreeConfigurator >> backgroundColor [
 
 	^ (Color fromString: 'fffde7') alphaMixed: 0.25 with: Color white
 ]
 
 { #category : #colors }
-CZCherryOnTreeConfigurator >> baseColor [
+CzCherryOnTreeConfigurator >> baseColor [
 	"pale green b9f6ca, 9CEF23, 92F51E"
 	^ (Color fromHexString: '94FF19') alphaMixed: 0.5 with: Color white
 ]
 
 { #category : #colors }
-CZCherryOnTreeConfigurator >> basePassiveBackgroundColor [
+CzCherryOnTreeConfigurator >> basePassiveBackgroundColor [
 
 	^ self baseColor lighter
 ]
 
 { #category : #colors }
-CZCherryOnTreeConfigurator >> baseSelectionColor [
+CzCherryOnTreeConfigurator >> baseSelectionColor [
 
 	^ self lightSelectionColor 
 ]
 
 { #category : #colors }
-CZCherryOnTreeConfigurator >> darkBaseColor [
+CzCherryOnTreeConfigurator >> darkBaseColor [
 "69f0ae: darker intense green. Probably to change"
 	 "(Color fromHexString: '74C21D') alphaMixed: 0.4 with: Color white."
 	((Color fromHexString: '94FF19') alphaMixed: 0.5 with: Color white) darker .
@@ -37,7 +37,7 @@ CZCherryOnTreeConfigurator >> darkBaseColor [
 ]
 
 { #category : #colors }
-CZCherryOnTreeConfigurator >> lightBaseColor [
+CzCherryOnTreeConfigurator >> lightBaseColor [
 	"f8bbd0 pinkish light fce4ec"
 	"Color fromString: 'f8bbd0'"
 	^ (Color fromHexString: 'FFA3CE') alphaMixed: 0.25 with: Color white
@@ -45,7 +45,7 @@ CZCherryOnTreeConfigurator >> lightBaseColor [
 ]
 
 { #category : #colors }
-CZCherryOnTreeConfigurator >> lightSelectionColor [
+CzCherryOnTreeConfigurator >> lightSelectionColor [
 
 	"ligher pinkish f8bbd0"
 	"Color fromHexString: 'fce4ec'"
@@ -54,31 +54,31 @@ CZCherryOnTreeConfigurator >> lightSelectionColor [
 ]
 
 { #category : #colors }
-CZCherryOnTreeConfigurator >> secondarySelectionColor [
+CzCherryOnTreeConfigurator >> secondarySelectionColor [
 
 	^ self darkBaseColor 
 ]
 
 { #category : #colors }
-CZCherryOnTreeConfigurator >> selectionTextColor [
+CzCherryOnTreeConfigurator >> selectionTextColor [
 
 	^ Color fromString: 'f06292'
 ]
 
 { #category : #colors }
-CZCherryOnTreeConfigurator >> veryLightSelectionColor [
+CzCherryOnTreeConfigurator >> veryLightSelectionColor [
 
 	^ Color purple
 ]
 
 { #category : #colors }
-CZCherryOnTreeConfigurator >> windowBorderColor [
+CzCherryOnTreeConfigurator >> windowBorderColor [
 
 	^ self darkBaseColor
 ]
 
 { #category : #colors }
-CZCherryOnTreeConfigurator >> windowColor [
+CzCherryOnTreeConfigurator >> windowColor [
 
 	^ self baseColor
 ]

@@ -1,17 +1,17 @@
 Class {
-	#name : #CZDayAtTheBeachTheme2,
+	#name : #CzDayAtTheBeachTheme2,
 	#superclass : #PharoLightTheme,
 	#category : #CozyPalettedThemes
 }
 
 { #category : #configuration }
-CZDayAtTheBeachTheme2 class >> colorConfiguratorClass [
+CzDayAtTheBeachTheme2 class >> colorConfiguratorClass [
 
-	^ CZDayAtTheBeachConfigurator 
+	^ CzDayAtTheBeachConfigurator 
 ]
 
 { #category : #initialization }
-CZDayAtTheBeachTheme2 class >> setPreferredShoutColors [
+CzDayAtTheBeachTheme2 class >> setPreferredShoutColors [
 	"self setPreferredShoutColors"
 
 	"Color can be a valid argument to Color class>>colorFrom: , or nil to
@@ -149,6 +149,6 @@ CZDayAtTheBeachTheme2 class >> setPreferredShoutColors [
 ]
 
 { #category : #accessing }
-CZDayAtTheBeachTheme2 class >> themeName [
+CzDayAtTheBeachTheme2 class >> themeName [
 	^ 'Day at the Beach'
 ]

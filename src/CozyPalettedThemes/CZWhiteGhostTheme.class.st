@@ -1,17 +1,17 @@
 Class {
-	#name : #CZWhiteGhostTheme,
+	#name : #CzWhiteGhostTheme,
 	#superclass : #PharoLightTheme,
 	#category : #CozyPalettedThemes
 }
 
 { #category : #configuration }
-CZWhiteGhostTheme class >> colorConfiguratorClass [
+CzWhiteGhostTheme class >> colorConfiguratorClass [
 
-	^ CZWhiteGhostConfigurator 
+	^ CzWhiteGhostConfigurator 
 ]
 
 { #category : #initialization }
-CZWhiteGhostTheme class >> setPreferredShoutColors [
+CzWhiteGhostTheme class >> setPreferredShoutColors [
 	"self setPreferredShoutColors"
 
 	"Color can be a valid argument to Color class>>colorFrom: , or nil to
@@ -149,6 +149,6 @@ CZWhiteGhostTheme class >> setPreferredShoutColors [
 ]
 
 { #category : #accessing }
-CZWhiteGhostTheme class >> themeName [
+CzWhiteGhostTheme class >> themeName [
 	^ 'White Ghost'
 ]

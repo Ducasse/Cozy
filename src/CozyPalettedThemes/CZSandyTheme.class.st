@@ -1,17 +1,17 @@
 Class {
-	#name : #CZSandyTheme,
+	#name : #CzSandyTheme,
 	#superclass : #PharoLightTheme,
 	#category : #CozyPalettedThemes
 }
 
 { #category : #configuration }
-CZSandyTheme class >> colorConfiguratorClass [
+CzSandyTheme class >> colorConfiguratorClass [
 
-	^ CZSandyConfigurator 
+	^ CzSandyConfigurator 
 ]
 
 { #category : #initialization }
-CZSandyTheme class >> setPreferredShoutColors [
+CzSandyTheme class >> setPreferredShoutColors [
 	"self setPreferredShoutColors"
 
 	"Color can be a valid argument to Color class>>colorFrom: , or nil to
@@ -149,6 +149,6 @@ CZSandyTheme class >> setPreferredShoutColors [
 ]
 
 { #category : #accessing }
-CZSandyTheme class >> themeName [
+CzSandyTheme class >> themeName [
 	^ 'Sandy'
 ]

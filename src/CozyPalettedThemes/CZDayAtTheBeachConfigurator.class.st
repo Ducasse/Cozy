@@ -1,76 +1,76 @@
 Class {
-	#name : #CZDayAtTheBeachConfigurator,
+	#name : #CzDayAtTheBeachConfigurator,
 	#superclass : #LightThemeColorConfigurator,
 	#category : #CozyPalettedThemes
 }
 
 { #category : #accessing }
-CZDayAtTheBeachConfigurator >> backgroundColor [
+CzDayAtTheBeachConfigurator >> backgroundColor [
 
 	^ (Color fromString: 'fffde7') alphaMixed: 0.25 with: Color white
 ]
 
 { #category : #colors }
-CZDayAtTheBeachConfigurator >> baseColor [
+CzDayAtTheBeachConfigurator >> baseColor [
 	^ Color fromHexString: 'b2ebf2'
 ]
 
 { #category : #colors }
-CZDayAtTheBeachConfigurator >> basePassiveBackgroundColor [
+CzDayAtTheBeachConfigurator >> basePassiveBackgroundColor [
 
 	^ self baseColor lighter
 ]
 
 { #category : #colors }
-CZDayAtTheBeachConfigurator >> baseSelectionColor [
+CzDayAtTheBeachConfigurator >> baseSelectionColor [
 
 	^ Color fromHexString: 'ffe082'
 ]
 
 { #category : #colors }
-CZDayAtTheBeachConfigurator >> darkBaseColor [
+CzDayAtTheBeachConfigurator >> darkBaseColor [
 
 	^  Color fromHexString: '80deea'
 ]
 
 { #category : #colors }
-CZDayAtTheBeachConfigurator >> lightBaseColor [
+CzDayAtTheBeachConfigurator >> lightBaseColor [
 
 	^ Color fromString: 'e0f7fa'
 ]
 
 { #category : #colors }
-CZDayAtTheBeachConfigurator >> lightSelectionColor [
+CzDayAtTheBeachConfigurator >> lightSelectionColor [
 
 	^ Color fromHexString: 'ffd200'
 ]
 
 { #category : #colors }
-CZDayAtTheBeachConfigurator >> secondarySelectionColor [
+CzDayAtTheBeachConfigurator >> secondarySelectionColor [
 
 	^ Color fromString: '84ffff'
 ]
 
 { #category : #colors }
-CZDayAtTheBeachConfigurator >> selectionTextColor [
+CzDayAtTheBeachConfigurator >> selectionTextColor [
 
 	^ Color fromString: 'ffd54f'
 ]
 
 { #category : #colors }
-CZDayAtTheBeachConfigurator >> veryLightSelectionColor [
+CzDayAtTheBeachConfigurator >> veryLightSelectionColor [
 
 	^ Color fromHexString: 'ffe700'
 ]
 
 { #category : #colors }
-CZDayAtTheBeachConfigurator >> windowBorderColor [
+CzDayAtTheBeachConfigurator >> windowBorderColor [
 
 	^ self darkBaseColor
 ]
 
 { #category : #colors }
-CZDayAtTheBeachConfigurator >> windowColor [
+CzDayAtTheBeachConfigurator >> windowColor [
 
 	^ self baseColor
 ]

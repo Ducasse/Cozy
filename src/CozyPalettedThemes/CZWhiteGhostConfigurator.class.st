@@ -1,33 +1,33 @@
 Class {
-	#name : #CZWhiteGhostConfigurator,
+	#name : #CzWhiteGhostConfigurator,
 	#superclass : #LightThemeColorConfigurator,
 	#category : #CozyPalettedThemes
 }
 
 { #category : #colors }
-CZWhiteGhostConfigurator >> baseColor [
+CzWhiteGhostConfigurator >> baseColor [
 	
 	^ Color fromHexString: '90a4ae'
 ]
 
 { #category : #colors }
-CZWhiteGhostConfigurator >> baseSelectionColor [
+CzWhiteGhostConfigurator >> baseSelectionColor [
 
 	^ self lightSelectionColor
 ]
 
 { #category : #colors }
-CZWhiteGhostConfigurator >> darkBaseColor [
+CzWhiteGhostConfigurator >> darkBaseColor [
 	^ Color fromHexString: '607d8b'
 ]
 
 { #category : #colors }
-CZWhiteGhostConfigurator >> lightBaseColor [
+CzWhiteGhostConfigurator >> lightBaseColor [
 	^ Color fromString: 'cfd8dc'
 ]
 
 { #category : #colors }
-CZWhiteGhostConfigurator >> lightSelectionColor [
+CzWhiteGhostConfigurator >> lightSelectionColor [
 
 	^ (Color fromHexString: 'ffe082') lighter lighter lighter
 

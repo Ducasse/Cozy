@@ -1,17 +1,17 @@
 Class {
-	#name : #CZCherryOnTreeTheme,
+	#name : #CzCherryOnTreeTheme,
 	#superclass : #PharoLightTheme,
 	#category : #CozyPalettedThemes
 }
 
 { #category : #configuration }
-CZCherryOnTreeTheme class >> colorConfiguratorClass [
+CzCherryOnTreeTheme class >> colorConfiguratorClass [
 
-	^ CZCherryOnTreeConfigurator 
+	^ CzCherryOnTreeConfigurator 
 ]
 
 { #category : #initialization }
-CZCherryOnTreeTheme class >> setPreferredShoutColors [
+CzCherryOnTreeTheme class >> setPreferredShoutColors [
 	"self setPreferredShoutColors"
 
 	"Color can be a valid argument to Color class>>colorFrom: , or nil to
@@ -149,6 +149,6 @@ CZCherryOnTreeTheme class >> setPreferredShoutColors [
 ]
 
 { #category : #accessing }
-CZCherryOnTreeTheme class >> themeName [
+CzCherryOnTreeTheme class >> themeName [
 	^ 'Cherry on a Tree'
 ]
