@@ -11,6 +11,12 @@ CZWhiteGhostConfigurator >> baseColor [
 ]
 
 { #category : #colors }
+CZWhiteGhostConfigurator >> baseSelectionColor [
+
+	^ self lightSelectionColor
+]
+
+{ #category : #colors }
 CZWhiteGhostConfigurator >> darkBaseColor [
 	^ Color fromHexString: '607d8b'
 ]
@@ -23,5 +29,6 @@ CZWhiteGhostConfigurator >> lightBaseColor [
 { #category : #colors }
 CZWhiteGhostConfigurator >> lightSelectionColor [
 
-	^ Color fromHexString: 'ffe082'
+	^ (Color fromHexString: 'ffe082') lighter lighter lighter
+
 ]
