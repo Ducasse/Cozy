@@ -445,6 +445,22 @@ CzQuickAccess >> in: aString [
 ]
 
 { #category : #'scripts-mine' }
+CzQuickAccess >> installBloc [
+	<cozyScript: #'Install Bloc DEV'>
+	
+	[ Metacello new
+	baseline: 'Bloc';
+	repository: 'github://pharo-graphics/Bloc:dev-1.0/src';
+	onConflictUseIncoming;
+	ignoreImage;
+	load ]
+		on: MCMergeOrLoadWarning
+		do: [ :warning | warning load ]
+
+	
+]
+
+{ #category : #'scripts-mine' }
 CzQuickAccess >> installMicrodownDev [
 	<cozyScript: #'Install Microdown DEV'>
 	
