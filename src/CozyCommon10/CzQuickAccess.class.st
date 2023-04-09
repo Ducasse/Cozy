@@ -504,6 +504,18 @@ CzQuickAccess >> installSample [
 		load.'
 ]
 
+{ #category : #'scripts-mine' }
+CzQuickAccess >> installUniter [
+	<cozyScript: #'Install Uniter'>
+	
+	Metacello new
+	baseline: 'Bloc';
+	repository: 'github://Ducasse/Uniter';
+	onConflictUseIncoming;
+	ignoreImage;
+	load
+]
+
 { #category : #'scripts-some' }
 CzQuickAccess >> logAllUnusedVariables [
 	<cozyScript: #'Log all unused variables'>
@@ -699,7 +711,7 @@ CzQuickAccess >> toggleTheme [
 CzQuickAccess >> toggleToCherry [
 	<cozyScript: #'Use Cherry-On-A-Tree'>
 
-	CzCherryOnATreeTheme beCurrent.
+	CzCherryOnTreeTheme beCurrent.
 	CzSettingExecutor setFastDragging
 ]
 
@@ -707,15 +719,7 @@ CzQuickAccess >> toggleToCherry [
 CzQuickAccess >> toggleToDayAtTheBeach [
 	<cozyScript: #'Use Day-at-the-Beach'>
 
-	CzDayAtTheBeachTheme beCurrent.
-	CzSettingExecutor setFastDragging
-]
-
-{ #category : #cozy }
-CzQuickAccess >> toggleToDayAtTheBeach2 [
-	<cozyScript: #'Use Day-at-the-Beach2'>
-
-	CzDayAtTheBeachThemeUsingUIPalette beCurrent.
+	CzDayAtTheBeachTheme2 beCurrent.
 	CzSettingExecutor setFastDragging
 ]
 
