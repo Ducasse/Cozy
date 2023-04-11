@@ -509,11 +509,11 @@ CzQuickAccess >> installUniter [
 	<cozyScript: #'Install Uniter'>
 	
 	Metacello new
-	baseline: 'Bloc';
-	repository: 'github://Ducasse/Uniter';
-	onConflictUseIncoming;
-	ignoreImage;
-	load
+		baseline: 'Uniter';
+		repository: 'github://Ducasse/Uniter';
+		onConflictUseIncoming;
+		ignoreImage;
+		load
 ]
 
 { #category : #'scripts-some' }
