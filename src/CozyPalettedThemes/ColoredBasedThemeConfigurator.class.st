@@ -6,9 +6,9 @@ Class {
 
 { #category : #testing }
 ColoredBasedThemeConfigurator class >> atRandom [
-
+	"self atRandom"
 	| themes | 
-	themes := {CzGreenThemeConfigurator. CzPinkThemeConfigurator. CzRedThemeConfigurator . CzCherryOnTreeTheme. CzDayAtTheBeachTheme2. CzSandyTheme. CzWhiteGhostTheme}.
+	themes := {CzGreenTheme. CzPinkTheme. CzRedTheme . CzCherryOnTreeTheme. CzDayAtTheBeachTheme2. CzSandyTheme. CzWhiteGhostTheme}.
 	^ themes atRandom
 ]
 
