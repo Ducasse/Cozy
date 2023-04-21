@@ -5,6 +5,14 @@ Class {
 }
 
 { #category : #testing }
+ColoredBasedThemeConfigurator class >> atRandom [
+
+	| themes | 
+	themes := {CzGreenThemeConfigurator. CzPinkThemeConfigurator. CzRedThemeConfigurator . CzCherryOnTreeTheme. CzDayAtTheBeachTheme2. CzSandyTheme. CzWhiteGhostTheme}.
+	^ themes atRandom
+]
+
+{ #category : #testing }
 ColoredBasedThemeConfigurator class >> isAbstract [
 
 	^ self = ColoredBasedThemeConfigurator
