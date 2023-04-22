@@ -21,8 +21,7 @@ CzDarkBlueTheme class >> colorConfiguratorClass [
 { #category : #initialization }
 CzDarkBlueTheme class >> initialize [
 
-	BlockStyler defaultThemes at: self put: (Color lightBlue alpha: 0.05).
-	self beCurrent
+	
 ]
 
 { #category : #accessing }
