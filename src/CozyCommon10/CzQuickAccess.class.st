@@ -256,7 +256,7 @@ CzQuickAccess class >> worldMenuOn: aBuilder [
 CzQuickAccess >> baselineTemplate [
 	<cozyScript: #'BaselineTemplate'>
 
-	self in: 
+	self inWorkspace: 
 			'baseline: spec
 	<baseline>
 	spec
@@ -347,7 +347,7 @@ CzQuickAccess >> calypsoCriticEnable [
 CzQuickAccess >> coolCommands [
 	<cozyScript: #'Git commands'>
 
-	self in: 
+	self inWorkspace: 
 			'''Remove merged branches except master and dev:''.
 
 	''git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d''.
@@ -363,7 +363,7 @@ CzQuickAccess >> coolCommands [
 { #category : #'code snippets' }
 CzQuickAccess >> dependencies [
 	<cozyScript: #'Find who depend on me'>
-	self in:
+	self inWorkspace:
 '
 | report | 
 report := DADependencyChecker new computeImageDependencies.
@@ -444,6 +444,13 @@ CzQuickAccess >> in: aString [
 		openContents: aString
 ]
 
+{ #category : #utils }
+CzQuickAccess >> inWorkspace: aString [ 
+
+	Workspace
+		openContents: aString
+]
+
 { #category : #'scripts-mine' }
 CzQuickAccess >> installBloc [
 	<cozyScript: #'Install Bloc DEV'>
@@ -494,7 +501,7 @@ CzQuickAccess >> installPillar [
 CzQuickAccess >> installSample [
 	<cozyScript: #'Install Sample'>
 	
-	self in: 'Metacello new
+	self inWorkspace: 'Metacello new
 		baseline: #WebPokedex;
 		githubUser: ''jecisc''
 			project: ''WebPokedex''
@@ -530,7 +537,7 @@ CzQuickAccess >> logAllUnusedVariables [
 { #category : #'code snippets' }
 CzQuickAccess >> myDependencies [
 	<cozyScript: #'Find my dependencies'>
-	self in:
+	self inWorkspace:
 '
 |report |
 report := DADependencyChecker new computeImageDependencies.
@@ -560,7 +567,7 @@ CzQuickAccess >> prepareForContribution [
 { #category : #'code snippets' }
 CzQuickAccess >> profileTests [
 	<cozyScript: #'Profile tests'>
-	self in: 
+	self inWorkspace: 
 			'packageSelectionBlock := [ :e | e name beginsWith: ''Traits'' ].
 testSuite := TestSuite new.
 	
@@ -595,7 +602,7 @@ CzQuickAccess >> removeCleanlyMDAndBC [
 CzQuickAccess >> renameMethodsWithDeprecation [
 	<cozyScript: #'Batch method rename with deprecations'>
 	
-	self in: 
+	self inWorkspace: 
 			'class := FM3Class.
 from := ''attribute''.
 to := ''propertie''.
@@ -636,7 +643,7 @@ class methods
 { #category : #'code snippets' }
 CzQuickAccess >> rewritePatterns [
 	<cozyScript: #'Rewrite patterns'>
-	self in:
+	self inWorkspace:
 			'r := RBParseTreeRewriter new.
 r replace: ''`@receiver assert: `@arg = `@arg2'' with: ''`@receiver assert: `@arg equals: `@arg2''.
 r replace: ''`@receiver deny: `@arg = `@arg2'' with: ''`@receiver deny: `@arg equals: `@arg2''.
@@ -671,7 +678,7 @@ CzQuickAccess >> setMonticelloCredentials [
 { #category : #'code snippets' }
 CzQuickAccess >> stonFile [
 	<cozyScript: #'Variable usage'>
-	self in: 'SmalltalkCISpec {
+	self inWorkspace: 'SmalltalkCISpec {
   #loading : [
     SCIMetacelloLoadSpec {
       #baseline : ''ContainersArray2D'',
@@ -742,7 +749,7 @@ CzQuickAccess >> toggleToWhiteGhost [
 { #category : #'code snippets' }
 CzQuickAccess >> variableUsage [
 	<cozyScript: #'Variable usage'>
-	self in: '
+	self inWorkspace: '
 | origin variables |
 	
 origin := SpPresenter.
