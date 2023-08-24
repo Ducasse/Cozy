@@ -2,53 +2,47 @@ Extension { #name : #SpCodePresenterTest }
 
 { #category : #'*CozyFlow' }
 SpCodePresenterTest >> testDoBrowseImplementorsOnBrokenSelectorDoesNotOpenAClassBrowser [
+
 	| navigation |
-	
 	navigation := SpCodeSystemNavigationMock new.
 	presenter systemNavigation: navigation.
 	presenter beForScripting.
 	self openInstance.
-	
+
 	presenter text: '#degressThatDoesNotExist'.
-	presenter doBrowseImplementors.
-	
-	self 
-		assert: navigation browseClass 
-		equals: nil
+	presenter kyoDoBrowseImplementors.
+
+	self assert: navigation browseClass equals: nil
 ]
 
 { #category : #'*CozyFlow' }
 SpCodePresenterTest >> testDoBrowseImplementorsOnBrokenSelectorRepresentingAClassOpensAClassBrowser [
+
 	| navigation |
-	
 	navigation := SpCodeSystemNavigationMock new.
 	presenter systemNavigation: navigation.
 	presenter beForScripting.
 	self openInstance.
-	
+
 	presenter text: '#Point23456'.
-	presenter doBrowseImplementors.
-	
-	self 
-		assert: navigation browseClass 
-		equals: nil
+	presenter kyoDoBrowseImplementors.
+
+	self assert: navigation browseClass equals: nil
 ]
 
 { #category : #'*CozyFlow' }
 SpCodePresenterTest >> testDoBrowseImplementorsOnSelectorRepresentingAClassOpensAClassBrowser [
+
 	| navigation |
-	
 	navigation := SpCodeSystemNavigationMock new.
 	presenter systemNavigation: navigation.
 	presenter beForScripting.
 	self openInstance.
-	
+
 	presenter text: '#Point'.
-	presenter doBrowseImplementors.
-	
-	self 
-		assert: navigation browseClass 
-		equals: Point
+	presenter kyoDoBrowseImplementors.
+
+	self assert: navigation browseClass equals: Point
 ]
 
 { #category : #'*CozyFlow' }
@@ -58,32 +52,32 @@ SpCodePresenterTest >> testDoBrowseOnBrokenSelectorDoesNotBrowseTheClass [
 	navigation := SpCodeSystemNavigationMock new.
 	presenter systemNavigation: navigation.
 	self openInstance.
-	
+
 	presenter text: '#degressThatDoesNotExist'.
 	"Selection"
 	presenter selectionInterval: (1 to: 6).
-	presenter doBrowseClass.
-	
+	presenter kyoDoBrowseClass.
+
 	self assert: navigation browseClass equals: nil.
-	
+
 	navigation reset.
 	"Line"
 	presenter cursorPositionIndex: 1.
 	presenter selectionInterval: (1 to: 0).
-	presenter doBrowseClass.
+	presenter kyoDoBrowseClass.
 	self assert: navigation browseClass equals: nil.
-	
+
 	"Middle of line"
 	presenter cursorPositionIndex: 5.
 	presenter selectionInterval: (5 to: 4).
-	presenter doBrowseClass.
+	presenter kyoDoBrowseClass.
 	self assert: navigation browseClass equals: nil.
 
 	"End of line"
 	presenter cursorPositionIndex: 14.
 	presenter selectionInterval: (14 to: 13).
-	presenter doBrowseClass.
-	self assert: navigation browseClass equals: nil.
+	presenter kyoDoBrowseClass.
+	self assert: navigation browseClass equals: nil
 ]
 
 { #category : #'*CozyFlow' }
@@ -93,67 +87,67 @@ SpCodePresenterTest >> testDoBrowseOnBrokenSymbolRepresentingAClassDoesNotBrowse
 	navigation := SpCodeSystemNavigationMock new.
 	presenter systemNavigation: navigation.
 	self openInstance.
-	
+
 	presenter text: '#Point234'.
 	"Selection"
 	presenter selectionInterval: (1 to: 6).
-	presenter doBrowseClass.
-	
+	presenter kyoDoBrowseClass.
+
 	self assert: navigation browseClass equals: Point.
-	
+
 	navigation reset.
 	"Line"
 	presenter cursorPositionIndex: 1.
 	presenter selectionInterval: (1 to: 0).
-	presenter doBrowseClass.
+	presenter kyoDoBrowseClass.
 	self assert: navigation browseClass equals: nil.
-	
+
 	"Middle of line"
 	presenter cursorPositionIndex: 5.
 	presenter selectionInterval: (5 to: 4).
-	presenter doBrowseClass.
+	presenter kyoDoBrowseClass.
 	self assert: navigation browseClass equals: nil.
 
 	"End of line"
 	presenter cursorPositionIndex: 14.
 	presenter selectionInterval: (14 to: 13).
-	presenter doBrowseClass.
-	self assert: navigation browseClass equals: nil.
+	presenter kyoDoBrowseClass.
+	self assert: navigation browseClass equals: nil
 ]
 
 { #category : #'*CozyFlow' }
 SpCodePresenterTest >> testDoBrowseOnSelectorOpensAnImplementor [
-	
+
 	| navigation |
 	navigation := SpCodeSystemNavigationMock new.
 	presenter systemNavigation: navigation.
 	self openInstance.
-	
+
 	presenter text: '#~~>'.
 	"Selection"
 	presenter selectionInterval: (1 to: 4).
-	presenter doBrowseClass.
-	
+	presenter kyoDoBrowseClass.
+
 	self assert: navigation messageList first selector equals: #'~~>'.
-	
+
 	navigation reset.
 	"Line"
 	presenter cursorPositionIndex: 1.
 	presenter selectionInterval: (1 to: 0).
-	presenter doBrowseClass.
+	presenter kyoDoBrowseClass.
 	self assert: navigation messageList first selector equals: #'~~>'.
-	
+
 	"Middle of line"
 	presenter cursorPositionIndex: 5.
 	presenter selectionInterval: (5 to: 4).
-	presenter doBrowseClass.
+	presenter kyoDoBrowseClass.
 	self assert: navigation messageList first selector equals: #'~~>'.
 
 	"End of line"
 	presenter cursorPositionIndex: 14.
 	presenter selectionInterval: (14 to: 13).
-	presenter doBrowseClass.
-	self assert: navigation messageList first selector equals: #'~~>'.
+	presenter kyoDoBrowseClass.
+	self assert: navigation messageList first selector equals: #'~~>'
 ]
 
 { #category : #'*CozyFlow' }
@@ -163,32 +157,32 @@ SpCodePresenterTest >> testDoBrowseOnSymbolRepresentingAClassBrowsesTheClass [
 	navigation := SpCodeSystemNavigationMock new.
 	presenter systemNavigation: navigation.
 	self openInstance.
-	
+
 	presenter text: '#Point'.
 	"Selection"
 	presenter selectionInterval: (1 to: 6).
-	presenter doBrowseClass.
-	
+	presenter kyoDoBrowseClass.
+
 	self assert: navigation browseClass equals: Point.
-	
+
 	navigation reset.
 	"Line"
 	presenter cursorPositionIndex: 1.
 	presenter selectionInterval: (1 to: 0).
-	presenter doBrowseClass.
+	presenter kyoDoBrowseClass.
 	self assert: navigation browseClass equals: Point.
-	
+
 	"Middle of line"
 	presenter cursorPositionIndex: 5.
 	presenter selectionInterval: (5 to: 4).
-	presenter doBrowseClass.
+	presenter kyoDoBrowseClass.
 	self assert: navigation browseClass equals: Point.
 
 	"End of line"
 	presenter cursorPositionIndex: 14.
 	presenter selectionInterval: (14 to: 13).
-	presenter doBrowseClass.
-	self assert: navigation browseClass equals: Point.
+	presenter kyoDoBrowseClass.
+	self assert: navigation browseClass equals: Point
 ]
 
 { #category : #'*CozyFlow' }
