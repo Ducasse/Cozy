@@ -16,7 +16,7 @@ SpCodePresenterTest >> testDoBrowseImplementorsOnBrokenSelectorDoesNotOpenAClass
 ]
 
 { #category : #'*CozyFlow' }
-SpCodePresenterTest >> testDoBrowseImplementorsOnBrokenSelectorRepresentingAClassOpensAClassBrowser [
+SpCodePresenterTest >> testDoBrowseImplementorsOnBrokenSelectorRepresentingAClassBrowseByteSymbol [
 
 	| navigation |
 	navigation := SpCodeSystemNavigationMock new.
@@ -26,7 +26,8 @@ SpCodePresenterTest >> testDoBrowseImplementorsOnBrokenSelectorRepresentingAClas
 
 	presenter text: '#Point23456'.
 	presenter kyoDoBrowseImplementors.
-
+	self flag: #todo.
+	
 	self assert: navigation browseClass equals: nil
 ]
 

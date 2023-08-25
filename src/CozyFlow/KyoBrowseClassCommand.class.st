@@ -15,8 +15,8 @@ KyoBrowseClassCommand class >> defaultDescription [
 
 { #category : #default }
 KyoBrowseClassCommand class >> defaultShortcutKey [
-
-	^ $k command mac | $k control win | $k control unix
+	
+	^ ($k command, $b command) mac | $k control win | $k control unix
 ]
 
 { #category : #default }
