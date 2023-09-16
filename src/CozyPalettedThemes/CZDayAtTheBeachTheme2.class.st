@@ -5,6 +5,12 @@ Class {
 	#package : 'CozyPalettedThemes'
 }
 
+{ #category : 'query' }
+CzDayAtTheBeachTheme2 class >> beCurrent [
+	<script>
+	super beCurrent
+]
+
 { #category : 'configuration' }
 CzDayAtTheBeachTheme2 class >> colorConfiguratorClass [
 
