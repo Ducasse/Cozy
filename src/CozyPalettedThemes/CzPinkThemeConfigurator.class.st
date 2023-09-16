@@ -25,22 +25,23 @@ Internal Representation and Key Implementation Points.
 
 "
 Class {
-	#name : #CzPinkThemeConfigurator,
-	#superclass : #ColoredBasedThemeConfigurator,
-	#category : #CozyPalettedThemes
+	#name : 'CzPinkThemeConfigurator',
+	#superclass : 'ColoredBasedThemeConfigurator',
+	#category : 'CozyPalettedThemes',
+	#package : 'CozyPalettedThemes'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CzPinkThemeConfigurator >> baseColor [
 	^ Color fromHexString: 'c2185b'
 ]
 
-{ #category : #'accessing colors' }
+{ #category : 'accessing colors' }
 CzPinkThemeConfigurator >> selectionColor [
 	^ Color fromHexString: '73264d'
 ]
 
-{ #category : #'accessing colors' }
+{ #category : 'accessing colors' }
 CzPinkThemeConfigurator >> selectionTextColor [
 	^ Color fromHexString: '993366'
 ]

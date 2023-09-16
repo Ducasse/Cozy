@@ -1,16 +1,17 @@
 Class {
-	#name : #CzDayAtTheBeachTheme2,
-	#superclass : #PharoLightTheme,
-	#category : #CozyPalettedThemes
+	#name : 'CzDayAtTheBeachTheme2',
+	#superclass : 'PharoLightTheme',
+	#category : 'CozyPalettedThemes',
+	#package : 'CozyPalettedThemes'
 }
 
-{ #category : #configuration }
+{ #category : 'configuration' }
 CzDayAtTheBeachTheme2 class >> colorConfiguratorClass [
 
 	^ CzDayAtTheBeachConfigurator 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 CzDayAtTheBeachTheme2 class >> setPreferredShoutColors [
 	"self setPreferredShoutColors"
 
@@ -148,7 +149,7 @@ CzDayAtTheBeachTheme2 class >> setPreferredShoutColors [
 			(module 								(cyan muchDarker) bold))
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CzDayAtTheBeachTheme2 class >> themeName [
 	^ 'Day at the Beach'
 ]

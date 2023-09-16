@@ -1,35 +1,36 @@
 Class {
-	#name : #CzDarkBlueTheme,
-	#superclass : #PharoDarkTheme,
-	#category : #CozyPalettedThemes
+	#name : 'CzDarkBlueTheme',
+	#superclass : 'PharoDarkTheme',
+	#category : 'CozyPalettedThemes',
+	#package : 'CozyPalettedThemes'
 }
 
-{ #category : #query }
+{ #category : 'query' }
 CzDarkBlueTheme class >> beCurrent [
 
 	<script>
 	super beCurrent.
-	PharoCommonSettings setThemeSetting
+	
 ]
 
-{ #category : #configuration }
+{ #category : 'configuration' }
 CzDarkBlueTheme class >> colorConfiguratorClass [
 
 	^ CzDarkBlueThemeConfigurator
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 CzDarkBlueTheme class >> initialize [
 
 	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CzDarkBlueTheme class >> themeName [
 	^ 'DarkBlue'
 ]
 
-{ #category : #'border-styles - buttons' }
+{ #category : 'border-styles - buttons' }
 CzDarkBlueTheme >> buttonNormalBorderStyleFor: aButton [
 	"Return the normal button borderStyle for the given button."
 
@@ -44,13 +45,13 @@ CzDarkBlueTheme >> buttonNormalBorderStyleFor: aButton [
 		baseColor: self buttonColor darker
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CzDarkBlueTheme >> shStyleTableName [
 
 	^ #darkBlueStyleTable
 ]
 
-{ #category : #'fill-styles' }
+{ #category : 'fill-styles' }
 CzDarkBlueTheme >> windowInactiveFillStyleFor: aWindow [
 	"We do not want the lighting effect when the window goes inactive"
 

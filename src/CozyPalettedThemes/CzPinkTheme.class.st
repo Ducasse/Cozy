@@ -25,29 +25,30 @@ Internal Representation and Key Implementation Points.
 
 "
 Class {
-	#name : #CzPinkTheme,
-	#superclass : #CzColoredBasedTheme,
-	#category : #CozyPalettedThemes
+	#name : 'CzPinkTheme',
+	#superclass : 'CzColoredBasedTheme',
+	#category : 'CozyPalettedThemes',
+	#package : 'CozyPalettedThemes'
 }
 
-{ #category : #query }
+{ #category : 'query' }
 CzPinkTheme class >> beCurrent [
 	<script>
 	super beCurrent
 ]
 
-{ #category : #configuration }
+{ #category : 'configuration' }
 CzPinkTheme class >> colorConfiguratorClass [
 
 	^ CzPinkThemeConfigurator
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CzPinkTheme class >> themeName [
 	^ 'Pink Theme'
 ]
 
-{ #category : #'fill-styles' }
+{ #category : 'fill-styles' }
 CzPinkTheme >> progressBarProgressFillStyleFor: aProgressBar [
 	"Answer the colour for the given progress bar."
 

@@ -1,35 +1,36 @@
 Class {
-	#name : #CzSandyConfigurator,
-	#superclass : #LightThemeColorConfigurator,
-	#category : #CozyPalettedThemes
+	#name : 'CzSandyConfigurator',
+	#superclass : 'LightThemeColorConfigurator',
+	#category : 'CozyPalettedThemes',
+	#package : 'CozyPalettedThemes'
 }
 
-{ #category : #colors }
+{ #category : 'colors' }
 CzSandyConfigurator >> baseColor [
 
 	^ (Color fromHexString: 'FFF176') 
 ]
 
-{ #category : #colors }
+{ #category : 'colors' }
 CzSandyConfigurator >> basePassiveBackgroundColor [
 
 	^ self baseColor lighter
 ]
 
-{ #category : #colors }
+{ #category : 'colors' }
 CzSandyConfigurator >> darkBaseColor [
 
 	^ Color fromHexString: 'FFF9c4'
 ]
 
-{ #category : #colors }
+{ #category : 'colors' }
 CzSandyConfigurator >> lightBaseColor [
 	
 	"Principally use by calypso tabs."
 	^ (Color fromString: 'FFFF8D') lighter
 ]
 
-{ #category : #colors }
+{ #category : 'colors' }
 CzSandyConfigurator >> lightSelectionColor [
 
 	^ Color fromHexString: 'e1f5fe'

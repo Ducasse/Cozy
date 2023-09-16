@@ -1,19 +1,13 @@
 Class {
-	#name : #BaselineOfCozy,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfCozy
+	#name : 'BaselineOfCozy',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfCozy',
+	#package : 'BaselineOfCozy'
 }
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfCozy >> baseline: spec [
 	<baseline>
-	
-	
-	spec for: #'pharo8.x' 
-		do: [ 
-			spec package: 'CozyCommon'.
-			spec package: 'CozyPharo8' with: [ spec requires: #('CozyCommon') ]
-			].
 
 	spec for: #'pharo9.x' 
 		do: [ 
@@ -43,7 +37,7 @@ BaselineOfCozy >> baseline: spec [
 			 ].
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfCozy >> pharoVersionsFrom: aVersion [
 	^ (aVersion to: SystemVersion current major) collect: [ :v | ('pharo' , v asString , '.x') asSymbol ]
 ]

@@ -1,16 +1,17 @@
 Class {
-	#name : #CzWhiteGhostTheme,
-	#superclass : #PharoLightTheme,
-	#category : #CozyPalettedThemes
+	#name : 'CzWhiteGhostTheme',
+	#superclass : 'PharoLightTheme',
+	#category : 'CozyPalettedThemes',
+	#package : 'CozyPalettedThemes'
 }
 
-{ #category : #configuration }
+{ #category : 'configuration' }
 CzWhiteGhostTheme class >> colorConfiguratorClass [
 
 	^ CzWhiteGhostConfigurator 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 CzWhiteGhostTheme class >> setPreferredShoutColors [
 	"self setPreferredShoutColors"
 
@@ -148,7 +149,7 @@ CzWhiteGhostTheme class >> setPreferredShoutColors [
 			(module 								(cyan muchDarker) bold))
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CzWhiteGhostTheme class >> themeName [
 	^ 'White Ghost'
 ]

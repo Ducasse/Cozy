@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfCozy }
+Package { #name : 'BaselineOfCozy' }

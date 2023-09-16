@@ -1,16 +1,17 @@
 Class {
-	#name : #CzCherryOnTreeTheme,
-	#superclass : #PharoLightTheme,
-	#category : #CozyPalettedThemes
+	#name : 'CzCherryOnTreeTheme',
+	#superclass : 'PharoLightTheme',
+	#category : 'CozyPalettedThemes',
+	#package : 'CozyPalettedThemes'
 }
 
-{ #category : #configuration }
+{ #category : 'configuration' }
 CzCherryOnTreeTheme class >> colorConfiguratorClass [
 
 	^ CzCherryOnTreeConfigurator 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 CzCherryOnTreeTheme class >> setPreferredShoutColors [
 	"self setPreferredShoutColors"
 
@@ -148,7 +149,7 @@ CzCherryOnTreeTheme class >> setPreferredShoutColors [
 			(module 								(cyan muchDarker) bold))
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CzCherryOnTreeTheme class >> themeName [
 	^ 'Cherry on a Tree'
 ]

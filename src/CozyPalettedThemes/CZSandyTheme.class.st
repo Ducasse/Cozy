@@ -1,16 +1,17 @@
 Class {
-	#name : #CzSandyTheme,
-	#superclass : #PharoLightTheme,
-	#category : #CozyPalettedThemes
+	#name : 'CzSandyTheme',
+	#superclass : 'PharoLightTheme',
+	#category : 'CozyPalettedThemes',
+	#package : 'CozyPalettedThemes'
 }
 
-{ #category : #configuration }
+{ #category : 'configuration' }
 CzSandyTheme class >> colorConfiguratorClass [
 
 	^ CzSandyConfigurator 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 CzSandyTheme class >> setPreferredShoutColors [
 	"self setPreferredShoutColors"
 
@@ -148,7 +149,7 @@ CzSandyTheme class >> setPreferredShoutColors [
 			(module 								(cyan muchDarker) bold))
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CzSandyTheme class >> themeName [
 	^ 'Sandy'
 ]

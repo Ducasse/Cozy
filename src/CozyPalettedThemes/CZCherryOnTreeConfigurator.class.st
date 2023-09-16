@@ -1,34 +1,35 @@
 Class {
-	#name : #CzCherryOnTreeConfigurator,
-	#superclass : #LightThemeColorConfigurator,
-	#category : #CozyPalettedThemes
+	#name : 'CzCherryOnTreeConfigurator',
+	#superclass : 'LightThemeColorConfigurator',
+	#category : 'CozyPalettedThemes',
+	#package : 'CozyPalettedThemes'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CzCherryOnTreeConfigurator >> backgroundColor [
 
 	^ (Color fromString: 'fffde7') alphaMixed: 0.25 with: Color white
 ]
 
-{ #category : #colors }
+{ #category : 'colors' }
 CzCherryOnTreeConfigurator >> baseColor [
 	"pale green b9f6ca, 9CEF23, 92F51E"
 	^ (Color fromHexString: '94FF19') alphaMixed: 0.5 with: Color white
 ]
 
-{ #category : #colors }
+{ #category : 'colors' }
 CzCherryOnTreeConfigurator >> basePassiveBackgroundColor [
 
 	^ self baseColor lighter
 ]
 
-{ #category : #colors }
+{ #category : 'colors' }
 CzCherryOnTreeConfigurator >> baseSelectionColor [
 
 	^ self lightSelectionColor 
 ]
 
-{ #category : #colors }
+{ #category : 'colors' }
 CzCherryOnTreeConfigurator >> darkBaseColor [
 "69f0ae: darker intense green. Probably to change"
 	 "(Color fromHexString: '74C21D') alphaMixed: 0.4 with: Color white."
@@ -36,7 +37,7 @@ CzCherryOnTreeConfigurator >> darkBaseColor [
 	^ (Color fromHexString: 'BAEB81')
 ]
 
-{ #category : #colors }
+{ #category : 'colors' }
 CzCherryOnTreeConfigurator >> lightBaseColor [
 	"f8bbd0 pinkish light fce4ec"
 	"Color fromString: 'f8bbd0'"
@@ -44,7 +45,7 @@ CzCherryOnTreeConfigurator >> lightBaseColor [
 	
 ]
 
-{ #category : #colors }
+{ #category : 'colors' }
 CzCherryOnTreeConfigurator >> lightSelectionColor [
 
 	"ligher pinkish f8bbd0"
@@ -53,31 +54,31 @@ CzCherryOnTreeConfigurator >> lightSelectionColor [
 		^ (Color fromHexString: 'FFA3CE') alphaMixed: 0.33 with: Color white
 ]
 
-{ #category : #colors }
+{ #category : 'colors' }
 CzCherryOnTreeConfigurator >> secondarySelectionColor [
 
 	^ self darkBaseColor 
 ]
 
-{ #category : #colors }
+{ #category : 'colors' }
 CzCherryOnTreeConfigurator >> selectionTextColor [
 
 	^ Color fromString: 'f06292'
 ]
 
-{ #category : #colors }
+{ #category : 'colors' }
 CzCherryOnTreeConfigurator >> veryLightSelectionColor [
 
 	^ Color purple
 ]
 
-{ #category : #colors }
+{ #category : 'colors' }
 CzCherryOnTreeConfigurator >> windowBorderColor [
 
 	^ self darkBaseColor
 ]
 
-{ #category : #colors }
+{ #category : 'colors' }
 CzCherryOnTreeConfigurator >> windowColor [
 
 	^ self baseColor

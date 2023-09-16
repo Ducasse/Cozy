@@ -1,1 +1,1 @@
-Package { #name : #CozyPalettedThemes }
+Package { #name : 'CozyPalettedThemes' }

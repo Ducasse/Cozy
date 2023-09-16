@@ -1,27 +1,28 @@
 Class {
-	#name : #CzGreenTheme,
-	#superclass : #CzColoredBasedTheme,
-	#category : #CozyPalettedThemes
+	#name : 'CzGreenTheme',
+	#superclass : 'CzColoredBasedTheme',
+	#category : 'CozyPalettedThemes',
+	#package : 'CozyPalettedThemes'
 }
 
-{ #category : #query }
+{ #category : 'query' }
 CzGreenTheme class >> beCurrent [
 	<script>
 	super beCurrent
 ]
 
-{ #category : #configuration }
+{ #category : 'configuration' }
 CzGreenTheme class >> colorConfiguratorClass [
 
 	^ CzGreenThemeConfigurator
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CzGreenTheme class >> themeName [
 	^ 'Green Theme'
 ]
 
-{ #category : #'basic-colors' }
+{ #category : 'basic-colors' }
 CzGreenTheme >> progressBarProgressFillStyleFor: aProgressBar [
 	^ Color fromHexString: '4CAF50'
 ]
