@@ -31,7 +31,7 @@ BaselineOfCozy >> baseline: spec [
 			 ].
 	spec for: #'pharo12.x' 
 		do: [ 
-			spec package: 'CozyCommon10'.
+			spec package: 'CozyCommon12'.
 			spec package: 'CozyIceberg'.
 			spec package: 'CozyPalettedThemes'.
 			 ].
