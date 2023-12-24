@@ -437,13 +437,6 @@ CzQuickAccess >> in: aString [
 		openContents: aString
 ]
 
-{ #category : 'utils' }
-CzQuickAccess >> inWorkspace: aString [ 
-
-	Workspace
-		openContents: aString
-]
-
 { #category : 'scripts-mine' }
 CzQuickAccess >> installBloc [
 	<cozyScript: #'Install Bloc DEV'>
