@@ -23,7 +23,7 @@ Next version should
 ```
 Metacello new
   baseline: 'Cozy';
-  repository: 'github://Ducasse/Cozy/tree/master/src';
+  repository: 'github://Ducasse/Cozy/src';
   load
 ```
 
