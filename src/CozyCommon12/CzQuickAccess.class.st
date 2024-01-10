@@ -577,7 +577,7 @@ CzQuickAccess >> removeCleanlyMDAndBC [
 	detect: [ :each | #('Microdown' 'NewTools-DocumentationReader') includes: each name ]
 	ifFound: [ :aRepository | aRepository forget ].
 "This, however, needs to stay :)"
-#( 'BeautifulComments' 'BaselineOfBeautifulComments' 'BaselineOfMicrodownDev' 'BaselineOfMicrodown' 'Microdown' 'Microdown-Tests' 'Microdown-MicrodownRichTextComposer' 'Microdown-ResolvePath' 
+#(   'NewTools-DocumentBrowser-GitHubResource-Tests'       'BeautifulComments' 'NewTools-DocumentBrowser-GitHubResource' 'NewTools-DocumentBrowser' 'BaselineOfBeautifulComments' 'NewTools-DocumentBrowser-Tests' 'BaselineOfMicrodownDev' 'BaselineOfMicrodown' 'Microdown' 'NewTools-DocumentBrowser' 'Microdown-Tests' 'Microdown-RichTextPresenter-Tests' 'Microdown-RichTextPresenter' 'Microdown-MicrodownRichTextComposer' 'Microdown-ResolvePath' 
 'Microdown-ResolvePath-Tests' 'NewTools-DocumentationReader-Tests' 'BaselineOfNewToolsDocumentationReader' 'Microdown-RichTextComposer' 'Spec2-Microdown'
 'NewTools-DocumentationReader') do: [ :each | 
 	(RPackageOrganizer default packageNamed: each ifAbsent: [ nil ]) 
