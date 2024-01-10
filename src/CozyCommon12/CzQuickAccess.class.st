@@ -96,12 +96,9 @@ CzQuickAccess class >> desactivate [
 { #category : 'accessing' }
 CzQuickAccess class >> execute: aSelector [
 	
-	[ self instance perform: aSelector.
-	self inform: 'Executed with success: ' , aSelector ]
-		on: Error
-		do: [ :ex | 
-			self inform: 'Error during execution.
-' , ex asString ]
+	self instance perform: aSelector.
+	self inform: 'Executed with success: ' , aSelector
+	
 ]
 
 { #category : 'accessing' }
@@ -571,17 +568,15 @@ CzQuickAccess >> randomBackground [
 
 { #category : 'scripts-mine' }
 CzQuickAccess >> removeCleanlyMDAndBC [
-	<cozyScript: #'Flush MD and BC'>
 
-	IceRepository registry 
-	detect: [ :each | #('Microdown' 'NewTools-DocumentationReader') includes: each name ]
-	ifFound: [ :aRepository | aRepository forget ].
-"This, however, needs to stay :)"
-#(   'NewTools-DocumentBrowser-GitHubResource-Tests'       'BeautifulComments' 'NewTools-DocumentBrowser-GitHubResource' 'NewTools-DocumentBrowser' 'BaselineOfBeautifulComments' 'NewTools-DocumentBrowser-Tests' 'BaselineOfMicrodownDev' 'BaselineOfMicrodown' 'Microdown' 'NewTools-DocumentBrowser' 'Microdown-Tests' 'Microdown-RichTextPresenter-Tests' 'Microdown-RichTextPresenter' 'Microdown-MicrodownRichTextComposer' 'Microdown-ResolvePath' 
-'Microdown-ResolvePath-Tests' 'NewTools-DocumentationReader-Tests' 'BaselineOfNewToolsDocumentationReader' 'Microdown-RichTextComposer' 'Spec2-Microdown'
-'NewTools-DocumentationReader') do: [ :each | 
-	(RPackageOrganizer default packageNamed: each ifAbsent: [ nil ]) 
-		ifNotNil: [ :aPackage | aPackage removeFromSystem ] ]
+	<cozyScript: #'Flush MD and BC'>
+	#( 'Microdown' 'BeautifulComments' 'DocumentBrowser' ) do: [ :name |
+		(IceRepository repositoryNamed: name)
+			ifNil: [ self inform: 'Project not found: ' , name ]
+			ifNotNil: [ :found |
+				found
+					unload;
+					forget ] ]
 ]
 
 { #category : 'code snippets' }
