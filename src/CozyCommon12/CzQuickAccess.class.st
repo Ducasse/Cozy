@@ -427,13 +427,6 @@ CzQuickAccess >> iceberg [
 	self class focusIceberg
 ]
 
-{ #category : 'utils' }
-CzQuickAccess >> in: aString [ 
-
-	Workspace
-		openContents: aString
-]
-
 { #category : 'scripts-mine' }
 CzQuickAccess >> installBloc [
 	<cozyScript: #'Install Bloc DEV'>
