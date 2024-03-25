@@ -24,17 +24,18 @@ Once you configuration files are created, you can simply invoke
 
 "
 Class {
-	#name : #CzIcePick,
-	#superclass : #Object,
-	#category : #CozyIceberg
+	#name : 'CzIcePick',
+	#superclass : 'Object',
+	#category : 'CozyIceberg',
+	#package : 'CozyIceberg'
 }
 
-{ #category : #iceberg }
+{ #category : 'iceberg' }
 CzIcePick class >> credentialsIcebergFilename [
 	^ 'credentialsIceberg.ston'
 ]
 
-{ #category : #iceberg }
+{ #category : 'iceberg' }
 CzIcePick class >> sharedRepositoryFolderPathFile [
 	"return the name of the file containing the path to the shared repository folder."
 	
@@ -42,14 +43,14 @@ CzIcePick class >> sharedRepositoryFolderPathFile [
 	
 ]
 
-{ #category : #'on progress' }
+{ #category : 'on progress' }
 CzIcePick >> collectAllSubprojectsFrom: aDirectory into: aCollection [
 	(aDirectory directories anySatisfy: [ :e | e basename = '.git' ]) 
 		ifTrue: [ aCollection add: aDirectory ] 
 		ifFalse: [ aDirectory directories do: [ :dir | self collectAllSubprojectsFrom: dir into: aCollection ] ]
 ]
 
-{ #category : #'main configuration' }
+{ #category : 'main configuration' }
 CzIcePick >> configure [
 
 	self configureMonticelloIntegration.
@@ -58,13 +59,13 @@ CzIcePick >> configure [
 	self useStoredSharedRepositoryFolder 
 ]
 
-{ #category : #'low-level operations' }
+{ #category : 'low-level operations' }
 CzIcePick >> configureCredentialStore: aDictionary [
 	
-	self configureCredentialStoreUsername: (aDictionary at: #username)  password: (aDictionary at: #password)
+	self configureCredentialStoreUsername: (aDictionary at: #username)  password: (aDictionary at: #password)  
 ]
 
-{ #category : #'low-level operations' }
+{ #category : 'low-level operations' }
 CzIcePick >> configureCredentialStoreUsername: aString password: aPassword [
 	
 	IceCredentialStore current
@@ -76,14 +77,14 @@ CzIcePick >> configureCredentialStoreUsername: aString password: aPassword [
 
 ]
 
-{ #category : #'low-level operations' }
+{ #category : 'low-level operations' }
 CzIcePick >> configureMonticelloIntegration [
 
 	Iceberg enableMetacelloIntegration: true
 	
 ]
 
-{ #category : #'low-level operations' }
+{ #category : 'low-level operations' }
 CzIcePick >> configureSharedRepositoriesFolder: aFileReference [
 
 	IceLibgitRepository
@@ -91,7 +92,7 @@ CzIcePick >> configureSharedRepositoriesFolder: aFileReference [
 		sharedRepositoriesLocation: aFileReference
 ]
 
-{ #category : #'low-level operations' }
+{ #category : 'low-level operations' }
 CzIcePick >> configureSshCredentials [
 
 	IceCredentialsProvider useCustomSsh: true.
@@ -102,19 +103,19 @@ CzIcePick >> configureSshCredentials [
 	self flag: #todo "should manage this from the config files."
 ]
 
-{ #category : #helpers }
+{ #category : 'helpers' }
 CzIcePick >> contributingPharoImageIdentifier [
 
   ^ 'ContribPharo'
 ]
 
-{ #category : #'file and folders' }
+{ #category : 'file and folders' }
 CzIcePick >> credentialsIcebergFilename [
 
 	^ self class credentialsIcebergFilename
 ]
 
-{ #category : #working }
+{ #category : 'working' }
 CzIcePick >> fetchAllRemotesOf: repo [
 	| remotes |
 	remotes := repo remotes.
@@ -128,17 +129,17 @@ CzIcePick >> fetchAllRemotesOf: repo [
 			repo fetchFrom: each ] ]
 ]
 
-{ #category : #helpers }
+{ #category : 'helpers' }
 CzIcePick >> imageNameBeginsWith: aString [
 	^ self imageNameBeginsWithAny: {aString}
 ]
 
-{ #category : #helpers }
+{ #category : 'helpers' }
 CzIcePick >> imageNameBeginsWithAny: aCollection [
 	^ aCollection anySatisfy: [ :each | Smalltalk shortImageName beginsWith: each ]
 ]
 
-{ #category : #'on progress' }
+{ #category : 'on progress' }
 CzIcePick >> initializePotentialIcebergRepos [
 
 	| projects |
@@ -149,19 +150,19 @@ CzIcePick >> initializePotentialIcebergRepos [
 				ifFound: [ :dir | repo location: dir ] ]
 ]
 
-{ #category : #'interactive helpers' }
+{ #category : 'interactive helpers' }
 CzIcePick >> moveCurrentToOld: afileName [
 	(self resourcesFolder / (afileName, '.old')) ensureDelete.
 	self resourcesFolder / afileName moveTo: (self resourcesFolder / (afileName, '.old'))
 ]
 
-{ #category : #working }
+{ #category : 'working' }
 CzIcePick >> openIceberg [
 	<script>
 	IceTipRepositoriesBrowser new openWithSpec
 ]
 
-{ #category : #working }
+{ #category : 'working' }
 CzIcePick >> prepareContributionToPharoForUnsynchronizedRepositories [
 	"When you do not synchronized manually the pharo local and remote repositories, 
 	and you want to contribute, the important thing to do is is to sync the local repository with the image.
@@ -186,7 +187,7 @@ CzIcePick >> prepareContributionToPharoForUnsynchronizedRepositories [
 	
 ]
 
-{ #category : #working }
+{ #category : 'working' }
 CzIcePick >> prepareForPharoContributionForSynchronizedRepository [
 	"Useful when the local repository of pharo is synchronized with the remote.
 	Checks that before contributing the current branch is the contribution branches of current Pharo version"
@@ -205,30 +206,30 @@ CzIcePick >> prepareForPharoContributionForSynchronizedRepository [
                     defaultBranch})) ifTrue: [ pharoRepository checkoutBranch: defaultBranch ] ]
 ]
 
-{ #category : #'file and folders' }
+{ #category : 'file and folders' }
 CzIcePick >> resourcesFolder [
 	^ self rootFolder / 'SettingResources'
 ]
 
-{ #category : #'file and folders' }
+{ #category : 'file and folders' }
 CzIcePick >> rootFolder [
 	^ StartupPreferencesLoader preferencesGeneralFolder
 ]
 
-{ #category : #'file and folders' }
+{ #category : 'file and folders' }
 CzIcePick >> sharedRepositoryFolder [ 
 
 	^ ((STON fromString: (self resourcesFolder / self sharedRepositoryFolderPathFile ) asFileReference contents) at: #dir) asFileReference
 
 ]
 
-{ #category : #'file and folders' }
+{ #category : 'file and folders' }
 CzIcePick >> sharedRepositoryFolderPathFile [
 
 	^ self class sharedRepositoryFolderPathFile
 ]
 
-{ #category : #'interactive helpers' }
+{ #category : 'interactive helpers' }
 CzIcePick >> storeIcebergCredentialsInLocalSettings [
 
 	| file userName password |
@@ -253,7 +254,7 @@ CzIcePick >> storeIcebergCredentialsInLocalSettings [
 	file writeStreamDo: [ :s | s nextPutAll: (STON toStringPretty: (Dictionary with: #username -> userName with: #password -> password)) ]
 ]
 
-{ #category : #'interactive helpers' }
+{ #category : 'interactive helpers' }
 CzIcePick >> storeSharedRepositoryFolderInLocalSettings [
 	
 	| file path |
@@ -279,7 +280,7 @@ CzIcePick >> storeSharedRepositoryFolderInLocalSettings [
 	
 ]
 
-{ #category : #working }
+{ #category : 'working' }
 CzIcePick >> toPrepareContributionToPharo [
 	"self new toPrepareContributionToPharo"
 	| pharo branchName |
@@ -296,7 +297,7 @@ CzIcePick >> toPrepareContributionToPharo [
 	
 ]
 
-{ #category : #'main configuration' }
+{ #category : 'main configuration' }
 CzIcePick >> useStoredIcebergCredentials [
 
 	| file |
@@ -308,7 +309,7 @@ CzIcePick >> useStoredIcebergCredentials [
 
 ]
 
-{ #category : #'main configuration' }
+{ #category : 'main configuration' }
 CzIcePick >> useStoredSharedRepositoryFolder [
 	"self new useStoredSharedRepositoryFolder"
 	| file |
@@ -320,7 +321,7 @@ CzIcePick >> useStoredSharedRepositoryFolder [
 
 ]
 
-{ #category : #stefSetup }
+{ #category : 'stefSetup' }
 CzIcePick >> violentlyGenerateSharedRepositoryFolderInLocalSettings [
 	"self new violentlyGenerateSharedRepositoryFolderInLocalSettings"
 	| file cred |
