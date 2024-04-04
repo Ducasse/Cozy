@@ -463,7 +463,7 @@ CzQuickAccess >> installPillar [
 	<cozyScript: #'Install Pillar'>
 	
 	Metacello new
-		baseline: 'PillarApp';
+		baseline: 'Pillar';
 		repository: 'github://pillar-markup/pillar:dev/src';
 		onConflict: [ :e | e useIncoming ];
 		onUpgrade: [ :e | e useIncoming ];
