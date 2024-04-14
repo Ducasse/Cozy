@@ -449,7 +449,7 @@ CzQuickAccess >> installMicrodownDev [
 	
 	Metacello new
 		baseline: 'Microdown';
-		repository: 'github://pillar-markup/Microdown:dev/src';
+		repository: 'github://Ducasse/Microdown:dev/src';
 		onConflict: [ :e | e useIncoming ];
 		onUpgrade: [ :e | e useIncoming ];
 		ignoreImage;
