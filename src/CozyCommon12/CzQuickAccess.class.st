@@ -445,11 +445,26 @@ CzQuickAccess >> installBloc [
 
 { #category : 'scripts-mine' }
 CzQuickAccess >> installMicrodownDev [
-	<cozyScript: #'Install Microdown DEV'>
+	<cozyScript: #'Install Microdown DEV (Ducasse)'>
 	
 	Metacello new
 		baseline: 'Microdown';
 		repository: 'github://Ducasse/Microdown:dev/src';
+		onConflict: [ :e | e useIncoming ];
+		onUpgrade: [ :e | e useIncoming ];
+		ignoreImage;
+		load.
+
+	
+]
+
+{ #category : 'scripts-mine' }
+CzQuickAccess >> installMicrodownDevPillar [
+	<cozyScript: #'Install Microdown DEV (pillar)'>
+	
+	Metacello new
+		baseline: 'Microdown';
+		repository: 'github://Pillar-markup/Microdown:dev/src';
 		onConflict: [ :e | e useIncoming ];
 		onUpgrade: [ :e | e useIncoming ];
 		ignoreImage;
