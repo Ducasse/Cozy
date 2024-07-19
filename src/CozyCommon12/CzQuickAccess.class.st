@@ -447,13 +447,13 @@ CzQuickAccess >> installBloc [
 CzQuickAccess >> installMicrodownDevPillar [
 	<cozyScript: #'Install Microdown DEV (pillar)'>
 	
-	Metacello new
+	[ Metacello new
 		baseline: 'Microdown';
 		repository: 'github://Pillar-markup/Microdown:dev/src';
 		onConflict: [ :e | e useIncoming ];
 		onUpgrade: [ :e | e useIncoming ];
 		ignoreImage;
-		load.
+		load] on: MCMergeOrLoadWarning do: [ :e | e load ]
 
 	
 ]
