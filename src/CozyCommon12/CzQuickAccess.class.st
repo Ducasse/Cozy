@@ -431,14 +431,14 @@ CzQuickAccess >> iceberg [
 CzQuickAccess >> installBloc [
 	<cozyScript: #'Install Bloc DEV'>
 	
-	[ Metacello new
+	"[" Metacello new
 	baseline: 'Bloc';
 	repository: 'github://pharo-graphics/Bloc:dev-1.0/src';
 	onConflictUseIncoming;
 	ignoreImage;
-	load ]
+	load "]
 		on: MCMergeOrLoadWarning
-		do: [ :warning | warning load ]
+		do: [ :warning | warning load ]"
 
 	
 ]
