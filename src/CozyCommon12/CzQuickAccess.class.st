@@ -333,6 +333,14 @@ CzQuickAccess >> calypsoCriticEnable [
 	ClyCriticBrowserPlugin enable
 ]
 
+{ #category : 'scripts-mine' }
+CzQuickAccess >> cleanInstallMicrodownDevPillar [
+	<cozyScript: #'Flush and Install Microdown DEV (pillar)'>
+	
+	self removeCleanlyMDAndBC.
+	self installMicrodownDevPillar
+]
+
 { #category : 'code snippets' }
 CzQuickAccess >> coolCommands [
 	<cozyScript: #'Git commands'>
