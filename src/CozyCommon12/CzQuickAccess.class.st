@@ -496,6 +496,19 @@ CzQuickAccess >> installSample [
 ]
 
 { #category : 'scripts-mine' }
+CzQuickAccess >> installToplo [
+	<cozyScript: #'Install Toplo DEV'>
+	
+	EpMonitor disableDuring: [
+    [ Metacello new baseline: 'Toplo'; repository: 'github://pharo-graphics/Toplo:master/src';
+        onConflictUseIncoming;
+        ignoreImage;
+        load.
+    ] on: MCMergeOrLoadWarning do: [ :warning | warning load ].
+  ].
+]
+
+{ #category : 'scripts-mine' }
 CzQuickAccess >> installUniter [
 	<cozyScript: #'Install Uniter'>
 	
