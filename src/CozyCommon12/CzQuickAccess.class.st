@@ -441,7 +441,7 @@ CzQuickAccess >> installBloc [
 	
 	"[" Metacello new
 	baseline: 'Bloc';
-	repository: 'github://pharo-graphics/Bloc:dev-1.0/src';
+	repository: 'github://pharo-graphics/Bloc:dev/src';
 	onConflictUseIncoming;
 	ignoreImage;
 	load "]
@@ -500,10 +500,11 @@ CzQuickAccess >> installToplo [
 	<cozyScript: #'Install Toplo DEV'>
 	
 	EpMonitor disableDuring: [
-    [ Metacello new baseline: 'Toplo'; repository: 'github://pharo-graphics/Toplo:master/src';
-        onConflictUseIncoming;
-        ignoreImage;
-        load.
+    [ Metacello new baseline: 'Toplo'; 
+			repository: 'github://pharo-graphics/Toplo:dev/src';
+			onConflictUseIncoming;
+			ignoreImage;
+			load.
     ] on: MCMergeOrLoadWarning do: [ :warning | warning load ].
   ].
 ]
