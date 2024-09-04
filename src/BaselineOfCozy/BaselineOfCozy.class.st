@@ -35,6 +35,12 @@ BaselineOfCozy >> baseline: spec [
 			spec package: 'CozyIceberg'.
 			spec package: 'CozyPalettedThemes'.
 			 ].
+	spec for: #'pharo13.x' 
+		do: [ 
+			spec package: 'CozyCommon12'.
+			spec package: 'CozyIceberg'.
+			spec package: 'CozyPalettedThemes'.
+			 ].
 ]
 
 { #category : 'baselines' }
