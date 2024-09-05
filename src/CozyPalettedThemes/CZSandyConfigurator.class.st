@@ -33,5 +33,5 @@ CzSandyConfigurator >> lightBaseColor [
 { #category : 'colors' }
 CzSandyConfigurator >> lightSelectionColor [
 
-	^ Color fromHexString: 'e1f5fe'
+	^ Color fromHexString: 'c8edfd'
 ]
