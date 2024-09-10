@@ -28,7 +28,7 @@ CzLightSandyConfigurator >> darkBaseColor [
 CzLightSandyConfigurator >> lightBaseColor [
 	
 	"Principally use by calypso tabs."
-	^ "(Color fromString: 'E2DCAD')" "Color fromString: 'FFF7AF'" Color fromString: 'FFF9C9'
+	^ "(Color fromString: 'E2DCAD')" Color fromString: 'FFF7AF'
 ]
 
 { #category : 'colors' }
