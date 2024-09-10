@@ -8,30 +8,30 @@ Class {
 { #category : 'colors' }
 CzLightSandyConfigurator >> baseColor [
 
-	^ (Color fromHexString: 'fff9c8')
+	^ (Color fromHexString: 'FFFCE2') 
 ]
 
 { #category : 'colors' }
 CzLightSandyConfigurator >> basePassiveBackgroundColor [
 
-	^ (Color fromHexString: 'fffce3')
+	^ (Color fromHexString: 'FFF9C8')
 ]
 
 { #category : 'colors' }
 CzLightSandyConfigurator >> darkBaseColor [
 
-	^ (Color fromHexString: 'e5d86a') lighter lighter
+	^ "(Color fromHexString: 'E2DCAD')" "Color fromHexString: 'FFF6AF'" Color fromHexString: 'FFF9C8'
 ]
 
 { #category : 'colors' }
 CzLightSandyConfigurator >> lightBaseColor [
 	
 	"Principally use by calypso tabs."
-	^ (Color fromString: 'FFFF8D') lighter lighter
+	^ (Color fromString: 'E2DCAD')
 ]
 
 { #category : 'colors' }
 CzLightSandyConfigurator >> lightSelectionColor [
 
-	^ (Color fromHexString: 'c8edfd')
+	^ (Color fromHexString: 'C8CEFF')
 ]
