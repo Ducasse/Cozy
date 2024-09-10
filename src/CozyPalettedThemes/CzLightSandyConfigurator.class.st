@@ -20,14 +20,15 @@ CzLightSandyConfigurator >> basePassiveBackgroundColor [
 { #category : 'colors' }
 CzLightSandyConfigurator >> darkBaseColor [
 
-	^ "(Color fromHexString: 'E2DCAD')" "Color fromHexString: 'FFF6AF'" Color fromHexString: 'FFF9C8'
+	^ "(Color fromHexString: 'E2DCAD')" "Color fromHexString: 'FFF6AF'" 
+		Color fromHexString: 'FFF7AF'. Color red
 ]
 
 { #category : 'colors' }
 CzLightSandyConfigurator >> lightBaseColor [
 	
 	"Principally use by calypso tabs."
-	^ (Color fromString: 'E2DCAD')
+	^ "(Color fromString: 'E2DCAD')" "Color fromString: 'FFF7AF'" Color fromString: 'FFF9C9'
 ]
 
 { #category : 'colors' }

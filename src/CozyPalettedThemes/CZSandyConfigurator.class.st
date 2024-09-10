@@ -27,7 +27,7 @@ CzSandyConfigurator >> darkBaseColor [
 CzSandyConfigurator >> lightBaseColor [
 	
 	"Principally use by calypso tabs."
-	^ (Color fromString: 'FFFF8D') lighter
+	^ "(Color fromString: 'FFFF8D') lighter" Color pink
 ]
 
 { #category : 'colors' }

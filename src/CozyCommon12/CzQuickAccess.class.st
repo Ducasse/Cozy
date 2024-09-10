@@ -685,6 +685,22 @@ CzQuickAccess >> toggleToDayAtTheBeach [
 ]
 
 { #category : 'cozy' }
+CzQuickAccess >> toggleToLightSand [
+	<cozyScript: #'Use Light Sand'>
+
+	CzLightSandTheme beCurrent.
+	CzSettingExecutor setFastDragging
+]
+
+{ #category : 'cozy' }
+CzQuickAccess >> toggleToLightYSand [
+	<cozyScript: #'Use Light Y Sand'>
+
+	CzLightSandyTheme beCurrent.
+	CzSettingExecutor setFastDragging
+]
+
+{ #category : 'cozy' }
 CzQuickAccess >> toggleToSandy [
 	<cozyScript: #'Use Sandy'>
 
