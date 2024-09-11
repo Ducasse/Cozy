@@ -153,3 +153,28 @@ CzLightSandConfigurator class >> setPreferredShoutColors [
 CzLightSandConfigurator class >> themeName [
 	^ 'Light Sandy'
 ]
+
+{ #category : 'nil' }
+CzLightSandConfigurator >> baseColor [
+
+	^ (Color fromHexString: 'FFFCE2') 
+]
+
+{ #category : 'colors' }
+CzLightSandConfigurator >> basePassiveBackgroundColor [
+
+	^ "(Color fromHexString: 'FEBBE3')" Color purple
+]
+
+{ #category : 'colors' }
+CzLightSandConfigurator >> lightBaseColor [
+	
+	"Principally use by calypso tabs."
+	Color fromString: 'E2DCAD'. ^ Color red
+]
+
+{ #category : 'colors' }
+CzLightSandConfigurator >> lightSelectionColor [
+
+	^ "(Color fromHexString: 'C8CEFF')" Color green
+]

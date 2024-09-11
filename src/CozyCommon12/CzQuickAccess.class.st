@@ -680,7 +680,7 @@ CzQuickAccess >> toggleToCherry [
 CzQuickAccess >> toggleToDayAtTheBeach [
 	<cozyScript: #'Use Day-at-the-Beach'>
 
-	CzDayAtTheBeachTheme2 beCurrent.
+	CzDayAtTheBeachTheme beCurrent.
 	CzSettingExecutor setFastDragging
 ]
 
