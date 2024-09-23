@@ -1,8 +1,9 @@
 Class {
 	#name : 'CzLightSandyConfigurator',
 	#superclass : 'LightThemeColorConfigurator',
-	#category : 'CozyPalettedThemes',
-	#package : 'CozyPalettedThemes'
+	#category : 'CozyPalettedThemes-Pale',
+	#package : 'CozyPalettedThemes',
+	#tag : 'Pale'
 }
 
 { #category : 'colors' }
@@ -13,8 +14,9 @@ CzLightSandyConfigurator >> baseColor [
 
 { #category : 'colors' }
 CzLightSandyConfigurator >> basePassiveBackgroundColor [
-
-	^ (Color fromHexString: 'FFF9C8')
+	"used for disabled drop and text for example"
+	
+	^ Color fromHexString: 'FFF9C8'
 ]
 
 { #category : 'colors' }
@@ -28,7 +30,7 @@ CzLightSandyConfigurator >> darkBaseColor [
 CzLightSandyConfigurator >> lightBaseColor [
 	
 	"Principally use by calypso tabs."
-	^ "(Color fromString: 'E2DCAD')" Color fromString: 'FFF7AF'
+	^ Color fromString: 'E2DCAD'
 ]
 
 { #category : 'colors' }

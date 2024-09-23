@@ -1,8 +1,9 @@
 Class {
 	#name : 'CzLightSandyTheme',
 	#superclass : 'PharoLightTheme',
-	#category : 'CozyPalettedThemes',
-	#package : 'CozyPalettedThemes'
+	#category : 'CozyPalettedThemes-Pale',
+	#package : 'CozyPalettedThemes',
+	#tag : 'Pale'
 }
 
 { #category : 'configuration' }

@@ -1,8 +1,9 @@
 Class {
 	#name : 'CzDarkBlueThemeConfigurator',
 	#superclass : 'DarkThemeColorConfigurator',
-	#category : 'CozyPalettedThemes',
-	#package : 'CozyPalettedThemes'
+	#category : 'CozyPalettedThemes-Strong',
+	#package : 'CozyPalettedThemes',
+	#tag : 'Strong'
 }
 
 { #category : 'accessing colors' }

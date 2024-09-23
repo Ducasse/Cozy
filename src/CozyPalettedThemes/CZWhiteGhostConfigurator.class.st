@@ -1,8 +1,9 @@
 Class {
 	#name : 'CzWhiteGhostConfigurator',
 	#superclass : 'LightThemeColorConfigurator',
-	#category : 'CozyPalettedThemes',
-	#package : 'CozyPalettedThemes'
+	#category : 'CozyPalettedThemes-Strong',
+	#package : 'CozyPalettedThemes',
+	#tag : 'Strong'
 }
 
 { #category : 'colors' }

@@ -1,8 +1,9 @@
 Class {
 	#name : 'CzCherryOnTreeTheme',
 	#superclass : 'PharoLightTheme',
-	#category : 'CozyPalettedThemes',
-	#package : 'CozyPalettedThemes'
+	#category : 'CozyPalettedThemes-Strong',
+	#package : 'CozyPalettedThemes',
+	#tag : 'Strong'
 }
 
 { #category : 'configuration' }

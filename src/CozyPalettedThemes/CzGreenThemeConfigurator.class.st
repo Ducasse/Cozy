@@ -1,8 +1,9 @@
 Class {
 	#name : 'CzGreenThemeConfigurator',
 	#superclass : 'ColoredBasedThemeConfigurator',
-	#category : 'CozyPalettedThemes',
-	#package : 'CozyPalettedThemes'
+	#category : 'CozyPalettedThemes-Strong',
+	#package : 'CozyPalettedThemes',
+	#tag : 'Strong'
 }
 
 { #category : 'accessing' }

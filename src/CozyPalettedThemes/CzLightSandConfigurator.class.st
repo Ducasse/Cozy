@@ -1,8 +1,9 @@
 Class {
 	#name : 'CzLightSandConfigurator',
 	#superclass : 'LightThemeColorConfigurator',
-	#category : 'CozyPalettedThemes',
-	#package : 'CozyPalettedThemes'
+	#category : 'CozyPalettedThemes-Pale',
+	#package : 'CozyPalettedThemes',
+	#tag : 'Pale'
 }
 
 { #category : 'configuration' }
@@ -162,8 +163,8 @@ CzLightSandConfigurator >> baseColor [
 
 { #category : 'colors' }
 CzLightSandConfigurator >> basePassiveBackgroundColor [
-
-	^ "(Color fromHexString: 'FEBBE3')" Color purple
+	"used for disabled drop and text for example"
+	^  Color fromHexString: 'FEBBE3'
 ]
 
 { #category : 'colors' }

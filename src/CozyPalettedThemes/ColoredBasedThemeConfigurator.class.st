@@ -1,8 +1,9 @@
 Class {
 	#name : 'ColoredBasedThemeConfigurator',
 	#superclass : 'DarkThemeColorConfigurator',
-	#category : 'CozyPalettedThemes',
-	#package : 'CozyPalettedThemes'
+	#category : 'CozyPalettedThemes-Strong',
+	#package : 'CozyPalettedThemes',
+	#tag : 'Strong'
 }
 
 { #category : 'testing' }

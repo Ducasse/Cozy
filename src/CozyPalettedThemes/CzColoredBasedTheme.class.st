@@ -1,8 +1,9 @@
 Class {
 	#name : 'CzColoredBasedTheme',
 	#superclass : 'PharoDarkTheme',
-	#category : 'CozyPalettedThemes',
-	#package : 'CozyPalettedThemes'
+	#category : 'CozyPalettedThemes-Strong',
+	#package : 'CozyPalettedThemes',
+	#tag : 'Strong'
 }
 
 { #category : 'query' }
