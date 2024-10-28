@@ -20,7 +20,7 @@ CzDarkBlueTheme class >> colorConfiguratorClass [
 	^ CzDarkBlueThemeConfigurator
 ]
 
-{ #category : 'initialization' }
+{ #category : 'class initialization' }
 CzDarkBlueTheme class >> initialize [
 
 	

@@ -17,7 +17,7 @@ Class {
 	#package : 'CozyCommon12'
 }
 
-{ #category : 'initialization' }
+{ #category : 'class initialization' }
 CzSettingExecutor class >> addScript: aSymbol [
 
 	scriptNames add: aSymbol
@@ -37,7 +37,7 @@ CzSettingExecutor class >> defaultScriptNames [
 		)
 ]
 
-{ #category : 'initialization' }
+{ #category : 'class initialization' }
 CzSettingExecutor class >> executeSetup [
 	"Execute all the scripts"
 	
@@ -50,7 +50,7 @@ CzSettingExecutor class >> executeSetup [
 			] "on: Error do: [ :ex | self inform: 'error raised' ]" ]
 ]
 
-{ #category : 'initialization' }
+{ #category : 'class initialization' }
 CzSettingExecutor class >> initialize [
 	
 	self executeSetup
@@ -103,20 +103,20 @@ CzSettingExecutor class >> resetMonticelloCredentials [
 	file ensureDelete
 ]
 
-{ #category : 'initialization' }
+{ #category : 'class initialization' }
 CzSettingExecutor class >> resetScriptNames [
 
 	scriptNames := nil
 ]
 
-{ #category : 'initialization' }
+{ #category : 'class initialization' }
 CzSettingExecutor class >> scriptNames [
 
 	scriptNames ifNil: [ scriptNames := self defaultScriptNames ].
 	^ scriptNames
 ]
 
-{ #category : 'initialization' }
+{ #category : 'class initialization' }
 CzSettingExecutor class >> scriptNames: aCollection [
 	
 	 scriptNames := aCollection.
