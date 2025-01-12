@@ -7,9 +7,6 @@ But you can set the ones you want by simply calling sending the message `scriptN
 Class {
 	#name : 'CzSettingExecutor',
 	#superclass : 'CozyRoot',
-	#classVars : [
-		'DefaultScripts'
-	],
 	#classInstVars : [
 		'scriptNames'
 	],
