@@ -130,12 +130,6 @@ CzSettingExecutor class >> setAppearance [
 	self removeLogo
 ]
 
-{ #category : 'pharo' }
-CzSettingExecutor class >> setAuthorName [
-	<script>
-	Author fullName: 'StephaneDucasse'
-]
-
 { #category : 'appearence' }
 CzSettingExecutor class >> setFastDragging [
 	<script>
