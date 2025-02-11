@@ -155,7 +155,21 @@ CzLightSandConfigurator class >> themeName [
 	^ 'Light Sandy'
 ]
 
-{ #category : 'nil' }
+{ #category : 'colors' }
+CzLightSandConfigurator >> backgroundColor [
+
+	self flag: #new.
+	"^ Color r: 0.116 g: 0.147 b: 0.210"
+	^ Color purple
+]
+
+{ #category : 'accessing' }
+CzLightSandConfigurator >> balloonBackgroundColor [
+	self flag: #new.
+	^ self backgroundColor lighter
+]
+
+{ #category : 'colors' }
 CzLightSandConfigurator >> baseColor [
 
 	^ (Color fromHexString: 'FFFCE2') 
@@ -165,6 +179,40 @@ CzLightSandConfigurator >> baseColor [
 CzLightSandConfigurator >> basePassiveBackgroundColor [
 	"used for disabled drop and text for example"
 	^  Color fromHexString: 'FEBBE3'
+]
+
+{ #category : 'colors' }
+CzLightSandConfigurator >> baseSelectionColor [
+
+	self flag: #new. 
+	"^ (Color r: 0.243 g: 0.271 b: 0.394 alpha: 1.0)"
+	^ Color yellow
+]
+
+{ #category : 'colors' }
+CzLightSandConfigurator >> borderColor [
+	self flag: #new.
+	^ self darkBaseColor adjustBrightness: -0.04
+]
+
+{ #category : 'colors' }
+CzLightSandConfigurator >> darkBaseColor [
+	self flag: #new.
+	^ self baseColor lighter lighter
+]
+
+{ #category : 'colors' }
+CzLightSandConfigurator >> desktopColor [ 
+
+	self flag: #new. 
+	^ Color blue
+]
+
+{ #category : 'colors' }
+CzLightSandConfigurator >> lightBackgroundColor [
+
+	self flag: #new.
+	^ Color pink
 ]
 
 { #category : 'colors' }
@@ -178,4 +226,18 @@ CzLightSandConfigurator >> lightBaseColor [
 CzLightSandConfigurator >> lightSelectionColor [
 
 	^ "(Color fromHexString: 'C8CEFF')" Color green
+]
+
+{ #category : 'colors' }
+CzLightSandConfigurator >> secondarySelectionColor [
+	self flag: #new. 
+	^ self selectionColor alpha: 0.4
+]
+
+{ #category : 'colors' }
+CzLightSandConfigurator >> selectionColor [
+
+	self flag: #new.
+	"^ self baseSelectionColor lighter"
+	^ Color green
 ]
