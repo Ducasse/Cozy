@@ -591,7 +591,10 @@ CzQuickAccess >> removeCleanlyMDAndBC [
 			ifNotNil: [ :found |
 				found
 					unload;
-					forget ] ]
+					forget ] ].
+		Smalltalk globals 
+			at: #BaselineOfMicrodown 
+			ifPresent: [ :c | c removeFromSystem ]
 ]
 
 { #category : 'code snippets' }
