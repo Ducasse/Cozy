@@ -525,11 +525,14 @@ CzQuickAccess >> installUniter [
 CzQuickAccess >> logAllUnusedVariables [
 	<cozyScript: #'Log all unused variables'>
 	
-	Transcript clear; open.
+	| c |
+	c := OrderedCollection new.
 	Object
 		allSubclassesDo: [ :class | 
 			class instVarNames
-				do: [ :each | (class whichSelectorsAccess: each) size = 0 ifTrue: [ Transcript crTrace: 'Class: ' , class printString , ' var: ' , each ] ] ]
+				do: [ :each | (class whichSelectorsAccess: each) size = 0 ifTrue: [
+						c add: (class -> each) ] ] ].
+	c inspect		
 ]
 
 { #category : 'code snippets' }
@@ -549,8 +552,8 @@ CzQuickAccess >> openCommonTools [
 	
 	| group |
 	group := GroupWindowMorph new
-		addWindow: Transcript open;
-		addWindow: DrTests open.
+		addWindow: (Smalltalk tools toolNamed: #transcript) open;
+		addWindow: (Smalltalk tools toolNamed: 3testrunner) open.
 	"group tabGroup selectedPageIndex: 1."
 	(group openInWindowLabeled: 'Common Tools') expandBoxHit
 ]
