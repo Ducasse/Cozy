@@ -230,8 +230,8 @@ CzLightSandConfigurator >> lightSelectionColor [
 
 { #category : 'colors' }
 CzLightSandConfigurator >> secondarySelectionColor [
-	self flag: #new. 
-	^ self selectionColor alpha: 0.4
+
+^ self selectionColor lighter lighter lighter
 ]
 
 { #category : 'colors' }
