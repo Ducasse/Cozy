@@ -678,15 +678,15 @@ CzQuickAccess >> toggleTheme [
 CzQuickAccess >> toggleToCherry [
 	<cozyScript: #'Use Cherry-On-A-Tree'>
 
-	CzCherryOnTreeTheme beCurrent.
+	CherryTheme beCurrent.
 	CzSettingExecutor setFastDragging
 ]
 
 { #category : 'cozy' }
 CzQuickAccess >> toggleToDayAtTheBeach [
-	<cozyScript: #'Use Day-at-the-Beach'>
+	<cozyScript: #'Use Naran'>
 
-	CzDayAtTheBeachTheme beCurrent.
+	NaranTheme beCurrent.
 	CzSettingExecutor setFastDragging
 ]
 
@@ -694,23 +694,7 @@ CzQuickAccess >> toggleToDayAtTheBeach [
 CzQuickAccess >> toggleToLightSand [
 	<cozyScript: #'Use Light Sand'>
 
-	CzLightSandTheme beCurrent.
-	CzSettingExecutor setFastDragging
-]
-
-{ #category : 'cozy' }
-CzQuickAccess >> toggleToLightYSand [
-	<cozyScript: #'Use Light Y Sand'>
-
-	CzLightSandyTheme beCurrent.
-	CzSettingExecutor setFastDragging
-]
-
-{ #category : 'cozy' }
-CzQuickAccess >> toggleToSandy [
-	<cozyScript: #'Use Sandy'>
-
-	CzSandyTheme beCurrent.
+	LightSandyTheme beCurrent.
 	CzSettingExecutor setFastDragging
 ]
 
