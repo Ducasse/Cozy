@@ -9,7 +9,7 @@ Class {
 { #category : 'colors' }
 CzWhiteGhostConfigurator >> baseColor [
 	
-	^ Color fromHexString: '90a4ae'
+	^ Color fromHexString: '#C8D2D7'
 ]
 
 { #category : 'colors' }
